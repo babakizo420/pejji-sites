@@ -6,7 +6,7 @@ import Base from '../layouts/Base.astro';
 
   <!-- HEADER -->
   <section class="py-16 sm:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
       <h1 class="text-4xl sm:text-5xl font-bold">What We Build & What It Costs</h1>
       <p class="mt-6 text-subtle text-lg max-w-2xl mx-auto">No hidden fees. No surprises. Pick your tier, we handle the rest.</p>
     </div>
@@ -15,10 +15,10 @@ import Base from '../layouts/Base.astro';
   <!-- TIER CARDS -->
   <section class="pb-16 sm:pb-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 stagger-children">
 
         <!-- Card Tier -->
-        <div class="bg-surface border border-white/5 rounded-2xl p-8">
+        <div class="card-tactile bg-surface border border-white/5 rounded-2xl p-8 hover:border-teal/20">
           <div class="text-teal text-sm font-semibold uppercase tracking-wider">Card</div>
           <div class="mt-4 flex items-baseline gap-2">
             <span class="text-4xl font-bold">₦60,000</span>
@@ -45,7 +45,7 @@ import Base from '../layouts/Base.astro';
         </div>
 
         <!-- Starter -->
-        <div class="bg-surface border border-white/5 rounded-2xl p-8">
+        <div class="card-tactile bg-surface border border-white/5 rounded-2xl p-8 hover:border-teal/20">
           <div class="text-teal text-sm font-semibold uppercase tracking-wider">Starter</div>
           <div class="mt-4 flex items-baseline gap-2">
             <span class="text-4xl font-bold">₦150-200K</span>
@@ -72,7 +72,7 @@ import Base from '../layouts/Base.astro';
         </div>
 
         <!-- Growth -->
-        <div class="bg-surface border-2 border-teal/50 rounded-2xl p-8 relative">
+        <div class="card-tactile bg-surface border-2 border-teal/50 rounded-2xl p-8 relative hover:shadow-lg hover:shadow-teal/10">
           <div class="absolute -top-3 right-6 bg-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</div>
           <div class="text-teal text-sm font-semibold uppercase tracking-wider">Growth</div>
           <div class="mt-4 flex items-baseline gap-2">
@@ -100,7 +100,7 @@ import Base from '../layouts/Base.astro';
         </div>
 
         <!-- Pro -->
-        <div class="bg-surface border border-white/5 rounded-2xl p-8">
+        <div class="card-tactile bg-surface border border-white/5 rounded-2xl p-8 hover:border-teal/20">
           <div class="text-teal text-sm font-semibold uppercase tracking-wider">Pro</div>
           <div class="mt-4 flex items-baseline gap-2">
             <span class="text-4xl font-bold">₦500-800K</span>
@@ -134,11 +134,11 @@ import Base from '../layouts/Base.astro';
   <!-- ADD-ON SERVICES -->
   <section class="py-16 sm:py-24 bg-surface/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 sm:mb-16">
+      <div class="text-center mb-12 sm:mb-16 reveal">
         <h2 class="text-3xl sm:text-4xl font-bold">Add-On Services</h2>
         <p class="mt-4 text-subtle text-lg">Enhance your website with extras.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 stagger-children">
         {[
           { name: "WhatsApp Business Setup", price: "₦15,000" },
           { name: "AI Chatbot", price: "₦40-60,000 + ₦10K/mo" },
@@ -163,10 +163,10 @@ import Base from '../layouts/Base.astro';
   <!-- COMPARISON TABLE -->
   <section class="py-16 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 sm:mb-16">
+      <div class="text-center mb-12 sm:mb-16 reveal">
         <h2 class="text-3xl sm:text-4xl font-bold">Compare Plans</h2>
       </div>
-      <div class="overflow-x-auto">
+      <div class="overflow-x-auto reveal">
         <table class="w-full min-w-[600px]">
           <thead>
             <tr class="border-b border-white/10">
@@ -218,10 +218,10 @@ import Base from '../layouts/Base.astro';
   <!-- FAQ -->
   <section class="py-16 sm:py-24 bg-surface/50">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12 sm:mb-16">
+      <div class="text-center mb-12 sm:mb-16 reveal">
         <h2 class="text-3xl sm:text-4xl font-bold">Frequently Asked Questions</h2>
       </div>
-      <div class="space-y-4">
+      <div class="space-y-4 reveal">
         {[
           { q: "Can I upgrade my tier later?", a: "Yes! You can upgrade at any time. We'll assess what you have and build on top of it. You only pay the difference plus any new features." },
           { q: "What do I need to provide?", a: "Your logo (if you have one), photos of your business/products, text content you'd like on the site, and your social media links. We'll send you a simple checklist via WhatsApp." },
@@ -246,7 +246,7 @@ import Base from '../layouts/Base.astro';
 
   <!-- CTA -->
   <section class="py-16 sm:py-24">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
       <h2 class="text-3xl sm:text-4xl font-bold">Ready to get started?</h2>
       <p class="mt-4 text-subtle text-lg">Pick a tier and let's build your website.</p>
       <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

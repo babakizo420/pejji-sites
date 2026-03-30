@@ -16,8 +16,8 @@ const projects = [
   <!-- HEADER -->
   <section class="py-16 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold">Our Work</h1>
-      <p class="mt-6 text-subtle text-lg max-w-2xl mx-auto">Real sites for real businesses. Built fast, built secure.</p>
+      <h1 class="text-4xl sm:text-5xl font-bold reveal">Our Work</h1>
+      <p class="mt-6 text-subtle text-lg max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">Real sites for real businesses. Built fast, built secure.</p>
     </div>
   </section>
 
@@ -40,9 +40,9 @@ const projects = [
       </div>
 
       <!-- Project Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="project-grid">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children" id="project-grid">
         {projects.map((project) => (
-          <div class="project-card bg-surface border border-white/5 rounded-2xl overflow-hidden hover:border-teal/30 transition-all" data-tier={project.tier.toLowerCase()}>
+          <div class="project-card card-tactile bg-surface border border-white/5 rounded-2xl overflow-hidden hover:border-teal/30" data-tier={project.tier.toLowerCase()}>
             <div class={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
               <div class="text-center">
                 <div class="w-16 h-16 mx-auto bg-white/10 rounded-xl flex items-center justify-center mb-3">
@@ -67,7 +67,7 @@ const projects = [
 
   <!-- CTA -->
   <section class="py-16 sm:py-24 bg-surface/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
       <h2 class="text-3xl sm:text-4xl font-bold">Want results like these?</h2>
       <p class="mt-4 text-subtle text-lg">Let's build yours.</p>
       <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">

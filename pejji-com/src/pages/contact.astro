@@ -7,8 +7,8 @@ import Base from '../layouts/Base.astro';
   <!-- HEADER -->
   <section class="py-16 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h1 class="text-4xl sm:text-5xl font-bold">Let's Build Your Website</h1>
-      <p class="mt-6 text-subtle text-lg max-w-2xl mx-auto">Fill out the form below or message us directly on WhatsApp.</p>
+      <h1 class="text-4xl sm:text-5xl font-bold reveal">Let's Build Your Website</h1>
+      <p class="mt-6 text-subtle text-lg max-w-2xl mx-auto reveal" style="transition-delay: 100ms;">Fill out the form below or message us directly on WhatsApp.</p>
     </div>
   </section>
 
@@ -19,7 +19,7 @@ import Base from '../layouts/Base.astro';
 
         <!-- Form -->
         <div class="lg:col-span-3">
-          <form id="inquiry-form" class="bg-surface border border-white/5 rounded-2xl p-8 sm:p-10 space-y-6">
+          <form id="inquiry-form" class="reveal-left bg-surface border border-white/5 rounded-2xl p-8 sm:p-10 space-y-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label for="business-name" class="block text-sm font-medium text-light mb-2">Business Name <span class="text-orange">*</span></label>
@@ -100,7 +100,7 @@ import Base from '../layouts/Base.astro';
         <!-- Contact Info Sidebar -->
         <div class="lg:col-span-2 space-y-6">
           <!-- Direct Contact -->
-          <div class="bg-surface border border-white/5 rounded-2xl p-8">
+          <div class="reveal-right bg-surface border border-white/5 rounded-2xl p-8">
             <h3 class="font-semibold text-lg mb-6">Or reach us directly</h3>
             <div class="space-y-5">
               <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I'm%20interested%20in%20getting%20a%20website%20for%20my%20business." target="_blank" rel="noopener" class="flex items-center gap-4 p-4 bg-green-500/10 border border-green-500/20 rounded-xl hover:bg-green-500/20 transition-colors">
@@ -135,7 +135,7 @@ import Base from '../layouts/Base.astro';
           </div>
 
           <!-- What Happens Next -->
-          <div class="bg-surface border border-white/5 rounded-2xl p-8">
+          <div class="reveal-right bg-surface border border-white/5 rounded-2xl p-8" style="transition-delay: 150ms;">
             <h3 class="font-semibold text-lg mb-5">What happens next?</h3>
             <ol class="space-y-4">
               {[
