@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { WHATSAPP_URL } from '../config';
 ---
 
 <Base title="Pejji Partners | Earn Cash For Every Referral" description="Know someone who needs a website? Refer them to Pejji. When they sign up, you get paid. No business needed — just connections.">
@@ -223,7 +224,7 @@ import Base from '../layouts/Base.astro';
       formData.forEach((value, key) => { data[key] = value.toString(); });
 
       const msg = `Hi Pejji! I want to become a Pejji Partner.\n\nName: ${data.full_name}\nWhatsApp: ${data.whatsapp}\nPartner Tag: ${data.partner_tag}\nInstagram: ${data.instagram || 'Not provided'}\nBank: ${data.bank_name}\nAccount: ${data.account_number}\nShare Plan: ${data.share_plan || 'Not specified'}`;
-      const waUrl = `https://wa.me/2348000000000?text=${encodeURIComponent(msg)}`;
+      const waUrl = `https://wa.me/${document.body.dataset.waNumber}?text=${encodeURIComponent(msg)}`;
 
       // Show success state
       const btn = (form as HTMLFormElement).querySelector('button[type="submit"]');
