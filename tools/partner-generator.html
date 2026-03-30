@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pejji Partner Image Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0D0D12;
+      color: #E8E8ED;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .container { grid-template-columns: 1fr; }
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #0A8F8F;
+    }
+    .subtitle {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+    .controls {
+      background: #1A1A24;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #E8E8ED;
+      margin-bottom: 8px;
+    }
+    input {
+      width: 100%;
+      background: #0D0D12;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 12px 16px;
+      color: #E8E8ED;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      margin-bottom: 20px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus {
+      border-color: rgba(10, 143, 143, 0.5);
+    }
+    input::placeholder { color: #555; }
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: #F57A1F;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .btn-primary:hover { background: #e06a10; }
+    .btn-secondary {
+      background: rgba(10, 143, 143, 0.1);
+      color: #0A8F8F;
+      border: 1px solid rgba(10, 143, 143, 0.3);
+    }
+    .btn-secondary:hover { background: rgba(10, 143, 143, 0.2); }
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+    .preview-wrapper {
+      position: sticky;
+      top: 40px;
+    }
+    .preview-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+    .preview-frame {
+      background: #1A1A24;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+    canvas {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    .hint {
+      font-size: 12px;
+      color: #666;
+      margin-top: -12px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div style="max-width: 1200px; margin: 0 auto 24px;">
+    <h1>Pejji Partner Image Generator</h1>
+    <p class="subtitle">Internal tool — type a partner's name and tag, preview, and download as PNG.</p>
+  </div>
+
+  <div class="container">
+    <div class="controls">
+      <label for="partner-name">Partner Name</label>
+      <input type="text" id="partner-name" placeholder="e.g. Folake Adeyemi" autofocus>
+
+      <label for="partner-tag">Partner Tag</label>
+      <input type="text" id="partner-tag" placeholder="e.g. Folake-LK">
+      <p class="hint">Name + area code. This is what referrals mention.</p>
+
+      <label for="phone-number">WhatsApp Number</label>
+      <input type="text" id="phone-number" value="+234 800 000 0000" placeholder="+234 800 000 0000">
+
+      <button class="btn btn-primary" id="btn-download">Download as PNG</button>
+      <button class="btn btn-secondary" id="btn-copy">Copy to Clipboard</button>
+    </div>
+
+    <div class="preview-wrapper">
+      <p class="preview-label">Preview</p>
+      <div class="preview-frame">
+        <canvas id="canvas" width="1080" height="1920"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    const nameInput = document.getElementById('partner-name');
+    const tagInput = document.getElementById('partner-tag');
+    const phoneInput = document.getElementById('phone-number');
+
+    function drawImage() {
+      const W = 1080;
+      const H = 1920;
+      const partnerName = nameInput.value || 'Partner Name';
+      const partnerTag = tagInput.value || 'Name-TAG';
+      const phone = phoneInput.value || '+234 800 000 0000';
+
+      // Background gradient
+      const grad = ctx.createLinearGradient(0, 0, W, H);
+      grad.addColorStop(0, '#0D0D12');
+      grad.addColorStop(1, '#1A1A24');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+
+      // Decorative glow circles
+      ctx.save();
+      ctx.globalAlpha = 0.06;
+      ctx.beginPath();
+      ctx.arc(200, 400, 300, 0, Math.PI * 2);
+      ctx.fillStyle = '#0A8F8F';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(900, 1500, 250, 0, Math.PI * 2);
+      ctx.fillStyle = '#F57A1F';
+      ctx.fill();
+      ctx.restore();
+
+      // Top accent line (gradient)
+      const lineGrad = ctx.createLinearGradient(340, 0, 740, 0);
+      lineGrad.addColorStop(0, '#0A8F8F');
+      lineGrad.addColorStop(0.5, '#F57A1F');
+      lineGrad.addColorStop(1, '#0A8F8F');
+      ctx.fillStyle = lineGrad;
+      roundRect(ctx, 340, 320, 400, 4, 2);
+      ctx.fill();
+
+      // Pejji logo
+      ctx.font = '700 64px "DM Sans", sans-serif';
+      ctx.fillStyle = '#0A8F8F';
+      ctx.textAlign = 'center';
+      ctx.fillText('Pejji', W / 2, 280);
+
+      // OFFICIAL PARTNER label
+      ctx.font = '600 28px "DM Sans", sans-serif';
+      ctx.fillStyle = '#F57A1F';
+      ctx.letterSpacing = '6px';
+      ctx.fillText('OFFICIAL PARTNER', W / 2, 440);
+
+      // Subtle divider
+      ctx.fillStyle = 'rgba(255,255,255,0.08)';
+      roundRect(ctx, 390, 470, 300, 2, 1);
+      ctx.fill();
+
+      // Partner name — auto-size for long names
+      let nameFontSize = 80;
+      ctx.font = `700 ${nameFontSize}px "DM Sans", sans-serif`;
+      while (ctx.measureText(partnerName).width > W - 160 && nameFontSize > 40) {
+        nameFontSize -= 4;
+        ctx.font = `700 ${nameFontSize}px "DM Sans", sans-serif`;
+      }
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText(partnerName, W / 2, 680);
+
+      // "is a Pejji Partner"
+      ctx.font = '400 36px "DM Sans", sans-serif';
+      ctx.fillStyle = 'rgba(232, 232, 237, 0.85)';
+      ctx.fillText('is a Pejji Partner', W / 2, 770);
+
+      // Divider
+      ctx.fillStyle = 'rgba(10, 143, 143, 0.5)';
+      roundRect(ctx, 440, 830, 200, 3, 1.5);
+      ctx.fill();
+
+      // CTA text
+      ctx.font = '500 34px "DM Sans", sans-serif';
+      ctx.fillStyle = 'rgba(232, 232, 237, 0.9)';
+      ctx.fillText('Know a business that', W / 2, 960);
+      ctx.fillText('needs a website?', W / 2, 1010);
+
+      // Sub text
+      ctx.font = '400 30px "DM Sans", sans-serif';
+      ctx.fillStyle = '#888888';
+      ctx.fillText('Message us on WhatsApp and mention', W / 2, 1100);
+
+      // Partner tag highlight box
+      const tagText = partnerTag.value !== '' ? partnerTag : 'Name-TAG';
+      ctx.font = `700 38px "DM Sans", sans-serif`;
+      const tagWidth = Math.max(ctx.measureText(partnerTag || 'Name-TAG').width + 80, 300);
+      const tagX = (W - tagWidth) / 2;
+
+      ctx.fillStyle = 'rgba(245, 122, 31, 0.12)';
+      ctx.strokeStyle = 'rgba(245, 122, 31, 0.3)';
+      ctx.lineWidth = 2;
+      roundRect(ctx, tagX, 1140, tagWidth, 70, 16);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.fillStyle = '#F57A1F';
+      ctx.fillText(partnerTag || 'Name-TAG', W / 2, 1188);
+
+      // Benefits box
+      ctx.fillStyle = 'rgba(255,255,255,0.03)';
+      ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+      ctx.lineWidth = 1;
+      roundRect(ctx, 140, 1310, 800, 260, 24);
+      ctx.fill();
+      ctx.stroke();
+
+      ctx.font = '600 26px "DM Sans", sans-serif';
+      ctx.fillStyle = '#0A8F8F';
+      ctx.fillText('What Pejji Builds', W / 2, 1370);
+
+      ctx.font = '400 22px "DM Sans", sans-serif';
+      ctx.fillStyle = '#888888';
+      ctx.fillText('Business Websites \u00B7 Online Stores', W / 2, 1420);
+      ctx.fillText('Booking Systems \u00B7 Landing Pages', W / 2, 1460);
+
+      ctx.font = '600 24px "DM Sans", sans-serif';
+      ctx.fillStyle = '#E8E8ED';
+      ctx.fillText('Starting from \u20A660,000', W / 2, 1510);
+
+      // WhatsApp pill
+      ctx.fillStyle = 'rgba(34, 197, 94, 0.12)';
+      ctx.strokeStyle = 'rgba(34, 197, 94, 0.3)';
+      ctx.lineWidth = 2;
+      roundRect(ctx, 290, 1640, 500, 80, 40);
+      ctx.fill();
+      ctx.stroke();
+
+      // WhatsApp icon (simplified circle + phone)
+      ctx.beginPath();
+      ctx.arc(370, 1680, 22, 0, Math.PI * 2);
+      ctx.fillStyle = '#22C55E';
+      ctx.fill();
+      ctx.font = '700 22px "DM Sans", sans-serif';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText('W', 370, 1688);
+
+      // Phone number
+      ctx.font = '600 30px "DM Sans", sans-serif';
+      ctx.fillStyle = '#22C55E';
+      ctx.fillText(phone, 580, 1692);
+
+      // Bottom accent line
+      ctx.fillStyle = lineGrad;
+      roundRect(ctx, 340, 1790, 400, 4, 2);
+      ctx.fill();
+
+      // Website
+      ctx.font = '400 24px "DM Sans", sans-serif';
+      ctx.fillStyle = '#888888';
+      ctx.fillText('pejji.com', W / 2, 1850);
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    // Live preview on input
+    nameInput.addEventListener('input', drawImage);
+    tagInput.addEventListener('input', drawImage);
+    phoneInput.addEventListener('input', drawImage);
+
+    // Auto-fill tag from name
+    nameInput.addEventListener('input', () => {
+      if (!tagInput.dataset.manual) {
+        const name = nameInput.value.trim().split(' ')[0];
+        if (name) {
+          tagInput.value = name + '-';
+          tagInput.placeholder = name + '-ABJ';
+        }
+      }
+    });
+    tagInput.addEventListener('input', () => {
+      tagInput.dataset.manual = 'true';
+    });
+
+    // Download
+    document.getElementById('btn-download').addEventListener('click', () => {
+      const name = nameInput.value.trim() || 'partner';
+      const tag = tagInput.value.trim() || 'tag';
+      const link = document.createElement('a');
+      link.download = `pejji-partner-${tag.toLowerCase()}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    });
+
+    // Copy to clipboard
+    document.getElementById('btn-copy').addEventListener('click', async () => {
+      try {
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+        await navigator.clipboard.write([
+          new ClipboardItem({ 'image/png': blob })
+        ]);
+        const btn = document.getElementById('btn-copy');
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = orig; }, 2000);
+      } catch (err) {
+        alert('Could not copy — try downloading instead.');
+      }
+    });
+
+    // Initial draw
+    drawImage();
+  </script>
+</body>
+</html>

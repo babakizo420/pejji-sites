@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0D0D12"/>
+      <stop offset="100%" stop-color="#1A1A24"/>
+    </linearGradient>
+    <linearGradient id="accent-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0A8F8F"/>
+      <stop offset="50%" stop-color="#F57A1F"/>
+      <stop offset="100%" stop-color="#0A8F8F"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="40" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+
+  <!-- Decorative glow circles -->
+  <circle cx="200" cy="400" r="300" fill="#0A8F8F" opacity="0.04" filter="url(#glow)"/>
+  <circle cx="900" cy="1500" r="250" fill="#F57A1F" opacity="0.04" filter="url(#glow)"/>
+
+  <!-- Top accent line -->
+  <rect x="340" y="320" width="400" height="4" rx="2" fill="url(#accent-line)"/>
+
+  <!-- Pejji logo -->
+  <text x="540" y="280" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="64" font-weight="700" fill="#0A8F8F">Pejji</text>
+
+  <!-- PARTNER section -->
+  <text x="540" y="440" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="28" font-weight="600" letter-spacing="6" fill="#F57A1F" text-transform="uppercase">OFFICIAL PARTNER</text>
+
+  <!-- Accent line below label -->
+  <rect x="390" y="470" width="300" height="2" rx="1" fill="#FFFFFF" opacity="0.08"/>
+
+  <!-- Partner Name placeholder -->
+  <text x="540" y="680" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="80" font-weight="700" fill="#FFFFFF">[PARTNER_NAME]</text>
+
+  <!-- "is a Pejji Partner" -->
+  <text x="540" y="770" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="36" font-weight="400" fill="#E8E8ED" opacity="0.85">is a Pejji Partner</text>
+
+  <!-- Divider -->
+  <rect x="440" y="830" width="200" height="3" rx="1.5" fill="#0A8F8F" opacity="0.5"/>
+
+  <!-- CTA text block -->
+  <text x="540" y="960" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="34" font-weight="500" fill="#E8E8ED" opacity="0.9">Know a business that</text>
+  <text x="540" y="1010" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="34" font-weight="500" fill="#E8E8ED" opacity="0.9">needs a website?</text>
+
+  <text x="540" y="1100" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="30" font-weight="400" fill="#888888">Message us on WhatsApp and mention</text>
+
+  <!-- Partner tag highlight -->
+  <rect x="340" y="1140" width="400" height="70" rx="16" fill="#F57A1F" opacity="0.12" stroke="#F57A1F" stroke-width="2" stroke-opacity="0.3"/>
+  <text x="540" y="1188" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="38" font-weight="700" fill="#F57A1F">[PARTNER_TAG]</text>
+
+  <!-- Benefits section -->
+  <rect x="140" y="1310" width="800" height="260" rx="24" fill="#FFFFFF" opacity="0.03" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.06"/>
+
+  <text x="540" y="1370" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="26" font-weight="600" fill="#0A8F8F">What Pejji Builds</text>
+
+  <text x="540" y="1420" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="22" font-weight="400" fill="#888888">Business Websites &middot; Online Stores</text>
+  <text x="540" y="1460" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="22" font-weight="400" fill="#888888">Booking Systems &middot; Landing Pages</text>
+  <text x="540" y="1510" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="24" font-weight="600" fill="#E8E8ED">Starting from &#x20A6;60,000</text>
+
+  <!-- WhatsApp section -->
+  <rect x="290" y="1640" width="500" height="80" rx="40" fill="#22C55E" opacity="0.12" stroke="#22C55E" stroke-width="2" stroke-opacity="0.3"/>
+
+  <!-- WhatsApp icon -->
+  <g transform="translate(350, 1657) scale(1.8)">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" fill="#22C55E"/>
+  </g>
+
+  <text x="580" y="1692" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="30" font-weight="600" fill="#22C55E">+234 800 000 0000</text>
+
+  <!-- Bottom accent line -->
+  <rect x="340" y="1790" width="400" height="4" rx="2" fill="url(#accent-line)"/>
+
+  <!-- Website -->
+  <text x="540" y="1850" text-anchor="middle" font-family="'DM Sans', sans-serif" font-size="24" font-weight="400" fill="#888888">pejji.com</text>
+</svg>
