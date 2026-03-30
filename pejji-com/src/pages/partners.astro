@@ -158,6 +158,12 @@ import Base from '../layouts/Base.astro';
         </div>
 
         <div>
+          <label for="partner-tag" class="block text-sm font-medium text-light mb-2">Choose your partner tag <span class="text-orange">*</span></label>
+          <input type="text" id="partner-tag" name="partner_tag" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. Chinedu-LK, Amina-ABJ, Tunde-IKJ" />
+          <p class="mt-1.5 text-subtle text-xs">This goes on your personalized partner image. Use your name + area. Example: Chinedu-LK, Amina-ABJ, Tunde-IKJ</p>
+        </div>
+
+        <div>
           <label for="share-plan" class="block text-sm font-medium text-light mb-2">How do you plan to share Pejji? <span class="text-subtle font-normal">(optional)</span></label>
           <textarea id="share-plan" name="share_plan" rows="3" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors resize-none" placeholder="e.g. WhatsApp groups, Instagram stories, word of mouth..."></textarea>
         </div>
@@ -216,7 +222,7 @@ import Base from '../layouts/Base.astro';
       const data: Record<string, string> = {};
       formData.forEach((value, key) => { data[key] = value.toString(); });
 
-      const msg = `Hi Pejji! I want to become a Pejji Partner.\n\nName: ${data.full_name}\nWhatsApp: ${data.whatsapp}\nInstagram: ${data.instagram || 'Not provided'}\nBank: ${data.bank_name}\nAccount: ${data.account_number}\nShare Plan: ${data.share_plan || 'Not specified'}`;
+      const msg = `Hi Pejji! I want to become a Pejji Partner.\n\nName: ${data.full_name}\nWhatsApp: ${data.whatsapp}\nPartner Tag: ${data.partner_tag}\nInstagram: ${data.instagram || 'Not provided'}\nBank: ${data.bank_name}\nAccount: ${data.account_number}\nShare Plan: ${data.share_plan || 'Not specified'}`;
       const waUrl = `https://wa.me/2348000000000?text=${encodeURIComponent(msg)}`;
 
       // Show success state
@@ -237,7 +243,7 @@ import Base from '../layouts/Base.astro';
         // Show success message
         const successMsg = document.createElement('p');
         successMsg.className = 'text-teal text-sm mt-4 text-center';
-        successMsg.textContent = "We'll send your personalized partner image to your WhatsApp within 24 hours.";
+        successMsg.textContent = "Welcome to Pejji Partners! We'll send your personalized partner image with your tag to your WhatsApp within 24 hours.";
         form?.appendChild(successMsg);
       }, 2000);
     });

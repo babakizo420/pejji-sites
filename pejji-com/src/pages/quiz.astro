@@ -1,0 +1,423 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Is Your Business Ready For a Website? | Pejji" description="Take our free 2-minute quiz and find out which Pejji tier is right for you.">
+
+  <!-- HERO -->
+  <section class="relative overflow-hidden py-20 sm:py-32">
+    <div class="absolute inset-0 bg-gradient-to-br from-teal/10 via-dark to-dark"></div>
+    <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-teal/5 rounded-full blur-3xl"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight reveal">
+        Is Your Business Ready For a <span class="text-teal">Website?</span>
+      </h1>
+      <p class="reveal mt-6 text-lg sm:text-xl text-subtle max-w-2xl mx-auto leading-relaxed" style="transition-delay: 100ms;">
+        Take our free 2-minute quiz and find out which Pejji tier is right for you.
+      </p>
+      <div class="reveal mt-10" style="transition-delay: 200ms;">
+        <button id="start-quiz" class="inline-flex items-center justify-center px-8 py-4 bg-orange text-white font-semibold rounded-lg hover:bg-orange/90 hover:shadow-lg hover:shadow-orange/20 transition-all duration-300">
+          Start the Quiz
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUIZ -->
+  <section id="quiz-section" class="py-16 sm:py-24 hidden">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Progress Bar -->
+      <div class="mb-10">
+        <div class="flex items-center justify-between text-sm text-subtle mb-3">
+          <span>Question <span id="q-current">1</span> of 5</span>
+          <span id="q-percent">20%</span>
+        </div>
+        <div class="w-full h-2 bg-surface border border-white/5 rounded-full overflow-hidden">
+          <div id="progress-bar" class="h-full bg-teal rounded-full transition-all duration-500 ease-out" style="width: 20%"></div>
+        </div>
+      </div>
+
+      <!-- Question Cards -->
+      <div id="quiz-container">
+
+        <!-- Q1 -->
+        <div class="quiz-step" data-step="1">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-8">What does your business do?</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q1" data-value="food">
+              <span class="text-light font-medium">Food / Restaurant</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q1" data-value="fashion">
+              <span class="text-light font-medium">Fashion / Retail</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q1" data-value="services">
+              <span class="text-light font-medium">Services (salon, barber, consulting)</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q1" data-value="logistics">
+              <span class="text-light font-medium">Logistics / Delivery</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q1" data-value="health">
+              <span class="text-light font-medium">Health / Beauty</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q1" data-value="other">
+              <span class="text-light font-medium">Other</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quiz-step hidden" data-step="2">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-8">How do customers currently find you?</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q2" data-value="social">
+              <span class="text-light font-medium">Instagram / Social media only</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q2" data-value="wordofmouth">
+              <span class="text-light font-medium">Word of mouth</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q2" data-value="whatsapp">
+              <span class="text-light font-medium">WhatsApp</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q2" data-value="website">
+              <span class="text-light font-medium">I already have a website</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q2" data-value="other">
+              <span class="text-light font-medium">Other</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-step hidden" data-step="3">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-8">What do you need your website to do?</h2>
+          <div class="grid grid-cols-1 gap-4">
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q3" data-value="info">
+              <span class="text-light font-medium">Just show my business info and contact</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q3" data-value="bookings">
+              <span class="text-light font-medium">Take bookings or appointments</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q3" data-value="ecommerce">
+              <span class="text-light font-medium">Sell products online with payment</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q3" data-value="all">
+              <span class="text-light font-medium">All of the above</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quiz-step hidden" data-step="4">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-8">Do you have a logo and business photos?</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q4" data-value="both">
+              <span class="text-light font-medium">Yes, both</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q4" data-value="logo">
+              <span class="text-light font-medium">Logo only</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q4" data-value="photos">
+              <span class="text-light font-medium">Photos only</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q4" data-value="neither">
+              <span class="text-light font-medium">Neither — I need help with this</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="quiz-step hidden" data-step="5">
+          <h2 class="text-2xl sm:text-3xl font-bold mb-8">What's your budget range?</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q5" data-value="under80k">
+              <span class="text-light font-medium">Under ₦80K</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q5" data-value="80k-200k">
+              <span class="text-light font-medium">₦80K – ₦200K</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q5" data-value="200k-400k">
+              <span class="text-light font-medium">₦200K – ₦400K</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q5" data-value="400k+">
+              <span class="text-light font-medium">₦400K+</span>
+            </button>
+            <button class="quiz-option card-tactile bg-surface border border-white/5 rounded-2xl p-6 text-left hover:border-teal/30 transition-all" data-q="q5" data-value="unsure">
+              <span class="text-light font-medium">Not sure yet</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section id="results-section" class="py-16 sm:py-24 hidden">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Recommendation -->
+      <div class="bg-surface border border-teal/30 rounded-2xl p-8 sm:p-10 text-center mb-8">
+        <p class="text-teal text-sm font-semibold uppercase tracking-wider mb-4">We recommend</p>
+        <h2 id="result-tier" class="text-3xl sm:text-4xl font-bold"></h2>
+        <p id="result-price" class="mt-3 text-2xl font-semibold text-teal"></p>
+        <p id="result-reason" class="mt-6 text-subtle leading-relaxed"></p>
+        <div id="result-branding-note" class="hidden mt-6 p-4 bg-orange/10 border border-orange/20 rounded-xl">
+          <p class="text-sm text-light">No worries — we can help with branding too. Ask about our add-on services.</p>
+        </div>
+      </div>
+
+      <!-- What's Included -->
+      <div class="bg-surface border border-white/5 rounded-2xl p-8 sm:p-10 mb-8">
+        <h3 class="font-semibold text-lg mb-6">What's included:</h3>
+        <ul id="result-features" class="space-y-3"></ul>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4 mb-12">
+        <a id="cta-get-started" href="/contact" class="flex-1 inline-flex items-center justify-center px-8 py-4 bg-orange text-white font-semibold rounded-lg hover:bg-orange/90 hover:shadow-lg hover:shadow-orange/20 transition-all duration-300 text-center">
+          Get Started
+        </a>
+        <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I%20just%20took%20the%20quiz%20and%20I'm%20interested%20in%20learning%20more." target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300 text-center">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Chat on WhatsApp
+        </a>
+      </div>
+
+      <!-- Lead Capture (optional) -->
+      <div class="bg-surface border border-white/5 rounded-2xl p-8 sm:p-10">
+        <h3 class="font-semibold text-lg mb-2">Want us to reach out?</h3>
+        <p class="text-subtle text-sm mb-6">Leave your details and we'll follow up.</p>
+        <form id="lead-form" class="space-y-4">
+          <div>
+            <label for="lead-business" class="block text-sm font-medium text-light mb-2">Business Name <span class="text-subtle font-normal">(optional)</span></label>
+            <input type="text" id="lead-business" name="business_name" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. Iya Basira Kitchen" />
+          </div>
+          <div>
+            <label for="lead-whatsapp" class="block text-sm font-medium text-light mb-2">WhatsApp Number <span class="text-subtle font-normal">(optional)</span></label>
+            <input type="tel" id="lead-whatsapp" name="whatsapp" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. 08012345678" />
+          </div>
+          <button type="submit" class="w-full px-8 py-4 bg-teal text-dark font-semibold rounded-lg hover:bg-teal/90 transition-colors text-center">
+            Send My Results
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    const answers: Record<string, string> = {};
+    const totalSteps = 5;
+
+    // Tier data
+    const tiers: Record<string, { name: string; price: string; features: string[]; slug: string }> = {
+      card: {
+        name: "Card",
+        price: "₦60,000",
+        slug: "card",
+        features: [
+          "Single page digital business card",
+          "Mobile responsive design",
+          "WhatsApp click-to-chat button",
+          "Google Maps integration",
+          "Basic SEO setup",
+          "48-hour delivery",
+        ],
+      },
+      starter: {
+        name: "Starter",
+        price: "₦150–200K",
+        slug: "starter",
+        features: [
+          "Multi-section landing page",
+          "Contact/inquiry form",
+          "Social media integration",
+          "Google Analytics setup",
+          "Basic SEO optimization",
+          "5–7 day delivery",
+        ],
+      },
+      growth: {
+        name: "Growth",
+        price: "₦250–400K",
+        slug: "growth",
+        features: [
+          "Multi-page website (up to 5 pages)",
+          "Booking/scheduling system",
+          "Blog or news section",
+          "Advanced SEO optimization",
+          "WhatsApp Business integration",
+          "7–14 day delivery",
+        ],
+      },
+      pro: {
+        name: "Pro",
+        price: "₦500–800K",
+        slug: "pro",
+        features: [
+          "Full ecommerce store",
+          "Product catalog with categories",
+          "Paystack/Flutterwave payment integration",
+          "Inventory management",
+          "Customer accounts",
+          "Advanced analytics dashboard",
+          "14–21 day delivery",
+        ],
+      },
+    };
+
+    function recommendTier(): string {
+      const q3 = answers.q3;
+      const q5 = answers.q5;
+
+      if (q3 === "all") return "pro";
+      if (q3 === "ecommerce") return "pro";
+      if (q3 === "bookings") return "growth";
+      if (q3 === "info" && q5 === "under80k") return "card";
+      if (q3 === "info" && q5 === "80k-200k") return "starter";
+      if (q3 === "info") return "starter";
+      if (q5 === "unsure") return "starter";
+
+      return "starter";
+    }
+
+    function getReasonText(tierKey: string): string {
+      const q1 = answers.q1;
+      const q3 = answers.q3;
+
+      const reasons: Record<string, string> = {
+        card: "You need a clean, professional online presence without the complexity. The Card tier gets you live in 48 hours with everything a customer needs to find and contact you.",
+        starter: "Your business needs a solid online presence with room to grow. The Starter tier gives you a professional multi-section page with contact forms and analytics to track your visitors.",
+        growth: "You need more than just a presence — you need your website to work for you. The Growth tier includes booking systems and multiple pages so customers can find exactly what they need and take action.",
+        pro: "Your business is ready to sell online. The Pro tier gives you a full ecommerce store with payment processing, inventory management, and customer accounts — everything you need to run your shop online.",
+      };
+
+      return reasons[tierKey] || reasons.starter;
+    }
+
+    function showResults() {
+      const tierKey = recommendTier();
+      const tier = tiers[tierKey];
+
+      document.getElementById('result-tier')!.textContent = tier.name;
+      document.getElementById('result-price')!.textContent = tier.price;
+      document.getElementById('result-reason')!.textContent = getReasonText(tierKey);
+
+      // Features list
+      const featuresList = document.getElementById('result-features')!;
+      featuresList.innerHTML = tier.features.map(f =>
+        `<li class="flex items-start gap-3 text-sm">
+          <svg class="w-5 h-5 text-teal flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+          <span class="text-light">${f}</span>
+        </li>`
+      ).join('');
+
+      // Branding note
+      if (answers.q4 === "neither") {
+        document.getElementById('result-branding-note')!.classList.remove('hidden');
+      }
+
+      // CTA link
+      const ctaLink = document.getElementById('cta-get-started') as HTMLAnchorElement;
+      ctaLink.href = `/contact?tier=${tier.slug}`;
+      ctaLink.textContent = `Get Started with ${tier.name}`;
+
+      // Show results, hide quiz
+      document.getElementById('quiz-section')!.classList.add('hidden');
+      document.getElementById('results-section')!.classList.remove('hidden');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goToStep(step: number) {
+      document.querySelectorAll('.quiz-step').forEach(el => el.classList.add('hidden'));
+      const target = document.querySelector(`.quiz-step[data-step="${step}"]`);
+      if (target) {
+        target.classList.remove('hidden');
+        // Animate in
+        target.querySelectorAll('.quiz-option').forEach((btn, i) => {
+          (btn as HTMLElement).style.opacity = '0';
+          (btn as HTMLElement).style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            (btn as HTMLElement).style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            (btn as HTMLElement).style.opacity = '1';
+            (btn as HTMLElement).style.transform = 'translateY(0)';
+          }, i * 80);
+        });
+      }
+
+      // Update progress
+      document.getElementById('q-current')!.textContent = String(step);
+      document.getElementById('q-percent')!.textContent = `${step * 20}%`;
+      (document.getElementById('progress-bar') as HTMLElement).style.width = `${step * 20}%`;
+    }
+
+    // Start quiz
+    document.getElementById('start-quiz')?.addEventListener('click', () => {
+      document.getElementById('quiz-section')!.classList.remove('hidden');
+      document.querySelector('section:first-of-type')!.classList.add('hidden');
+      goToStep(1);
+      document.getElementById('quiz-section')!.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    // Handle option clicks
+    document.querySelectorAll('.quiz-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const q = (btn as HTMLElement).dataset.q!;
+        const value = (btn as HTMLElement).dataset.value!;
+        answers[q] = value;
+
+        // Highlight selected
+        btn.closest('.quiz-step')!.querySelectorAll('.quiz-option').forEach(b => {
+          b.classList.remove('border-teal', 'bg-teal/10');
+          b.classList.add('border-white/5');
+        });
+        btn.classList.remove('border-white/5');
+        btn.classList.add('border-teal', 'bg-teal/10');
+
+        // Advance after brief delay
+        const currentStep = parseInt(btn.closest('.quiz-step')!.getAttribute('data-step')!);
+        setTimeout(() => {
+          if (currentStep < totalSteps) {
+            goToStep(currentStep + 1);
+          } else {
+            showResults();
+          }
+        }, 350);
+      });
+    });
+
+    // Lead form
+    document.getElementById('lead-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+      const data: Record<string, string> = {};
+      formData.forEach((value, key) => { data[key] = value.toString(); });
+
+      const tierKey = recommendTier();
+      const tier = tiers[tierKey];
+
+      const msg = `Hi Pejji! I took the quiz and got recommended the ${tier.name} tier.\n\nBusiness: ${data.business_name || 'Not provided'}\nWhatsApp: ${data.whatsapp || 'Not provided'}\n\nQuiz answers:\n- Business type: ${answers.q1}\n- How customers find me: ${answers.q2}\n- Website needs: ${answers.q3}\n- Logo/photos: ${answers.q4}\n- Budget: ${answers.q5}`;
+
+      const waUrl = `https://wa.me/2348000000000?text=${encodeURIComponent(msg)}`;
+
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.textContent = 'Sending...';
+        btn.setAttribute('disabled', 'true');
+      }
+
+      window.open(waUrl, '_blank');
+
+      setTimeout(() => {
+        if (btn) {
+          btn.textContent = 'Sent! We\'ll reach out soon.';
+          (btn as HTMLElement).classList.remove('bg-teal');
+          (btn as HTMLElement).classList.add('bg-green-500');
+        }
+      }, 1500);
+    });
+  </script>
+
+</Base>
