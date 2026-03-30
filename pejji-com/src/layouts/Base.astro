@@ -24,11 +24,11 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
     <title>{title}</title>
 
     <style>
-      /* Scroll reveal animations */
+      /* Scroll reveal animations - MORE DRAMATIC */
       .reveal {
         opacity: 0;
-        transform: translateY(32px);
-        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(60px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .reveal.visible {
         opacity: 1;
@@ -36,8 +36,8 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
       }
       .reveal-left {
         opacity: 0;
-        transform: translateX(-32px);
-        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateX(-60px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .reveal-left.visible {
         opacity: 1;
@@ -45,8 +45,8 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
       }
       .reveal-right {
         opacity: 0;
-        transform: translateX(32px);
-        transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateX(60px);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .reveal-right.visible {
         opacity: 1;
@@ -54,8 +54,8 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
       }
       .reveal-scale {
         opacity: 0;
-        transform: scale(0.92);
-        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: scale(0.85);
+        transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .reveal-scale.visible {
         opacity: 1;
@@ -65,23 +65,23 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
       /* Stagger children */
       .stagger-children > * {
         opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateY(40px);
+        transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
       }
       .stagger-children.visible > *:nth-child(1) { transition-delay: 0ms; }
-      .stagger-children.visible > *:nth-child(2) { transition-delay: 80ms; }
-      .stagger-children.visible > *:nth-child(3) { transition-delay: 160ms; }
-      .stagger-children.visible > *:nth-child(4) { transition-delay: 240ms; }
-      .stagger-children.visible > *:nth-child(5) { transition-delay: 320ms; }
-      .stagger-children.visible > *:nth-child(6) { transition-delay: 400ms; }
-      .stagger-children.visible > *:nth-child(7) { transition-delay: 480ms; }
-      .stagger-children.visible > *:nth-child(8) { transition-delay: 560ms; }
+      .stagger-children.visible > *:nth-child(2) { transition-delay: 120ms; }
+      .stagger-children.visible > *:nth-child(3) { transition-delay: 240ms; }
+      .stagger-children.visible > *:nth-child(4) { transition-delay: 360ms; }
+      .stagger-children.visible > *:nth-child(5) { transition-delay: 480ms; }
+      .stagger-children.visible > *:nth-child(6) { transition-delay: 600ms; }
+      .stagger-children.visible > *:nth-child(7) { transition-delay: 720ms; }
+      .stagger-children.visible > *:nth-child(8) { transition-delay: 840ms; }
       .stagger-children.visible > * {
         opacity: 1;
         transform: translateY(0);
       }
 
-      /* Hero shimmer */
+      /* Hero shimmer - more visible */
       @keyframes shimmer {
         0% { background-position: -200% 0; }
         100% { background-position: 200% 0; }
@@ -89,14 +89,79 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
       .hero-shimmer {
         background: linear-gradient(
           110deg,
-          transparent 20%,
-          rgba(10, 143, 143, 0.08) 40%,
-          rgba(10, 143, 143, 0.15) 50%,
-          rgba(10, 143, 143, 0.08) 60%,
-          transparent 80%
+          transparent 15%,
+          rgba(10, 143, 143, 0.12) 35%,
+          rgba(10, 143, 143, 0.25) 50%,
+          rgba(10, 143, 143, 0.12) 65%,
+          transparent 85%
         );
         background-size: 200% 100%;
-        animation: shimmer 6s ease-in-out infinite;
+        animation: shimmer 4s ease-in-out infinite;
+      }
+
+      /* Floating particles */
+      @keyframes float1 {
+        0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+        25% { transform: translate(30px, -40px) scale(1.2); opacity: 0.6; }
+        50% { transform: translate(-20px, -80px) scale(0.8); opacity: 0.4; }
+        75% { transform: translate(40px, -30px) scale(1.1); opacity: 0.5; }
+      }
+      @keyframes float2 {
+        0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.2; }
+        33% { transform: translate(-40px, -60px) scale(1.3); opacity: 0.5; }
+        66% { transform: translate(30px, -40px) scale(0.9); opacity: 0.3; }
+      }
+      .particle {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+      }
+
+      /* Gradient border glow on cards */
+      .card-glow {
+        position: relative;
+      }
+      .card-glow::before {
+        content: '';
+        position: absolute;
+        inset: -1px;
+        border-radius: 1rem;
+        padding: 1px;
+        background: linear-gradient(135deg, transparent, transparent);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        transition: background 0.5s;
+        pointer-events: none;
+      }
+      .card-glow:hover::before {
+        background: linear-gradient(135deg, #0A8F8F, #F57A1F, #0A8F8F);
+      }
+
+      /* Back to top button */
+      @keyframes bounceUp {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-4px); }
+      }
+      .back-to-top {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s, transform 0.3s;
+        pointer-events: none;
+      }
+      .back-to-top.show {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+      }
+      .back-to-top:hover svg {
+        animation: bounceUp 0.6s ease infinite;
+      }
+
+      /* Counter animation */
+      .counter {
+        display: inline-block;
       }
 
       /* Hero gradient animation */
@@ -118,13 +183,13 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
         animation: waPulse 2.5s ease-out infinite;
       }
 
-      /* Tactile card interaction */
+      /* Tactile card interaction - MORE DRAMATIC */
       .card-tactile {
-        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
       }
       .card-tactile:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 40px -12px rgba(10, 143, 143, 0.15);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px -15px rgba(10, 143, 143, 0.25), 0 0 0 1px rgba(10, 143, 143, 0.1);
       }
       @media (hover: none) {
         .card-tactile:active {
@@ -298,6 +363,15 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
       </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button
+      id="back-to-top"
+      class="back-to-top fixed bottom-6 left-6 z-50 bg-surface border border-white/10 text-teal p-3 rounded-full shadow-lg hover:bg-teal hover:text-dark hover:border-teal transition-all duration-300"
+      aria-label="Back to top"
+    >
+      <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    </button>
+
     <!-- Floating WhatsApp Button -->
     <a
       href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I'm%20interested%20in%20getting%20a%20website%20for%20my%20business."
@@ -336,9 +410,31 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      }, { threshold: 0.08, rootMargin: '0px 0px -60px 0px' });
 
       revealEls.forEach(el => observer.observe(el));
+
+      // Back to top button
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTop?.classList.add('show');
+        } else {
+          backToTop?.classList.remove('show');
+        }
+
+        // Navbar shadow on scroll
+        const nav = document.getElementById('navbar');
+        if (window.scrollY > 20) {
+          nav?.classList.add('shadow-lg', 'shadow-black/20');
+        } else {
+          nav?.classList.remove('shadow-lg', 'shadow-black/20');
+        }
+      }, { passive: true });
+
+      backToTop?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
 
       // Testimonial carousel dots
       const track = document.querySelector('.carousel-track');
@@ -353,6 +449,31 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
           });
         });
       }
+
+      // Animated counter for pricing
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const target = parseInt(el.dataset.target || '0');
+            const prefix = el.dataset.prefix || '';
+            const suffix = el.dataset.suffix || '';
+            let current = 0;
+            const step = Math.ceil(target / 30);
+            const timer = setInterval(() => {
+              current += step;
+              if (current >= target) {
+                current = target;
+                clearInterval(timer);
+              }
+              el.textContent = prefix + current.toLocaleString() + suffix;
+            }, 30);
+            counterObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
     </script>
   </body>
 </html>
