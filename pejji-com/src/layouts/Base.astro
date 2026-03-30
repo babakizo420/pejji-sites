@@ -238,6 +238,15 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
         animation: waPulse 2.5s ease-out infinite;
       }
 
+      /* Theme toggle hint animation */
+      @keyframes themeHint {
+        0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 transparent); }
+        50% { transform: scale(1.25); filter: drop-shadow(0 0 8px rgba(255, 165, 0, 0.6)); }
+      }
+      .animate-theme-hint {
+        animation: themeHint 1.5s ease-in-out 3s 3;
+      }
+
       /* Tactile card interaction - MORE DRAMATIC */
       .card-tactile {
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s, box-shadow 0.3s;
@@ -356,7 +365,7 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
             <a href="/contact" class="inline-flex items-center px-5 py-2.5 bg-orange text-white text-sm font-semibold rounded-lg hover:bg-orange/90 hover:shadow-lg hover:shadow-orange/20 transition-all duration-300">Get Started</a>
           </div>
           <div class="flex items-center">
-            <button id="theme-toggle" class="p-2.5 text-subtle hover:text-light transition-colors rounded-lg" aria-label="Toggle theme">
+            <button id="theme-toggle" class="p-2.5 text-subtle hover:text-light transition-colors rounded-lg animate-theme-hint" aria-label="Toggle theme">
               <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
               <svg id="moon-icon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
             </button>
