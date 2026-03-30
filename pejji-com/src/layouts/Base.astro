@@ -39,6 +39,45 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet" />
     <title>{title}</title>
 
+    <!-- Anti-flash: apply saved theme before paint -->
+    <script is:inline>
+      (function(){
+        if (localStorage.getItem('theme') === 'light') {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
+
+    <style is:global>
+      /* Theme CSS variables */
+      :root {
+        --color-dark: 13 13 18;
+        --color-surface: 26 26 36;
+        --color-light: 232 232 237;
+        --color-subtle: 136 136 136;
+      }
+      html.light {
+        --color-dark: 245 245 240;
+        --color-surface: 255 255 255;
+        --color-light: 26 26 26;
+        --color-subtle: 102 102 102;
+      }
+
+      /* Light mode overrides for white-opacity borders/backgrounds */
+      html.light .border-white\/5 { border-color: rgba(0,0,0,0.06); }
+      html.light .border-white\/10 { border-color: rgba(0,0,0,0.08); }
+      html.light .bg-white\/5 { background-color: rgba(0,0,0,0.04); }
+      html.light .bg-white\/10 { background-color: rgba(0,0,0,0.06); }
+      html.light .hover\:bg-white\/5:hover { background-color: rgba(0,0,0,0.04); }
+      html.light .hover\:border-white\/5:hover { border-color: rgba(0,0,0,0.06); }
+      html.light .border-white\/20 { border-color: rgba(0,0,0,0.12); }
+      html.light .text-white\/40 { color: rgba(0,0,0,0.35); }
+      html.light .text-white\/30 { color: rgba(0,0,0,0.25); }
+      html.light .carousel-dot { background: rgba(0,0,0,0.12); }
+      html.light .carousel-dot.active { background: #0A8F8F; }
+      html.light .shadow-black\/20 { --tw-shadow-color: rgba(0,0,0,0.08); }
+    </style>
+
     <style>
       /* Scroll reveal animations - MORE DRAMATIC */
       .reveal {
@@ -315,11 +354,17 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
             <a href="/about" class="nav-link text-sm text-subtle hover:text-light transition-colors">About</a>
             <a href="/contact" class="inline-flex items-center px-5 py-2.5 bg-orange text-white text-sm font-semibold rounded-lg hover:bg-orange/90 hover:shadow-lg hover:shadow-orange/20 transition-all duration-300">Get Started</a>
           </div>
-          <button id="menu-toggle" class="md:hidden text-light p-3" aria-label="Toggle menu">
-            <svg class="w-6 h-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+          <div class="flex items-center">
+            <button id="theme-toggle" class="p-2.5 text-subtle hover:text-light transition-colors rounded-lg" aria-label="Toggle theme">
+              <svg id="sun-icon" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+              <svg id="moon-icon" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+            </button>
+            <button id="menu-toggle" class="md:hidden text-light p-3" aria-label="Toggle menu">
+              <svg class="w-6 h-6 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
       <div id="mobile-menu" class="md:hidden hidden border-t border-white/5 transition-all duration-300">
@@ -400,6 +445,25 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
     </a>
 
     <script>
+      // Theme toggle
+      const themeToggle = document.getElementById('theme-toggle');
+      const sunIcon = document.getElementById('sun-icon');
+      const moonIcon = document.getElementById('moon-icon');
+
+      function updateIcons() {
+        const isLight = document.documentElement.classList.contains('light');
+        sunIcon?.classList.toggle('hidden', !isLight);
+        moonIcon?.classList.toggle('hidden', isLight);
+      }
+      updateIcons();
+
+      themeToggle?.addEventListener('click', () => {
+        document.documentElement.classList.toggle('light');
+        const isLight = document.documentElement.classList.contains('light');
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        updateIcons();
+      });
+
       // Mobile menu toggle
       const toggle = document.getElementById('menu-toggle');
       const menu = document.getElementById('mobile-menu');

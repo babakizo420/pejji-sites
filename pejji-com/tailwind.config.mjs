@@ -6,10 +6,10 @@ export default {
       colors: {
         teal: '#0A8F8F',
         orange: '#F57A1F',
-        dark: '#0D0D12',
-        surface: '#1A1A24',
-        light: '#E8E8ED',
-        subtle: '#888888',
+        dark: 'rgb(var(--color-dark) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)',
+        light: 'rgb(var(--color-light) / <alpha-value>)',
+        subtle: 'rgb(var(--color-subtle) / <alpha-value>)',
       },
       fontFamily: {
         sans: ['DM Sans', 'system-ui', 'sans-serif'],
