@@ -176,6 +176,25 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
         pointer-events: none;
       }
 
+      /* Accepting clients badge pulse */
+      @keyframes acceptingPulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.5); }
+      }
+      .accepting-dot { animation: acceptingPulse 2s ease-in-out infinite; }
+
+      /* Hero floating UI cards */
+      @keyframes heroFloat1 {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+      }
+      @keyframes heroFloat2 {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-12px); }
+      }
+      .float-card-1 { animation: heroFloat1 6s ease-in-out infinite; }
+      .float-card-2 { animation: heroFloat2 6s ease-in-out infinite 2s; }
+
       /* Gradient border glow on cards */
       .card-glow {
         position: relative;
@@ -596,6 +615,78 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
       }, { threshold: 0.5 });
 
       document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+      // Hero particle canvas (subtle, hero-only)
+      const heroCanvas = document.getElementById('hero-particles') as HTMLCanvasElement;
+      if (heroCanvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const pCtx = heroCanvas.getContext('2d');
+        type HeroParticle = { x: number; y: number; size: number; speedX: number; speedY: number; opacity: number; color: string };
+        let heroParticles: HeroParticle[] = [];
+
+        function resizeHeroCanvas() {
+          const rect = heroCanvas.parentElement!.getBoundingClientRect();
+          heroCanvas.width = rect.width;
+          heroCanvas.height = rect.height;
+        }
+
+        function initHeroParticles() {
+          heroParticles = [];
+          const count = Math.min(Math.floor(heroCanvas.width / 25), 35);
+          for (let i = 0; i < count; i++) {
+            heroParticles.push({
+              x: Math.random() * heroCanvas.width,
+              y: Math.random() * heroCanvas.height,
+              size: Math.random() * 1.5 + 0.5,
+              speedX: (Math.random() - 0.5) * 0.3,
+              speedY: (Math.random() - 0.5) * 0.3,
+              opacity: Math.random() * 0.25 + 0.05,
+              color: Math.random() > 0.7 ? '245, 122, 31' : '10, 143, 143',
+            });
+          }
+        }
+
+        function animateHeroParticles() {
+          if (!pCtx) return;
+          pCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+
+          heroParticles.forEach(p => {
+            p.x += p.speedX;
+            p.y += p.speedY;
+            if (p.x > heroCanvas.width) p.x = 0;
+            if (p.x < 0) p.x = heroCanvas.width;
+            if (p.y > heroCanvas.height) p.y = 0;
+            if (p.y < 0) p.y = heroCanvas.height;
+
+            pCtx.beginPath();
+            pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            pCtx.fillStyle = `rgba(${p.color}, ${p.opacity})`;
+            pCtx.fill();
+          });
+
+          for (let i = 0; i < heroParticles.length; i++) {
+            for (let j = i + 1; j < heroParticles.length; j++) {
+              const dx = heroParticles[i].x - heroParticles[j].x;
+              const dy = heroParticles[i].y - heroParticles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+              if (dist < 100) {
+                pCtx.beginPath();
+                pCtx.strokeStyle = `rgba(10, 143, 143, ${0.06 * (1 - dist / 100)})`;
+                pCtx.lineWidth = 0.5;
+                pCtx.moveTo(heroParticles[i].x, heroParticles[i].y);
+                pCtx.lineTo(heroParticles[j].x, heroParticles[j].y);
+                pCtx.stroke();
+              }
+            }
+          }
+
+          requestAnimationFrame(animateHeroParticles);
+        }
+
+        resizeHeroCanvas();
+        initHeroParticles();
+        animateHeroParticles();
+        window.addEventListener('resize', () => { resizeHeroCanvas(); initHeroParticles(); });
+      }
     </script>
   </body>
 </html>
