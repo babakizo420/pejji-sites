@@ -145,6 +145,11 @@ document.getElementById('cal-next').addEventListener('click', () => {
 
 initCalendar();
 
+// Set initial selected-date to today's date dynamically
+const _now = new Date();
+const _sel = document.getElementById('selected-date');
+if (_sel) _sel.textContent = MONTH_NAMES[_now.getMonth()].slice(0,3) + ' ' + _now.getDate();
+
 // Time slot selection & confirm
 const tBtns = document.querySelectorAll('.t-btn');
 const confirmBtn = document.querySelector('.complete-btn');

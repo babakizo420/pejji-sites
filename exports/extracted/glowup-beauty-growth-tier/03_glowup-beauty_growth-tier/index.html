@@ -4,21 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GlowUp | Luxury Beauty & Spa</title>
+    <meta name="description" content="GlowUp Beauty Lounge — Lagos' most exclusive beauty destination. Luxury facials, bridal makeup, massage, and spa treatments in Ikoyi.">
+    <meta property="og:title" content="GlowUp | Luxury Beauty & Spa">
+    <meta property="og:description" content="Lagos' most exclusive beauty destination. Luxury facials, bridal makeup, massage, and spa treatments in Ikoyi.">
+    <meta property="og:type" content="website">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; img-src * data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'none';">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230A8F8F'/><text x='50' y='74' font-size='68' font-family='system-ui' font-weight='900' fill='white' text-anchor='middle'>P</text></svg>">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%231A1818'/><text x='50' y='74' font-size='68' font-family='serif' font-weight='700' fill='%23E0A96D' text-anchor='middle'>G</text></svg>">
 </head>
 <body>
     <div class="cursor-glow"></div>
-    
+
+    <!-- Demo Badge -->
+    <div style="position:fixed; bottom:16px; left:16px; z-index:9999; background:rgba(224,169,109,0.15); border:1px solid rgba(224,169,109,0.3); backdrop-filter:blur(8px); padding:6px 14px; border-radius:20px; font-size:0.7rem; color:#E0A96D; font-family:'Inter',sans-serif; letter-spacing:2px; text-transform:uppercase; font-weight:500;">Demo Site</div>
+
     <!-- Hero -->
     <section class="hero" id="top">
         <div class="hero-bg" style="background: linear-gradient(135deg, #1A1818 0%, #2A1F1A 40%, #E0A96D15 70%, #0B0A0A 100%);"></div>
         <div class="hero-overlay"></div>
-        
+
         <nav class="nav reveal">
             <div class="logo">GlowUp.</div>
             <div class="nav-right">
@@ -34,7 +41,7 @@
             <div class="menu-bg-img"></div>
             <div class="menu-content">
                 <div class="menu-header">
-                    <button class="close-btn" id="close-btn">✕</button>
+                    <button class="close-btn" id="close-btn">&times;</button>
                 </div>
                 <ul class="menu-links">
                     <li><a href="#top" class="menu-link" data-text="Home">Home</a></li>
@@ -46,7 +53,7 @@
                     <p style="color:var(--accent);">14 Luxury Lane, Ikoyi, Lagos</p>
                     <p>hello@glowup.ng | +234 800 000 0000</p>
                     <div class="social-links">
-                        <a href="#">Instagram</a> | <a href="#">Twitter</a>
+                        <a href="https://instagram.com/glowup.ng" target="_blank" rel="noopener">Instagram</a> | <a href="https://twitter.com/glowup_ng" target="_blank" rel="noopener">Twitter</a>
                     </div>
                 </div>
             </div>
@@ -56,7 +63,7 @@
             <h1 class="reveal delay-1">Unveil Your <br><i>Inner Radiance</i></h1>
             <p class="reveal delay-2">Experience Lagos' most exclusive beauty destination.</p>
             <a href="https://wa.me/2348000000000?text=Hi%20GlowUp!%20I'd%20like%20to%20book%20a%20treatment." target="_blank" rel="noopener" class="btn-primary reveal delay-3" style="margin-top: 24px; display: inline-block; background: #25D366; border-color: #25D366; color: #fff;">Book via WhatsApp</a>
-            <div class="scroll-ind reveal delay-3">Explore ↓</div>
+            <div class="scroll-ind reveal delay-3">Explore &darr;</div>
         </div>
     </section>
 
@@ -69,21 +76,21 @@
                     <div class="s-img" style="background: linear-gradient(135deg, #1A1818, #E0A96D30, #2A1F1A);"></div>
                     <div class="s-info">
                         <h3>Signature Facial</h3>
-                        <p class="price">₦25,000</p>
+                        <p class="price">&#8358;25,000</p>
                     </div>
                 </div>
                 <div class="s-card reveal delay-2">
                     <div class="s-img" style="background: linear-gradient(160deg, #0B0A0A, #E0A96D20, #3A2A1A);"></div>
                     <div class="s-info">
                         <h3>Luxe Bridal Makeup</h3>
-                        <p class="price">₦60,000</p>
+                        <p class="price">&#8358;60,000</p>
                     </div>
                 </div>
                 <div class="s-card reveal delay-3">
                     <div class="s-img" style="background: linear-gradient(145deg, #2A1F1A, #E0A96D18, #1A1818);"></div>
                     <div class="s-info">
                         <h3>Hot Stone Massage</h3>
-                        <p class="price">₦35,000</p>
+                        <p class="price">&#8358;35,000</p>
                     </div>
                 </div>
             </div>
@@ -105,30 +112,29 @@
         </div>
     </section>
 
-    <!-- Interactive Booking Calendar (10x Value) -->
+    <!-- Interactive Booking Calendar -->
     <section class="booking-section section" id="booking">
         <div class="container booking-container reveal">
             <div class="booking-text">
                 <h2>Secure Your Slot</h2>
                 <p>Select an available date below to instantly view open time slots with our senior estheticians. Live calendar sync ensures no double-bookings.</p>
-                <!-- Marquee -->
                 <div class="marquee-wrap mt-4">
                     <div class="marquee">
-                        <span>★ 5.0 Rated</span><span>Premium Products</span><span>VIP Treatment</span><span>★ 5.0 Rated</span><span>Premium Products</span><span>VIP Treatment</span>
+                        <span>&#9733; 5.0 Rated</span><span>Premium Products</span><span>VIP Treatment</span><span>&#9733; 5.0 Rated</span><span>Premium Products</span><span>VIP Treatment</span>
                     </div>
                 </div>
             </div>
-            
+
             <div class="booking-ui">
                 <div class="calendar-header">
                     <span id="cal-month-label"></span>
-                    <div class="cal-nav"><span id="cal-prev">←</span> <span id="cal-next">→</span></div>
+                    <div class="cal-nav"><span id="cal-prev">&larr;</span> <span id="cal-next">&rarr;</span></div>
                 </div>
                 <div class="calendar-grid" id="calendar-grid">
                 </div>
-                
+
                 <div class="time-slots" id="time-slots">
-                    <h4>Available times for <span id="selected-date">Mar 9</span></h4>
+                    <h4>Available times for <span id="selected-date"></span></h4>
                     <div class="t-grid">
                         <button class="t-btn">09:00 AM</button>
                         <button class="t-btn">11:30 AM</button>
@@ -141,13 +147,13 @@
         </div>
     </section>
 
-    <!-- Detailed Contact Section -->
+    <!-- Contact Section -->
     <section class="contact-section section" id="contact">
         <div class="container contact-container reveal delay-1">
             <div class="contact-info">
                 <h2 style="font-size: clamp(3rem, 8vw, 4rem); font-family: 'Playfair Display', serif; font-weight: 400; margin-bottom: 20px; color: var(--accent); letter-spacing: -1px;">Get in Touch</h2>
                 <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 40px; font-weight: 300;">Have a special request or booking inquiry? Our concierge team is available to assist you in curating the perfect aesthetic experience.</p>
-                
+
                 <div class="c-details">
                     <div class="c-item">
                         <span style="color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 5px;">Visit Us</span>
@@ -188,10 +194,10 @@
                 <div class="f-links reveal delay-1">
                     <h4>Explore</h4>
                     <ul>
-                        <li><a href="#">Our Story</a></li>
-                        <li><a href="#">Treatments</a></li>
-                        <li><a href="#">Membership</a></li>
-                        <li><a href="#">Gift Cards</a></li>
+                        <li><a href="#top">Our Story</a></li>
+                        <li><a href="#services">Treatments</a></li>
+                        <li><a href="#booking">Membership</a></li>
+                        <li><a href="#contact">Gift Cards</a></li>
                     </ul>
                 </div>
                 <div class="f-links reveal delay-2">
@@ -208,7 +214,7 @@
                     <p style="color: var(--text-muted); margin-bottom: 15px;">Subscribe for exclusive access to VIP slots and seasonal treatments.</p>
                     <div class="input-group" id="newsletter-group">
                         <input type="email" placeholder="Email Address">
-                        <button type="button" id="newsletter-btn">→</button>
+                        <button type="button" id="newsletter-btn">&rarr;</button>
                     </div>
                 </div>
             </div>

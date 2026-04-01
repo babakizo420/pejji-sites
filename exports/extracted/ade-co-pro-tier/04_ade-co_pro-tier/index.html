@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ADE & CO. | The New Standard</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230A8F8F'/><text x='50' y='74' font-size='68' font-family='system-ui' font-weight='900' fill='white' text-anchor='middle'>P</text></svg>">
+    <meta name="description" content="ADE & CO. — Uncompromising tailoring for the modern African vanguard. Luxury fashion from Lagos & London.">
+    <meta property="og:title" content="ADE & CO. | The New Standard">
+    <meta property="og:description" content="Uncompromising tailoring for the modern African vanguard. Luxury fashion from Lagos & London.">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230a0a0a'/><text x='50' y='74' font-size='62' font-family='serif' font-weight='700' fill='%23c9a96e' text-anchor='middle'>A</text></svg>">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,15 +17,15 @@
 </head>
 <body>
     <div class="announcement-bar">
-        <span>Free Worldwide Shipping on Orders Over ₦200,000</span>
+        <span>Free Worldwide Shipping on Orders Over &#8358;200,000</span>
     </div>
 
     <!-- Navigation -->
     <nav class="nav">
         <div class="nav-left hide-mobile">
             <a href="#shop" class="nav-link">Shop</a>
-            <a href="#" class="nav-link">Collections</a>
-            <a href="#" class="nav-link">Journal</a>
+            <a href="#shop" class="nav-link">Collections</a>
+            <a href="#editorial" class="nav-link">Journal</a>
         </div>
         <div class="logo">ADE & CO.</div>
         <div class="nav-right">
@@ -40,7 +44,7 @@
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h2>Your Bag <span class="cart-count-title">(0)</span></h2>
-            <button class="close-cart" id="close-cart">✕</button>
+            <button class="close-cart" id="close-cart">&times;</button>
         </div>
         <div class="cart-items" id="cart-items">
             <p class="empty-msg">Your bag is currently empty.</p>
@@ -48,7 +52,7 @@
         <div class="cart-footer">
             <div class="cart-total">
                 <span>Subtotal</span>
-                <span id="cart-subtotal">₦0</span>
+                <span id="cart-subtotal">&#8358;0</span>
             </div>
             <p class="tax-note">Shipping & taxes calculated securely at checkout.</p>
             <button class="checkout-btn" disabled id="checkout-btn">
@@ -58,9 +62,9 @@
         </div>
     </div>
 
-    <!-- Hero / Editorial Image -->
+    <!-- Hero -->
     <header class="hero">
-        <div class="hero-bg" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%);"></div>
+        <div class="hero-bg" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%); background-image: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 60%, #0f3460 100%), url('data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.04%22/%3E%3C/svg%3E');"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="reveal">The SS26 Collection</h1>
@@ -78,7 +82,7 @@
     <!-- Marquee -->
     <div class="marquee-strip">
         <div class="marquee-inner">
-            <span>NEW ARRIVALS</span><span>—</span><span>SUSTAINABLY MADE</span><span>—</span><span>LAGOS & LONDON</span><span>—</span><span>NEW ARRIVALS</span><span>—</span><span>SUSTAINABLY MADE</span><span>—</span><span>LAGOS & LONDON</span><span>—</span><span>NEW ARRIVALS</span><span>—</span><span>SUSTAINABLY MADE</span><span>—</span><span>LAGOS & LONDON</span><span>—</span>
+            <span>NEW ARRIVALS</span><span>&mdash;</span><span>SUSTAINABLY MADE</span><span>&mdash;</span><span>LAGOS & LONDON</span><span>&mdash;</span><span>NEW ARRIVALS</span><span>&mdash;</span><span>SUSTAINABLY MADE</span><span>&mdash;</span><span>LAGOS & LONDON</span><span>&mdash;</span><span>NEW ARRIVALS</span><span>&mdash;</span><span>SUSTAINABLY MADE</span><span>&mdash;</span><span>LAGOS & LONDON</span><span>&mdash;</span>
         </div>
     </div>
 
@@ -86,15 +90,14 @@
     <section class="shop-section section" id="shop">
         <div class="section-title-wrap reveal">
             <h2 class="section-title">New Arrivals</h2>
-            <a href="#" class="view-all">View All →</a>
+            <a href="#shop" class="view-all">View All &rarr;</a>
         </div>
-        
+
         <div class="product-grid">
             <!-- Product 1 -->
             <div class="product-card reveal delay-1">
-                <div class="p-image-wrap" style="background: linear-gradient(160deg, #2c2c2c 0%, #4a3728 50%, #8b7355 100%);">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="p-img-main" alt="Silk Dress" style="opacity:0;">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="p-img-hover" alt="Silk Dress Back" style="opacity:0;">
+                <div class="p-image-wrap" style="background: linear-gradient(160deg, #2c2c2c 0%, #4a3728 50%, #8b7355 100%); position:relative; display:flex; align-items:center; justify-content:center;">
+                    <span style="font-family:'Bodoni Moda',serif; font-size:1.4rem; color:rgba(255,255,255,0.25); text-transform:uppercase; letter-spacing:6px; text-align:center; line-height:1.6; pointer-events:none;">Onyx Silk<br>Wrap Dress</span>
                     <div class="p-badge">New</div>
                     <div class="quick-add">
                         <div class="size-selector">
@@ -109,15 +112,14 @@
                 </div>
                 <div class="p-info">
                     <h3>Onyx Silk Wrap Dress</h3>
-                    <p class="p-price">₦120,000</p>
+                    <p class="p-price">&#8358;120,000</p>
                 </div>
             </div>
 
-            <!-- Product 2 (Broken APIs fixed) -->
+            <!-- Product 2 -->
             <div class="product-card reveal delay-2">
-                <div class="p-image-wrap" style="background: linear-gradient(145deg, #1a1a1a 0%, #2d3436 40%, #636e72 100%);">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="p-img-main" alt="Tailored Blazer" style="opacity:0;">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="p-img-hover" alt="Tailored Blazer Detail" style="opacity:0;">
+                <div class="p-image-wrap" style="background: linear-gradient(145deg, #1a1a1a 0%, #2d3436 40%, #636e72 100%); position:relative; display:flex; align-items:center; justify-content:center;">
+                    <span style="font-family:'Bodoni Moda',serif; font-size:1.4rem; color:rgba(255,255,255,0.25); text-transform:uppercase; letter-spacing:6px; text-align:center; line-height:1.6; pointer-events:none;">Structured<br>Wool Blazer</span>
                     <div class="quick-add">
                         <div class="size-selector">
                             <span class="size-label">Quick Add</span>
@@ -131,15 +133,14 @@
                 </div>
                 <div class="p-info">
                     <h3>Structured Wool Blazer</h3>
-                    <p class="p-price">₦250,000</p>
+                    <p class="p-price">&#8358;250,000</p>
                 </div>
             </div>
 
             <!-- Product 3 -->
             <div class="product-card reveal delay-3">
-                <div class="p-image-wrap" style="background: linear-gradient(135deg, #3d2914 0%, #6b4423 45%, #c9a96e 100%);">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="p-img-main" alt="Statement Bag" style="opacity:0;">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="p-img-hover" alt="Bag Detail" style="opacity:0;">
+                <div class="p-image-wrap" style="background: linear-gradient(135deg, #3d2914 0%, #6b4423 45%, #c9a96e 100%); position:relative; display:flex; align-items:center; justify-content:center;">
+                    <span style="font-family:'Bodoni Moda',serif; font-size:1.4rem; color:rgba(255,255,255,0.25); text-transform:uppercase; letter-spacing:6px; text-align:center; line-height:1.6; pointer-events:none;">Vanguard<br>Leather Tote</span>
                     <div class="quick-add">
                         <div class="size-selector">
                             <span class="size-label">Quick Add</span>
@@ -151,15 +152,14 @@
                 </div>
                 <div class="p-info">
                     <h3>Vanguard Leather Tote</h3>
-                    <p class="p-price">₦180,000</p>
+                    <p class="p-price">&#8358;180,000</p>
                 </div>
             </div>
-            
-            <!-- Product 4 (Broken APIs fixed) -->
+
+            <!-- Product 4 -->
             <div class="product-card reveal delay-4">
-                <div class="p-image-wrap" style="background: linear-gradient(150deg, #d4c5a9 0%, #a09078 50%, #5c4033 100%);">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="p-img-main" alt="Linen Trousers" style="opacity:0;">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="p-img-hover" alt="Trousers Detail" style="opacity:0;">
+                <div class="p-image-wrap" style="background: linear-gradient(150deg, #d4c5a9 0%, #a09078 50%, #5c4033 100%); position:relative; display:flex; align-items:center; justify-content:center;">
+                    <span style="font-family:'Bodoni Moda',serif; font-size:1.4rem; color:rgba(255,255,255,0.25); text-transform:uppercase; letter-spacing:6px; text-align:center; line-height:1.6; pointer-events:none;">Pleated<br>Linen Trousers</span>
                     <div class="quick-add">
                         <div class="size-selector">
                             <span class="size-label">Quick Add</span>
@@ -173,19 +173,19 @@
                 </div>
                 <div class="p-info">
                     <h3>Pleated Linen Trousers</h3>
-                    <p class="p-price">₦95,000</p>
+                    <p class="p-price">&#8358;95,000</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Lookbook Split Series -->
-    <section class="split-editorial">
-        <div class="s-half visual reveal" style="background: linear-gradient(135deg, #0a0a0a 0%, #1c1c1c 30%, #2a1f14 60%, #3d2b1f 100%);"></div>
+    <!-- Lookbook Split -->
+    <section class="split-editorial" id="editorial">
+        <div class="s-half visual reveal" style="background: linear-gradient(135deg, #0a0a0a 0%, #1c1c1c 30%, #2a1f14 60%, #3d2b1f 100%); background-image: linear-gradient(135deg, #0a0a0a 0%, #1c1c1c 30%, #2a1f14 60%, #3d2b1f 100%), url('data:image/svg+xml;utf8,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22 opacity=%220.06%22/%3E%3C/svg%3E');"></div>
         <div class="s-half textual reveal delay-2">
             <h2 style="font-weight: 700;">The Art of Subtlety</h2>
             <p style="font-weight: 400; color: #EEE;">Our pieces are painstakingly engineered for the unapologetic. No loud logos. No fleeting trends. Just impeccable silhouettes and luxury fabrics sourced globally, assembled by masters in Lagos.</p>
-            <a href="#" class="btn-outline mt-4">Discover The Atelier</a>
+            <a href="#shop" class="btn-outline mt-4">Discover The Atelier</a>
         </div>
     </section>
 
@@ -200,7 +200,7 @@
         <svg viewBox="0 0 24 24" width="28" height="28" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     </a>
 
-    <!-- Animated Notification Toast -->
+    <!-- Toast Container -->
     <div id="toast-container" style="position:fixed; bottom:40px; left:50%; transform:translateX(-50%); z-index:1000; pointer-events:none; display:flex; flex-direction:column; gap:10px;"></div>
 
     <script src="script.js"></script>
