@@ -616,30 +616,35 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
 
       document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
 
-      // Hero particle canvas (subtle, hero-only)
+      // Hero particle canvas (desktop only, respects reduced-motion)
       const heroCanvas = document.getElementById('hero-particles') as HTMLCanvasElement;
       if (heroCanvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const pCtx = heroCanvas.getContext('2d');
         type HeroParticle = { x: number; y: number; size: number; speedX: number; speedY: number; opacity: number; color: string };
         let heroParticles: HeroParticle[] = [];
+        let animId = 0;
 
         function resizeHeroCanvas() {
-          const rect = heroCanvas.parentElement!.getBoundingClientRect();
-          heroCanvas.width = rect.width;
-          heroCanvas.height = rect.height;
+          const parent = heroCanvas.parentElement;
+          if (!parent) return;
+          const rect = parent.getBoundingClientRect();
+          // Set canvas internal resolution to match CSS size (avoids 0x0 on early runs)
+          heroCanvas.width = Math.round(rect.width) || heroCanvas.offsetWidth;
+          heroCanvas.height = Math.round(rect.height) || heroCanvas.offsetHeight;
         }
 
         function initHeroParticles() {
           heroParticles = [];
+          if (heroCanvas.width === 0 || heroCanvas.height === 0) return;
           const count = Math.min(Math.floor(heroCanvas.width / 25), 35);
           for (let i = 0; i < count; i++) {
             heroParticles.push({
               x: Math.random() * heroCanvas.width,
               y: Math.random() * heroCanvas.height,
-              size: Math.random() * 1.5 + 0.5,
+              size: Math.random() * 2 + 1,
               speedX: (Math.random() - 0.5) * 0.3,
               speedY: (Math.random() - 0.5) * 0.3,
-              opacity: Math.random() * 0.25 + 0.05,
+              opacity: Math.random() * 0.4 + 0.15,
               color: Math.random() > 0.7 ? '245, 122, 31' : '10, 143, 143',
             });
           }
@@ -663,14 +668,15 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
             pCtx.fill();
           });
 
+          // Draw faint connecting lines between nearby particles
           for (let i = 0; i < heroParticles.length; i++) {
             for (let j = i + 1; j < heroParticles.length; j++) {
               const dx = heroParticles[i].x - heroParticles[j].x;
               const dy = heroParticles[i].y - heroParticles[j].y;
               const dist = Math.sqrt(dx * dx + dy * dy);
-              if (dist < 100) {
+              if (dist < 120) {
                 pCtx.beginPath();
-                pCtx.strokeStyle = `rgba(10, 143, 143, ${0.06 * (1 - dist / 100)})`;
+                pCtx.strokeStyle = `rgba(10, 143, 143, ${0.1 * (1 - dist / 120)})`;
                 pCtx.lineWidth = 0.5;
                 pCtx.moveTo(heroParticles[i].x, heroParticles[i].y);
                 pCtx.lineTo(heroParticles[j].x, heroParticles[j].y);
@@ -679,13 +685,27 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
             }
           }
 
-          requestAnimationFrame(animateHeroParticles);
+          animId = requestAnimationFrame(animateHeroParticles);
         }
 
-        resizeHeroCanvas();
-        initHeroParticles();
-        animateHeroParticles();
-        window.addEventListener('resize', () => { resizeHeroCanvas(); initHeroParticles(); });
+        // Wait for layout to complete before measuring canvas dimensions
+        function startParticles() {
+          resizeHeroCanvas();
+          initHeroParticles();
+          if (heroParticles.length > 0) {
+            animateHeroParticles();
+          }
+        }
+
+        // Use rAF to ensure layout has happened before measuring
+        requestAnimationFrame(startParticles);
+
+        window.addEventListener('resize', () => {
+          cancelAnimationFrame(animId);
+          resizeHeroCanvas();
+          initHeroParticles();
+          if (heroParticles.length > 0) animateHeroParticles();
+        });
       }
     </script>
   </body>
