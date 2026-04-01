@@ -4,11 +4,9 @@ import { WHATSAPP_URL } from '../config';
 
 const projects = [
   { name: "Kachi The Barber", industry: "Barber Shop", tier: "Card", desc: "Single-page barber shop site with services, pricing, live opening hours, WhatsApp booking, and Google Maps. Built in under 48 hours.", gradient: "from-yellow-500/20 to-surface", url: "https://kachi.pejji.com", image: "/portfolio/kachi-hero.jpg" },
-  { name: "Ade & Co. Fashion", industry: "Fashion", tier: "Pro", desc: "Complete ecommerce store with Paystack payments, product catalog, and inventory management.", gradient: "from-orange/20 to-surface" },
-  { name: "SwiftDrop Logistics", industry: "Logistics", tier: "Starter", desc: "Professional landing page with booking form, real-time tracking link, and WhatsApp integration.", gradient: "from-green-500/20 to-surface" },
-  { name: "GlowUp Beauty Lounge", industry: "Beauty", tier: "Growth", desc: "Multi-page site with booking system, service catalog, and before/after gallery.", gradient: "from-pink-500/20 to-surface" },
-  { name: "TechBridge Solutions", industry: "Tech", tier: "Starter", desc: "Sleek landing page showcasing IT consulting services with inquiry form and case studies.", gradient: "from-blue-500/20 to-surface" },
-  { name: "Mama Nkechi Catering", industry: "Services", tier: "Card", desc: "Digital business card with menu highlights, WhatsApp ordering, and Google Maps location.", gradient: "from-yellow-500/20 to-surface" },
+  { name: "SwiftDrop Logistics", industry: "Logistics/Delivery", tier: "Starter", desc: "Professional landing page with booking form, real-time tracking, and WhatsApp integration.", gradient: "from-green-500/20 to-surface", url: "https://swiftdrop-demo.pejji.com" },
+  { name: "GlowUp Beauty", industry: "Beauty/Salon", tier: "Growth", desc: "Multi-page beauty salon site with booking calendar, masonry gallery, and WhatsApp booking.", gradient: "from-pink-500/20 to-surface", url: "https://glowup-demo.pejji.com" },
+  { name: "Ade & Co. Fashion", industry: "Fashion/E-commerce", tier: "Pro", desc: "Full ecommerce store with product catalog, cart system, and WhatsApp ordering.", gradient: "from-orange/20 to-surface", url: "https://ade-demo.pejji.com" },
 ];
 ---
 
@@ -42,20 +40,14 @@ const projects = [
 
       <!-- Project Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children" id="project-grid">
-        {projects.map((project) => {
-          const Tag = project.url ? 'a' : 'div';
-          const linkProps = project.url ? { href: project.url, target: "_blank", rel: "noopener" } : {};
-          return (
-            <Tag {...linkProps} class={`project-card card-tactile bg-surface border border-white/5 rounded-2xl overflow-hidden group hover:border-teal/30 ${project.url ? 'block' : ''}`} data-tier={project.tier.toLowerCase()}>
+        {projects.map((project) => (
+            <a href={project.url} target="_blank" rel="noopener" class="project-card card-tactile bg-surface border border-white/5 rounded-2xl overflow-hidden group hover:border-teal/30 block" data-tier={project.tier.toLowerCase()}>
               <div class={`aspect-video bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden`}>
                 {project.image ? (
                   <img src={project.image} alt={`${project.name} website screenshot`} class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
                 ) : (
-                  <div class="text-center">
-                    <div class="w-16 h-16 mx-auto bg-white/10 rounded-xl flex items-center justify-center mb-3">
-                      <svg class="w-8 h-8 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                    </div>
-                    <span class="text-white/30 text-xs">Live Preview Coming Soon</span>
+                  <div class="w-16 h-16 mx-auto bg-white/10 rounded-xl flex items-center justify-center">
+                    <svg class="w-8 h-8 text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                   </div>
                 )}
               </div>
@@ -66,13 +58,10 @@ const projects = [
                 </div>
                 <h3 class="font-semibold text-lg">{project.name}</h3>
                 <p class="text-subtle text-sm mt-2 leading-relaxed">{project.desc}</p>
-                {project.url && (
-                  <span class="inline-flex items-center gap-1 text-teal text-sm font-medium mt-3 group-hover:gap-2 transition-all">View Live Site <span>→</span></span>
-                )}
+                <span class="inline-flex items-center gap-1 text-teal text-sm font-medium mt-3 group-hover:gap-2 transition-all">View Live Site <span>→</span></span>
               </div>
-            </Tag>
-          );
-        })}
+            </a>
+        ))}
       </div>
     </div>
   </section>
