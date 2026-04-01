@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlowUp | Luxury Beauty & Spa</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; img-src * data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'none';">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%230A8F8F'/><text x='50' y='74' font-size='68' font-family='system-ui' font-weight='900' fill='white' text-anchor='middle'>P</text></svg>">
+</head>
+<body>
+    <div class="cursor-glow"></div>
+    
+    <!-- Hero -->
+    <section class="hero" id="top">
+        <div class="hero-bg" style="background: linear-gradient(135deg, #1A1818 0%, #2A1F1A 40%, #E0A96D15 70%, #0B0A0A 100%);"></div>
+        <div class="hero-overlay"></div>
+        
+        <nav class="nav reveal">
+            <div class="logo">GlowUp.</div>
+            <div class="nav-right">
+                <a href="#booking" class="btn-primary nav-btn" style="z-index: 100; position: relative;">Reserve</a>
+                <button class="menu-btn" id="menu-btn">
+                    <span class="line"></span><span class="line"></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Fullscreen Menu -->
+        <div class="fullscreen-menu" id="fs-menu">
+            <div class="menu-bg-img"></div>
+            <div class="menu-content">
+                <div class="menu-header">
+                    <button class="close-btn" id="close-btn">✕</button>
+                </div>
+                <ul class="menu-links">
+                    <li><a href="#top" class="menu-link" data-text="Home">Home</a></li>
+                    <li><a href="#services" class="menu-link" data-text="Treatments">Treatments</a></li>
+                    <li><a href="#gallery" class="menu-link" data-text="The Studio">The Studio</a></li>
+                    <li><a href="#contact" class="menu-link" data-text="Contact">Contact</a></li>
+                </ul>
+                <div class="menu-info">
+                    <p style="color:var(--accent);">14 Luxury Lane, Ikoyi, Lagos</p>
+                    <p>hello@glowup.ng | +234 800 000 0000</p>
+                    <div class="social-links">
+                        <a href="#">Instagram</a> | <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="reveal delay-1">Unveil Your <br><i>Inner Radiance</i></h1>
+            <p class="reveal delay-2">Experience Lagos' most exclusive beauty destination.</p>
+            <a href="https://wa.me/2348000000000?text=Hi%20GlowUp!%20I'd%20like%20to%20book%20a%20treatment." target="_blank" rel="noopener" class="btn-primary reveal delay-3" style="margin-top: 24px; display: inline-block; background: #25D366; border-color: #25D366; color: #fff;">Book via WhatsApp</a>
+            <div class="scroll-ind reveal delay-3">Explore ↓</div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services section" id="services">
+        <div class="container">
+            <h2 class="section-title reveal">Curated Treatments</h2>
+            <div class="service-grid">
+                <div class="s-card reveal delay-1">
+                    <div class="s-img" style="background: linear-gradient(135deg, #1A1818, #E0A96D30, #2A1F1A);"></div>
+                    <div class="s-info">
+                        <h3>Signature Facial</h3>
+                        <p class="price">₦25,000</p>
+                    </div>
+                </div>
+                <div class="s-card reveal delay-2">
+                    <div class="s-img" style="background: linear-gradient(160deg, #0B0A0A, #E0A96D20, #3A2A1A);"></div>
+                    <div class="s-info">
+                        <h3>Luxe Bridal Makeup</h3>
+                        <p class="price">₦60,000</p>
+                    </div>
+                </div>
+                <div class="s-card reveal delay-3">
+                    <div class="s-img" style="background: linear-gradient(145deg, #2A1F1A, #E0A96D18, #1A1818);"></div>
+                    <div class="s-info">
+                        <h3>Hot Stone Massage</h3>
+                        <p class="price">₦35,000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Studio / Gallery -->
+    <section class="gallery-section section" id="gallery">
+        <div class="container">
+            <div class="gallery-header flex-between reveal">
+                <h2 class="section-title" style="margin-bottom:0; text-align:left;">The Studio</h2>
+                <p class="w-50 text-right">A sanctuary of peace designed to elevate your senses and detach you from the bustle of Lagos. Every detail was curated for ultimate relaxation.</p>
+            </div>
+            <div class="masonry-grid mt-4">
+                <div class="m-item m-tall reveal delay-1" style="background: linear-gradient(135deg, #1A1818, #E0A96D25, #0B0A0A);"></div>
+                <div class="m-item m-short reveal delay-2" style="background: linear-gradient(160deg, #2A1F1A, #E0A96D15, #1A1818);"></div>
+                <div class="m-item m-short reveal delay-3" style="background: linear-gradient(120deg, #0B0A0A, #E0A96D20, #3A2A1A);"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Booking Calendar (10x Value) -->
+    <section class="booking-section section" id="booking">
+        <div class="container booking-container reveal">
+            <div class="booking-text">
+                <h2>Secure Your Slot</h2>
+                <p>Select an available date below to instantly view open time slots with our senior estheticians. Live calendar sync ensures no double-bookings.</p>
+                <!-- Marquee -->
+                <div class="marquee-wrap mt-4">
+                    <div class="marquee">
+                        <span>★ 5.0 Rated</span><span>Premium Products</span><span>VIP Treatment</span><span>★ 5.0 Rated</span><span>Premium Products</span><span>VIP Treatment</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="booking-ui">
+                <div class="calendar-header">
+                    <span id="cal-month-label"></span>
+                    <div class="cal-nav"><span id="cal-prev">←</span> <span id="cal-next">→</span></div>
+                </div>
+                <div class="calendar-grid" id="calendar-grid">
+                </div>
+                
+                <div class="time-slots" id="time-slots">
+                    <h4>Available times for <span id="selected-date">Mar 9</span></h4>
+                    <div class="t-grid">
+                        <button class="t-btn">09:00 AM</button>
+                        <button class="t-btn">11:30 AM</button>
+                        <button class="t-btn">02:00 PM</button>
+                        <button class="t-btn">04:30 PM</button>
+                    </div>
+                    <button class="btn-primary w-100 mt-4 complete-btn">Confirm Reservation</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Contact Section -->
+    <section class="contact-section section" id="contact">
+        <div class="container contact-container reveal delay-1">
+            <div class="contact-info">
+                <h2 style="font-size: clamp(3rem, 8vw, 4rem); font-family: 'Playfair Display', serif; font-weight: 400; margin-bottom: 20px; color: var(--accent); letter-spacing: -1px;">Get in Touch</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; margin-bottom: 40px; font-weight: 300;">Have a special request or booking inquiry? Our concierge team is available to assist you in curating the perfect aesthetic experience.</p>
+                
+                <div class="c-details">
+                    <div class="c-item">
+                        <span style="color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 5px;">Visit Us</span>
+                        <p>14 Luxury Lane, Ikoyi, Lagos</p>
+                    </div>
+                    <div class="c-item mt-4">
+                        <span style="color: var(--accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 5px;">Call Us</span>
+                        <p>+234 800 000 0000</p>
+                    </div>
+                    <div class="c-item mt-4">
+                        <a href="https://wa.me/2348000000000?text=Hi%20GlowUp!%20I'd%20like%20to%20book%20a%20treatment." target="_blank" rel="noopener" class="btn-primary" style="background: #25D366; border-color: #25D366; color: #fff; text-decoration: none; margin-top: 16px;">Chat on WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-wrap">
+                <form class="luxury-form" id="contact-form">
+                    <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <input type="text" placeholder="First Name" required>
+                        <input type="text" placeholder="Last Name" required>
+                    </div>
+                    <input type="email" placeholder="Email Address" required style="margin-bottom: 20px;">
+                    <input type="tel" placeholder="Phone Number" required style="margin-bottom: 20px;">
+                    <textarea placeholder="How can we help you?" rows="4" required style="margin-bottom: 30px; resize: none;"></textarea>
+                    <button type="submit" class="btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Footer -->
+    <footer class="premium-footer section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="f-brand reveal">
+                    <h2 class="logo" style="margin-bottom: 20px; font-size:2.5rem;">GlowUp.</h2>
+                    <p style="color: var(--text-muted);">The premier aesthetics destination for luxury grooming and relaxation.</p>
+                </div>
+                <div class="f-links reveal delay-1">
+                    <h4>Explore</h4>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Treatments</a></li>
+                        <li><a href="#">Membership</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="f-links reveal delay-2">
+                    <h4>Visit</h4>
+                    <ul>
+                        <li>14 Luxury Lane, Ikoyi, Lagos</li>
+                        <li>Mon-Sat: 9AM - 8PM</li>
+                        <li>Sun: 11AM - 6PM</li>
+                        <li style="color: var(--accent); margin-top:5px;">Valet Parking Available</li>
+                    </ul>
+                </div>
+                <div class="f-newsletter reveal delay-3">
+                    <h4>The Insider</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 15px;">Subscribe for exclusive access to VIP slots and seasonal treatments.</p>
+                    <div class="input-group" id="newsletter-group">
+                        <input type="email" placeholder="Email Address">
+                        <button type="button" id="newsletter-btn">→</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 GlowUp Beauty Lounge. All Rights Reserved.</p>
+                <p>Security Audited & Built by <a href="https://pejji.com" target="_blank" rel="noopener" style="color:var(--accent);">Pejji.com</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/2348000000000?text=Hi%20GlowUp!%20I'd%20like%20to%20book%20a%20treatment." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

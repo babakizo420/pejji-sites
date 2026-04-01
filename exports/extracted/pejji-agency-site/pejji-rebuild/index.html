@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%2300E5C7'/><text x='50' y='74' font-size='68' font-family='system-ui, sans-serif' font-weight='900' fill='%23060B18' text-anchor='middle'>P</text></svg>">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; img-src * data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; frame-ancestors 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Pejji | Your Business Deserves a Website That Works</title>
+  <meta name="description" content="We build fast, secure, beautiful websites for Nigerian businesses. Starting from ₦60,000. Custom-built, security-audited, mobile-first.">
+  <meta property="og:title" content="Pejji | Your Business Deserves a Website That Works">
+  <meta property="og:description" content="We build fast, secure, beautiful websites for Nigerian businesses. Starting from ₦60,000.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pejji.com">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Particle Background -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Pejji</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#pricing">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#process">How It Works</a>
+        <a href="#about">About</a>
+        <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I'm%20interested%20in%20getting%20a%20website%20for%20my%20business." class="nav-cta" target="_blank" rel="noopener">Get Started</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero section" id="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge reveal">
+            <span class="dot"></span>
+            Now accepting new clients
+          </div>
+          <h1 class="reveal delay-1">
+            Your Business Deserves a Website That <span class="gradient-text">Works</span>
+          </h1>
+          <p class="reveal delay-2">
+            We build fast, secure, beautiful websites for Nigerian businesses. 
+            Custom-built by developers, not drag-and-drop templates. Starting from ₦60,000.
+          </p>
+          <div class="hero-buttons reveal delay-3">
+            <a href="#portfolio" class="btn btn-outline">See Our Work</a>
+            <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I'm%20interested%20in%20getting%20a%20website%20for%20my%20business." class="btn btn-primary" target="_blank" rel="noopener">Get Started →</a>
+          </div>
+        </div>
+        <div class="hero-visual reveal-right delay-2">
+          <div class="floating-cards">
+            <!-- Card 1: Website preview -->
+            <div class="float-card float-card-1">
+              <div class="card-header">
+                <div class="card-dot" style="background: #FF5F56;"></div>
+                <div class="card-dot" style="background: #FFBD2E;"></div>
+                <div class="card-dot" style="background: #27C93F;"></div>
+              </div>
+              <div class="card-bar" style="width: 80%; background: rgba(0,229,199,0.3);"></div>
+              <div class="card-bar" style="width: 60%; background: rgba(139,92,246,0.2);"></div>
+              <div class="card-bar-sm" style="width: 90%; background: rgba(255,255,255,0.06);"></div>
+              <div class="card-bar-sm" style="width: 70%; background: rgba(255,255,255,0.06);"></div>
+              <div class="card-bar-sm" style="width: 85%; background: rgba(255,255,255,0.06);"></div>
+              <div style="margin-top: 16px; display: flex; gap: 8px;">
+                <div style="width: 50%; height: 50px; border-radius: 8px; background: rgba(0,229,199,0.15);"></div>
+                <div style="width: 50%; height: 50px; border-radius: 8px; background: rgba(255,107,53,0.15);"></div>
+              </div>
+            </div>
+            <!-- Card 2: Analytics -->
+            <div class="float-card float-card-2">
+              <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 8px;">Monthly Visitors</div>
+              <div style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: var(--teal); margin-bottom: 12px;">2,847</div>
+              <div style="display: flex; align-items: flex-end; gap: 4px; height: 50px;">
+                <div style="width: 14%; height: 30%; background: rgba(0,229,199,0.3); border-radius: 3px;"></div>
+                <div style="width: 14%; height: 50%; background: rgba(0,229,199,0.4); border-radius: 3px;"></div>
+                <div style="width: 14%; height: 40%; background: rgba(0,229,199,0.3); border-radius: 3px;"></div>
+                <div style="width: 14%; height: 70%; background: rgba(0,229,199,0.5); border-radius: 3px;"></div>
+                <div style="width: 14%; height: 60%; background: rgba(0,229,199,0.4); border-radius: 3px;"></div>
+                <div style="width: 14%; height: 90%; background: var(--teal); border-radius: 3px;"></div>
+                <div style="width: 14%; height: 100%; background: var(--teal); border-radius: 3px;"></div>
+              </div>
+            </div>
+            <!-- Card 3: Client message -->
+            <div class="float-card float-card-3">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--gradient-cta);"></div>
+                <div>
+                  <div style="font-size: 0.8rem; font-weight: 600;">New Inquiry</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted);">via WhatsApp</div>
+                </div>
+              </div>
+              <div style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5;">"I need a website for my fashion brand in Lagos..." </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal">
+          <div class="stat-number" data-target="50" data-suffix="+">0+</div>
+          <div class="stat-label">Sites Built</div>
+        </div>
+        <div class="stat-item reveal delay-1">
+          <div class="stat-number" data-target="48" data-suffix="hrs">0hrs</div>
+          <div class="stat-label">Fastest Delivery</div>
+        </div>
+        <div class="stat-item reveal delay-2">
+          <div class="stat-number" data-target="98" data-suffix="%">0%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+        <div class="stat-item reveal delay-3">
+          <div class="stat-number" data-target="2" data-suffix="hr">0hr</div>
+          <div class="stat-label">Support Response</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Pricing Quiz Section -->
+  <section class="section" id="quiz" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="quiz-box reveal" id="quiz-container">
+        <div class="quiz-header" style="text-align: center; margin-bottom: 32px;">
+          <span class="section-label" style="justify-content: center;">Website Quiz</span>
+          <h2 class="section-title">Not sure which tier you need?</h2>
+          <p class="section-subtitle" style="margin: 0 auto;">Take our 30-second quiz to find the perfect fit for your business goals.</p>
+        </div>
+        <div class="quiz-body" id="quiz-question" style="text-align: center; transition: opacity 0.3s ease;">
+          <h3 id="q-text" style="font-size: 1.5rem; margin-bottom: 24px;">What is the primary goal of your new website?</h3>
+          <div class="quiz-options" id="q-options" style="display: flex; flex-direction: column; gap: 12px; max-width: 400px; margin: 0 auto;">
+            <button class="btn btn-outline quiz-opt" style="width: 100%; justify-content: center;" onclick="nextQ(1)">Just an online business card</button>
+            <button class="btn btn-outline quiz-opt" style="width: 100%; justify-content: center;" onclick="nextQ(2)">Get leads & professional email</button>
+            <button class="btn btn-outline quiz-opt" style="width: 100%; justify-content: center;" onclick="nextQ(3)">Take bookings / appointments</button>
+            <button class="btn btn-outline quiz-opt" style="width: 100%; justify-content: center;" onclick="nextQ(4)">Sell products online (Ecommerce)</button>
+          </div>
+        </div>
+        <div class="quiz-result" id="quiz-result" style="display: none; text-align: center; transition: opacity 0.3s ease;">
+          <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Your Recommended Tier: <span id="r-tier" class="gradient-text">Growth</span></h3>
+          <p id="r-desc" style="color: var(--text-secondary); margin-bottom: 24px;">Perfect for taking bookings and managing customers.</p>
+          <a href="#pricing" class="btn btn-primary">View Pricing Details</a>
+          <button class="btn btn-outline" style="margin-left: 12px;" onclick="resetQuiz()">Retake Quiz</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Pick Your Tier</span>
+        <h2 class="section-title">Transparent Pricing. <span class="gradient-text">No Hidden Fees.</span></h2>
+        <p class="section-subtitle">Every tier includes custom design, mobile optimization, and security auditing.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Card Tier -->
+        <div class="price-card reveal delay-1">
+          <div class="price-tier-name">Card</div>
+          <div class="price-amount">₦60K <span>one-time</span></div>
+          <div class="price-description">Digital business card</div>
+          <div class="price-hosting">+ ₦10,000/mo hosting & support</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Single page digital card</li>
+            <li><span class="check">✓</span> Mobile responsive design</li>
+            <li><span class="check">✓</span> WhatsApp click-to-chat</li>
+            <li><span class="check">✓</span> Google Maps integration</li>
+            <li><span class="check">✓</span> Basic SEO setup</li>
+            <li><span class="check">✓</span> 48-hour delivery</li>
+          </ul>
+          <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I%20want%20the%20Card%20tier%20website." class="btn btn-outline" target="_blank" rel="noopener">Get Started</a>
+        </div>
+
+        <!-- Starter Tier -->
+        <div class="price-card reveal delay-2">
+          <div class="price-tier-name">Starter</div>
+          <div class="price-amount">₦150K <span>one-time</span></div>
+          <div class="price-description">Professional landing page</div>
+          <div class="price-hosting">+ ₦15,000/mo hosting & support</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Multi-section landing page</li>
+            <li><span class="check">✓</span> Contact/inquiry form</li>
+            <li><span class="check">✓</span> Social media integration</li>
+            <li><span class="check">✓</span> Google Analytics setup</li>
+            <li><span class="check">✓</span> Basic SEO optimization</li>
+            <li><span class="check">✓</span> 5–7 day delivery</li>
+          </ul>
+          <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I%20want%20the%20Starter%20tier%20website." class="btn btn-outline" target="_blank" rel="noopener">Get Started</a>
+        </div>
+
+        <!-- Growth Tier (Featured) -->
+        <div class="price-card featured reveal delay-3">
+          <div class="popular-badge">Most Popular</div>
+          <div class="price-tier-name">Growth</div>
+          <div class="price-amount">₦350K <span>one-time</span></div>
+          <div class="price-description">Booking & customer management</div>
+          <div class="price-hosting">+ ₦20,000/mo hosting & support</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Multi-page site (up to 5 pages)</li>
+            <li><span class="check">✓</span> Booking/scheduling system</li>
+            <li><span class="check">✓</span> Blog or news section</li>
+            <li><span class="check">✓</span> Advanced SEO optimization</li>
+            <li><span class="check">✓</span> WhatsApp Business integration</li>
+            <li><span class="check">✓</span> 7–14 day delivery</li>
+          </ul>
+          <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I%20want%20the%20Growth%20tier%20website." class="btn btn-primary" target="_blank" rel="noopener">Get Started →</a>
+        </div>
+
+        <!-- Pro Tier -->
+        <div class="price-card reveal delay-4">
+          <div class="price-tier-name">Pro</div>
+          <div class="price-amount">₦800K <span>one-time</span></div>
+          <div class="price-description">Full ecommerce store</div>
+          <div class="price-hosting">+ ₦30,000/mo hosting & support</div>
+          <ul class="price-features">
+            <li><span class="check">✓</span> Full ecommerce store</li>
+            <li><span class="check">✓</span> Paystack/Flutterwave payments</li>
+            <li><span class="check">✓</span> Inventory management</li>
+            <li><span class="check">✓</span> Customer accounts</li>
+            <li><span class="check">✓</span> Advanced analytics dashboard</li>
+            <li><span class="check">✓</span> 14–21 day delivery</li>
+          </ul>
+          <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I%20want%20the%20Pro%20tier%20website." class="btn btn-outline" target="_blank" rel="noopener">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section class="section" id="portfolio">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Our Work</span>
+        <h2 class="section-title">Real Sites for <span class="gradient-text">Real Businesses</span></h2>
+        <p class="section-subtitle">Custom-built, security-audited websites for Nigerian businesses across every industry.</p>
+      </div>
+
+            <div class="portfolio-grid">
+        <!-- Card Tier -->
+        <div class="portfolio-item reveal">
+          <div class="portfolio-preview" style="padding: 0; background: #111;">
+            <img src="./images/kachi.png" alt="Kachi The Barber Web Design" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s; border-radius: 16px 16px 0 0;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-tag" style="color: var(--text); background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">Card Tier</span>
+            <h3>Kachi The Barber</h3>
+            <p>Single-page digital business card with live dynamic hover effects, integrated location maps, and direct encrypted WhatsApp booking logic.</p>
+            <a href="http://localhost:8081/01_kachi-barber_card-tier/index.html" class="portfolio-link" target="_blank" rel="noopener">View Live Demo &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Starter Tier -->
+        <div class="portfolio-item reveal delay-1">
+          <div class="portfolio-preview" style="padding: 0; background: #111;">
+            <img src="./images/swiftdrop.png" alt="SwiftDrop Logistics Design" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s; border-radius: 16px 16px 0 0;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-tag" style="color: var(--teal); background: var(--teal-glow);">Starter Tier</span>
+            <h3>SwiftDrop Logistics</h3>
+            <p>High-conversion logistics hub featuring a simulated interactive tracking module, live network particle data rendering, and rapid dispatch triggers.</p>
+            <a href="http://localhost:8081/02_swiftdrop_starter-tier/index.html" class="portfolio-link" target="_blank" rel="noopener">View Live Demo &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Growth Tier -->
+        <div class="portfolio-item reveal delay-2">
+          <div class="portfolio-preview" style="padding: 0; background: #111;">
+            <img src="./images/glowup.png" alt="GlowUp Beauty Design" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s; border-radius: 16px 16px 0 0;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-tag" style="color: var(--orange); background: var(--orange-glow);">Growth Tier</span>
+            <h3>GlowUp Beauty Lounge</h3>
+            <p>Premium 5-page salon experience engineered with native masonry galleries, custom interactive cursors, and an advanced frontend booking calendar mockup.</p>
+            <a href="http://localhost:8081/03_glowup-beauty_growth-tier/index.html" class="portfolio-link" target="_blank" rel="noopener">View Live Demo &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Pro Tier (Featured) -->
+        <div class="portfolio-item large reveal" style="grid-column: 1 / -1;">
+          <div class="portfolio-preview" style="padding: 0; background: #111; height: 350px;">
+            <img src="./images/ade.png" alt="Ade & Co E-Commerce" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: opacity 0.3s; border-radius: 16px 16px 0 0; object-position: top;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.7">
+          </div>
+          <div class="portfolio-info">
+            <span class="portfolio-tag" style="color: var(--purple); background: var(--purple-glow);">Pro Tier</span>
+            <h3>Ade & Co. Fashion E-Commerce</h3>
+            <p>The "Final Boss" of premium Nigerian web stores. Features a high-fidelity editorial magazine aesthetic, native JavaScript mini-cart state caching, dynamic globally-scrolling UI marquees, and a functionally encrypted Paystack checkout mock.</p>
+            <a href="http://localhost:8081/04_ade-co_pro-tier/index.html" class="portfolio-link" target="_blank" rel="noopener">View Live Demo &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works (Timeline) -->
+  <section class="section" id="process">
+    <div class="container">
+      <div class="reveal" style="text-align: center;">
+        <span class="section-label" style="justify-content: center;">How It Works</span>
+        <h2 class="section-title">5 Simple Steps to <span class="gradient-text">Get Online</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto;">From first message to launch day — we handle everything.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-step reveal-left">
+          <div class="timeline-marker">01</div>
+          <div class="timeline-content">
+            <h3>Tell Us What You Need</h3>
+            <p>DM us on WhatsApp, Instagram, or fill out our quick form. Tell us about your business, and we'll recommend the right tier for you.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal-left delay-1">
+          <div class="timeline-marker">02</div>
+          <div class="timeline-content">
+            <h3>We Plan Your Site</h3>
+            <p>We scope out your project, collect your content (logos, images, text), and set a clear timeline so you know exactly what to expect.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal-left delay-2">
+          <div class="timeline-marker">03</div>
+          <div class="timeline-content">
+            <h3>We Build It</h3>
+            <p>Our developers custom-build your site from scratch. No templates. Every site gets a full security audit before you see it.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal-left delay-3">
+          <div class="timeline-marker">04</div>
+          <div class="timeline-content">
+            <h3>You Review It</h3>
+            <p>We send you a staging preview. You review, we revise. Your tier includes 1–3 rounds of revisions depending on the plan.</p>
+          </div>
+        </div>
+        <div class="timeline-step reveal-left delay-4">
+          <div class="timeline-marker">05</div>
+          <div class="timeline-content">
+            <h3>Launch Day <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.2em; height:1.2em; vertical-align:middle; display:inline-block;"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path></svg></h3>
+            <p>We deploy your site, set up analytics, and hand over the keys. Ongoing hosting and WhatsApp support keep everything running smooth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Pejji (Features) -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="reveal">
+        <span class="section-label">Why Pejji?</span>
+        <h2 class="section-title">What Makes Us <span class="gradient-text">Different</span></h2>
+        <p class="section-subtitle">We're not a template builder. We're not an expensive agency. We're the option Nigerian businesses actually need.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal delay-1">
+          <div class="feature-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px;"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+          <h3>Security-Audited</h3>
+          <p>Every single site passes our security audit before it goes live. Your customers' data stays safe. No exceptions.</p>
+        </div>
+        <div class="feature-card reveal delay-2">
+          <div class="feature-icon orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px;"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+          <h3>Custom-Built, Not Templated</h3>
+          <p>Built by real developers from scratch. Your site is uniquely yours — not a Wix template with your logo slapped on it.</p>
+        </div>
+        <div class="feature-card reveal delay-3">
+          <div class="feature-icon purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px;"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg></div>
+          <h3>Hosting + Monthly Reports</h3>
+          <p>We handle hosting, maintenance, and send you monthly analytics reports so you know exactly how your site is performing.</p>
+        </div>
+        <div class="feature-card reveal delay-4">
+          <div class="feature-icon teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:28px; height:28px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
+          <h3>Real WhatsApp Support</h3>
+          <p>Not a chatbot. Real humans who respond within 2 hours on WhatsApp. Your questions never go unanswered.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Partner Program Section -->
+  <section class="section" id="referral">
+    <div class="container">
+      <div class="referral-grid reveal">
+        <div class="referral-content">
+          <span class="section-label">Partner Program</span>
+          <h2 class="section-title">Earn <span class="gradient-text">₦30,000+</span> Per Referral</h2>
+          <p class="section-subtitle" style="max-width: 100%; margin-bottom: 24px;">Know a business that needs a website? Refer them to Pejji and earn cash or agency credit when they launch. No limits on how much you can earn.</p>
+          <ul class="price-features" style="margin-bottom: 32px;">
+            <li><span class="check teal" style="color:var(--teal); font-weight:bold;">✓</span> Get ₦10k for Starter tier referrals</li>
+            <li><span class="check teal" style="color:var(--teal); font-weight:bold;">✓</span> Get ₦30k for Growth tier referrals</li>
+            <li><span class="check teal" style="color:var(--teal); font-weight:bold;">✓</span> Get ₦50k for Pro tier referrals</li>
+          </ul>
+          <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I%20want%20to%20join%20the%20referral%20program." class="btn btn-primary" target="_blank" rel="noopener">Join Partner Program →</a>
+        </div>
+        <div class="referral-visual">
+          <div class="ref-card">
+            <div class="ref-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:40px; height:40px; color:var(--teal);"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+            <h4>Active Partners</h4>
+            <div class="ref-number gradient-text" style="font-family: var(--font-heading); font-size: 3rem; font-weight: 700;">142</div>
+            <p style="color: var(--text-secondary);">businesses growing with us</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section" id="contact">
+    <div class="container">
+      <div class="cta-box reveal">
+        <div class="cta-urgency">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1.2em; height:1.2em; vertical-align:middle; display:inline-block; color:var(--orange);"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path></svg> Limited slots — only 5 spots left this month
+        </div>
+        <h2>Ready to Get Your Business <span class="gradient-text">Online?</span></h2>
+        <p>It takes 2 minutes to get started. No commitment, no pressure — just send us a message.</p>
+        <div class="cta-buttons">
+          <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I'm%20interested%20in%20getting%20a%20website%20for%20my%20business." class="btn btn-whatsapp" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.019-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Chat on WhatsApp
+          </a>
+          <a href="mailto:hello@pejji.com" class="btn btn-primary">Send an Email →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">Pejji</a>
+          <p>Building Nigeria's digital future, one website at a time.</p>
+          <div class="blessedops">A BlessedOps Group Company</div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="#pricing">Services & Pricing</a>
+          <a href="#portfolio">Our Work</a>
+          <a href="#process">How It Works</a>
+          <a href="#about">About Us</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get In Touch</h4>
+          <a href="https://wa.me/2348000000000?text=Hi%20Pejji!" target="_blank" rel="noopener">WhatsApp</a>
+          <a href="mailto:hello@pejji.com">hello@pejji.com</a>
+          <a href="https://instagram.com/pejji.ng" target="_blank" rel="noopener">@pejji.ng</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Pejji. All rights reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Floating Button -->
+  <a href="https://wa.me/2348000000000?text=Hi%20Pejji!%20I'm%20interested%20in%20getting%20a%20website%20for%20my%20business." class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.019-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to top">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
