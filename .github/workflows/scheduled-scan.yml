@@ -1,0 +1,35 @@
+name: Monthly Security Scan
+
+on:
+  schedule:
+    - cron: '0 8 1 * *'
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  monthly-scan:
+    name: Monthly Dependency & Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - run: cd pejji-com && npm ci
+      - name: Full audit
+        run: |
+          cd pejji-com
+          echo "=== DEPENDENCY AUDIT ==="
+          npm audit --production 2>&1 || true
+          echo "=== OUTDATED ==="
+          npm outdated 2>&1 || true
+      - name: Secret scan
+        run: |
+          git ls-files | while read file; do
+            if echo "$file" | grep -qE "\.(js|ts|jsx|tsx|astro|html|json|yml|yaml)$"; then
+              grep -nE "(api[_-]?key|password|secret[_-]?key|access[_-]?token)\s*[:=]\s*['\"][^'\"]{8,}" "$file" 2>/dev/null && echo "^^^ Found in: $file" || true
+            fi
+          done || true
+          echo "Scan complete."

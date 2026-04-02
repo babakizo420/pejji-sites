@@ -1,0 +1,28 @@
+{
+  "pejji_security_baseline": {
+    "version": "2.0",
+    "required_headers": [
+      "Content-Security-Policy",
+      "X-Frame-Options",
+      "X-Content-Type-Options",
+      "Referrer-Policy",
+      "Permissions-Policy",
+      "Strict-Transport-Security"
+    ],
+    "blocked_patterns": [
+      "sk_live_",
+      "pk_live_",
+      "sk_test_",
+      "FLWSECK_",
+      "FLWPUBK_",
+      "api_key=",
+      "apiKey=",
+      "secret_key="
+    ],
+    "compliance": {
+      "ndpa_2023": true,
+      "cookie_consent": true,
+      "ga4_required": true
+    }
+  }
+}
