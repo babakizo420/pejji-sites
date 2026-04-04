@@ -5,6 +5,8 @@ import { WHATSAPP_URL } from '../config';
 
 <Base title="Get Started | Pejji" description="Fill out the form below or message us directly on WhatsApp. We typically respond within 2 hours.">
 
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
   <!-- HEADER -->
   <section class="py-16 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -97,6 +99,8 @@ import { WHATSAPP_URL } from '../config';
               </div>
             </div>
 
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAC0oimix5MWShwK0" data-theme="dark"></div>
+
             <button type="submit" class="w-full px-8 py-4 bg-orange text-white font-semibold rounded-lg hover:bg-orange/90 transition-colors text-center">
               Get Started
             </button>
@@ -174,12 +178,26 @@ import { WHATSAPP_URL } from '../config';
       }
     }
 
-    // Form submission via Web3Forms
+    // Form submission via Web3Forms with Turnstile validation
     const form = document.getElementById('inquiry-form') as HTMLFormElement;
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
       const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
       const originalText = btn?.textContent || 'Get Started';
+
+      // Check Turnstile completion
+      const turnstileResponse = form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement;
+      if (!turnstileResponse || !turnstileResponse.value) {
+        if (btn) {
+          btn.textContent = 'Please complete the verification';
+          btn.style.background = '#ef4444';
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+          }, 2500);
+        }
+        return;
+      }
 
       if (btn) {
         btn.textContent = 'Sending...';
