@@ -188,18 +188,18 @@ const menuLinks = document.querySelectorAll('.menu-link');
 if(menuBtn) {
     menuBtn.addEventListener('click', () => {
         fsMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflowY = 'hidden';
     });
 
     closeBtn.addEventListener('click', () => {
         fsMenu.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        document.body.style.overflowY = '';
     });
 
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
             fsMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflowY = '';
         });
     });
 
@@ -233,7 +233,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         // Ensure menu closes if open
         if(fsMenu && fsMenu.classList.contains('active')) {
             fsMenu.classList.remove('active');
-            document.body.style.overflow = 'auto';
+            document.body.style.overflowY = '';
         }
     });
 });
