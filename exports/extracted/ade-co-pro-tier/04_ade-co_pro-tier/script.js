@@ -130,17 +130,11 @@ document.querySelectorAll('.add-btn').forEach(btn => {
         const itemName = size ? name + ' - Size ' + size : name;
 
         // Highlight selected size
-        const sizeContainer = this.closest('.sizes');
+        const sizeContainer = this.closest('.p-sizes');
         if (sizeContainer) {
-            sizeContainer.querySelectorAll('.size-btn').forEach(b => {
-                b.style.background = '';
-                b.style.color = '';
-                b.style.borderColor = '';
-            });
+            sizeContainer.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
         }
-        this.style.background = '#111';
-        this.style.color = 'white';
-        this.style.borderColor = '#111';
+        this.classList.add('selected');
 
         // Add to cart
         cart.push({ name: itemName, price: price, gradient: gradient });
@@ -155,11 +149,7 @@ document.querySelectorAll('.add-btn').forEach(btn => {
         setTimeout(() => {
             updateCartUI();
             openCart();
-            // Remove toast after cart opens
             setTimeout(() => { if (toast.parentNode) toast.remove(); }, 2000);
-            // Close mobile quick-add
-            const quickAdd = productCard.querySelector('.quick-add');
-            if (quickAdd) quickAdd.classList.remove('mobile-open');
         }, 400);
     });
 });

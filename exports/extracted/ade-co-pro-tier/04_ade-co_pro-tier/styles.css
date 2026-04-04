@@ -58,15 +58,10 @@ h1, h2, h3, .logo { font-family: 'Bodoni Moda', serif; font-weight: 700;}
 .product-card:hover .p-img-hover { opacity: 1; transform: scale(1.05); }
 .p-badge { position: absolute; top: 15px; left: 15px; background: white; color: black; font-size: 0.65rem; padding: 4px 10px;text-transform: uppercase; letter-spacing: 2px; z-index:2; font-weight: 500;}
 
-.quick-add { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); z-index:3;}
-.product-card:hover .quick-add { transform: translateY(0); }
-.product-card { position: relative; }
-.size-selector { background: rgba(255,255,255,0.98); padding: 12px; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); backdrop-filter: blur(10px); }
-.size-label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-light); margin-bottom: 8px; text-align: center; font-weight: 700; }
-.sizes { display: flex; gap: 5px; justify-content: center;}
-.size-btn { flex: 1; padding: 12px 0; background: #FAFAFA; border: 1px solid var(--border); font-family: 'Jost', sans-serif; color: var(--text); font-weight: 700; font-size: 0.85rem; transition: 0.2s; cursor: pointer; text-transform: uppercase; }
-.size-btn:hover { background: var(--text); color: white; border-color: var(--text); transform: scale(1.05); }
-.size-btn:active { transform: scale(0.95); }
+.p-sizes { display: flex; gap: 6px; margin-top: 12px; }
+.size-btn { flex: 1; padding: 12px 0; background: #FAFAFA; border: 1px solid var(--border); font-family: 'Jost', sans-serif; color: var(--text); font-weight: 700; font-size: 0.85rem; transition: 0.2s; cursor: pointer; text-transform: uppercase; -webkit-tap-highlight-color: rgba(0,0,0,0.1); touch-action: manipulation; }
+.size-btn:hover { background: var(--text); color: white; border-color: var(--text); }
+.size-btn:active, .size-btn.selected { background: var(--text); color: white; border-color: var(--text); transform: scale(0.95); }
 
 .p-info h3 { font-family: 'Jost', sans-serif; font-size: 1.15rem; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700;}
 .p-price { color: #333; font-size: 1.05rem; font-weight: 600;}
@@ -145,12 +140,8 @@ h1, h2, h3, .logo { font-family: 'Bodoni Moda', serif; font-weight: 700;}
     .logo { width: auto; font-size: 1.8rem; }
     .nav-right { width: auto; gap: 20px;}
     .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .p-image-wrap { aspect-ratio: 4/5; overflow: visible; }
-    /* Always show quick-add on mobile — no hover/toggle needed */
-    .quick-add { position: relative; transform: none; padding: 10px 0; bottom: auto; left: auto; width: 100%; }
-    .size-selector { box-shadow: none; border: 1px solid var(--border); }
-    .size-btn { padding: 14px 0; font-size: 0.8rem; -webkit-tap-highlight-color: rgba(0,0,0,0.1); touch-action: manipulation; }
-    .size-label { font-size: 0.65rem; }
+    .p-image-wrap { aspect-ratio: 4/5; }
+    .size-btn { padding: 10px 0; font-size: 0.75rem; }
     .split-editorial { flex-direction: column; height: auto;}
     .s-half.visual { height: 60vh; }
     .cart-sidebar { width: 100%; right: -100%; border-left: none;}
