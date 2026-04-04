@@ -163,13 +163,9 @@
 
   <div class="container">
     <div class="controls">
-      <label for="partner-name">Name / Tag</label>
-      <input type="text" id="partner-name" placeholder="e.g. Faaizh, @eniba, ENIBA, Omo" autofocus maxlength="40">
-      <p class="hint">Whatever the partner wants to be called — name, nickname, handle, business name.</p>
-
-      <label for="partner-tag">Partner Code</label>
-      <input type="text" id="partner-tag" placeholder="e.g. ENIBA" maxlength="20">
-      <p class="hint">Short code referrals use when they message. Auto-generated from name if left empty.</p>
+      <label for="partner-tag">Partner Tag</label>
+      <input type="text" id="partner-tag" placeholder="e.g. ENIBA" autofocus maxlength="20">
+      <p class="hint">This is what shows on the image and what referrals mention. Name, nickname, handle — anything.</p>
 
       <label for="phone-number">WhatsApp Number</label>
       <input type="text" id="phone-number" value="+234 800 000 0000" placeholder="+234 800 000 0000">
@@ -193,7 +189,6 @@
   <script>
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
-    const nameInput = document.getElementById('partner-name');
     const tagInput = document.getElementById('partner-tag');
     const phoneInput = document.getElementById('phone-number');
     const waLinkEl = document.getElementById('wa-link');
@@ -215,8 +210,7 @@
     function drawImage() {
       const W = 1080;
       const H = 1920;
-      const partnerName = sanitize(nameInput.value) || 'Partner Name';
-      const partnerTag = sanitize(tagInput.value) || 'CODE';
+      const partnerTag = sanitize(tagInput.value) || 'TAG';
       const phone = sanitize(phoneInput.value) || '+234 800 000 0000';
 
       // Background gradient
@@ -254,7 +248,7 @@
       roundRect(ctx, 340, 400, 400, 4, 2);
       ctx.fill();
 
-      // === Headline: "Your business deserves a website that works for you." ===
+      // === Headline ===
       ctx.font = '700 52px "DM Sans", sans-serif';
       ctx.fillStyle = '#E8E8ED';
       ctx.fillText('Your business deserves', W / 2, 560);
@@ -262,77 +256,64 @@
       ctx.fillStyle = '#F57A1F';
       ctx.fillText('works for you.', W / 2, 690);
 
-      // === Partner name — bold, prominent ===
-      let nameFontSize = 90;
-      ctx.font = `700 ${nameFontSize}px "DM Sans", sans-serif`;
-      while (ctx.measureText(partnerName).width > W - 140 && nameFontSize > 40) {
-        nameFontSize -= 4;
-        ctx.font = `700 ${nameFontSize}px "DM Sans", sans-serif`;
+      // === Partner tag — BIG and bold (the main identity) ===
+      let tagFontSize = 120;
+      ctx.font = `700 ${tagFontSize}px "DM Sans", sans-serif`;
+      while (ctx.measureText(partnerTag).width > W - 160 && tagFontSize > 50) {
+        tagFontSize -= 4;
+        ctx.font = `700 ${tagFontSize}px "DM Sans", sans-serif`;
       }
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillText(partnerName, W / 2, 860);
+      ctx.fillText(partnerTag, W / 2, 880);
 
-      // === Partner tag pill badge ===
-      ctx.font = '700 34px "DM Sans", sans-serif';
-      const tagWidth = Math.max(ctx.measureText(partnerTag).width + 70, 200);
-      const tagX = (W - tagWidth) / 2;
-
-      ctx.fillStyle = 'rgba(10, 143, 143, 0.15)';
-      roundRect(ctx, tagX, 900, tagWidth, 56, 28);
-      ctx.fill();
-      ctx.strokeStyle = 'rgba(10, 143, 143, 0.4)';
-      ctx.lineWidth = 1.5;
-      roundRect(ctx, tagX, 900, tagWidth, 56, 28);
-      ctx.stroke();
-
+      // === "Pejji Partner" label ===
+      ctx.font = '500 36px "DM Sans", sans-serif';
       ctx.fillStyle = '#0A8F8F';
-      ctx.fillText(partnerTag, W / 2, 938);
+      ctx.fillText('Pejji Partner', W / 2, 940);
 
       // === Divider ===
       ctx.fillStyle = 'rgba(255,255,255,0.06)';
-      roundRect(ctx, 390, 1020, 300, 2, 1);
+      roundRect(ctx, 390, 1010, 300, 2, 1);
       ctx.fill();
 
-      // === CTA: "Fast. Secure. Beautiful." ===
+      // === CTA ===
       ctx.font = '600 44px "DM Sans", sans-serif';
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillText('Fast. Secure. Beautiful.', W / 2, 1120);
+      ctx.fillText('Fast. Secure. Beautiful.', W / 2, 1110);
 
-      // === "Starting from N60,000" ===
+      // === Starting from ===
       ctx.font = '400 36px "DM Sans", sans-serif';
       ctx.fillStyle = '#888888';
-      ctx.fillText('Starting from \u20A660,000', W / 2, 1190);
+      ctx.fillText('Starting from \u20A660,000', W / 2, 1180);
 
       // === WhatsApp pill ===
       ctx.fillStyle = '#22C55E';
-      roundRect(ctx, 250, 1300, 580, 90, 45);
+      roundRect(ctx, 250, 1290, 580, 90, 45);
       ctx.fill();
-
       ctx.font = '700 34px "DM Sans", sans-serif';
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillText('Chat on WhatsApp', W / 2, 1358);
+      ctx.fillText('Chat on WhatsApp', W / 2, 1348);
 
-      // === Phone number ===
+      // === Phone ===
       ctx.font = '400 30px "DM Sans", sans-serif';
       ctx.fillStyle = '#888888';
-      ctx.fillText(phone, W / 2, 1440);
+      ctx.fillText(phone, W / 2, 1430);
 
-      // === Instruction: Use code "[TAG]" when you message ===
+      // === Instruction ===
       ctx.font = '400 26px "DM Sans", sans-serif';
       ctx.fillStyle = '#555555';
-      ctx.fillText('Use code "' + partnerTag + '" when you message', W / 2, 1500);
+      ctx.fillText('Use code "' + partnerTag + '" when you message', W / 2, 1490);
 
       // === Bottom accent line ===
       ctx.fillStyle = lineGrad;
-      roundRect(ctx, 340, 1590, 400, 4, 2);
+      roundRect(ctx, 340, 1580, 400, 4, 2);
       ctx.fill();
 
       // === pejji.com ===
       ctx.font = '400 28px "DM Sans", sans-serif';
       ctx.fillStyle = '#888888';
-      ctx.fillText('pejji.com', W / 2, 1660);
+      ctx.fillText('pejji.com', W / 2, 1650);
 
-      // Update WhatsApp link
       updateWaLink();
     }
 
@@ -351,23 +332,8 @@
     }
 
     // Live preview on input
-    nameInput.addEventListener('input', drawImage);
     tagInput.addEventListener('input', drawImage);
     phoneInput.addEventListener('input', drawImage);
-
-    // Auto-fill tag from name
-    nameInput.addEventListener('input', () => {
-      if (!tagInput.dataset.manual) {
-        const name = nameInput.value.trim().split(' ')[0].toUpperCase();
-        if (name) {
-          tagInput.value = name + '-';
-          tagInput.placeholder = name + '-LK';
-        }
-      }
-    });
-    tagInput.addEventListener('input', () => {
-      tagInput.dataset.manual = 'true';
-    });
 
     // Download
     document.getElementById('btn-download').addEventListener('click', () => {
