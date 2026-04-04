@@ -163,12 +163,13 @@
 
   <div class="container">
     <div class="controls">
-      <label for="partner-name">Partner Name</label>
-      <input type="text" id="partner-name" placeholder="e.g. Chinedu Okoro" autofocus>
+      <label for="partner-name">Name / Tag</label>
+      <input type="text" id="partner-name" placeholder="e.g. Faaizh, @eniba, ENIBA, Omo" autofocus maxlength="40">
+      <p class="hint">Whatever the partner wants to be called — name, nickname, handle, business name.</p>
 
-      <label for="partner-tag">Partner Tag</label>
-      <input type="text" id="partner-tag" placeholder="e.g. CHINEDU-LK">
-      <p class="hint">Name + area code. This is what referrals mention.</p>
+      <label for="partner-tag">Partner Code</label>
+      <input type="text" id="partner-tag" placeholder="e.g. ENIBA" maxlength="20">
+      <p class="hint">Short code referrals use when they message. Auto-generated from name if left empty.</p>
 
       <label for="phone-number">WhatsApp Number</label>
       <input type="text" id="phone-number" value="+234 800 000 0000" placeholder="+234 800 000 0000">
@@ -198,21 +199,25 @@
     const waLinkEl = document.getElementById('wa-link');
 
     function getWhatsAppLink() {
-      const phone = phoneInput.value.replace(/[\s\-\+\(\)]/g, '');
-      const tag = tagInput.value.trim() || 'PARTNER-TAG';
-      return `wa.me/${phone}?text=Hi%20Pejji!%20I%20need%20a%20website.%20Referred%20by:%20${encodeURIComponent(tag)}`;
+      const phone = phoneInput.value.replace(/[^\d]/g, '');
+      const tag = (tagInput.value || '').replace(/[<>"'&]/g, '').trim() || 'CODE';
+      return `wa.me/${phone}?text=Hi%20Pejji!%20I%20need%20a%20website.%20Code:%20${encodeURIComponent(tag)}`;
     }
 
     function updateWaLink() {
       waLinkEl.textContent = getWhatsAppLink();
     }
 
+    function sanitize(str) {
+      return str.replace(/[<>"'&]/g, '');
+    }
+
     function drawImage() {
       const W = 1080;
       const H = 1920;
-      const partnerName = nameInput.value || 'Partner Name';
-      const partnerTag = tagInput.value || 'PARTNER-TAG';
-      const phone = phoneInput.value || '+234 800 000 0000';
+      const partnerName = sanitize(nameInput.value) || 'Partner Name';
+      const partnerTag = sanitize(tagInput.value) || 'CODE';
+      const phone = sanitize(phoneInput.value) || '+234 800 000 0000';
 
       // Background gradient
       const grad = ctx.createLinearGradient(0, 0, W, H);
@@ -249,74 +254,80 @@
       roundRect(ctx, 340, 400, 400, 4, 2);
       ctx.fill();
 
-      // === CENTER: Partner name BIG and bold ===
-      let nameFontSize = 100;
+      // === Headline: "Your business deserves a website that works for you." ===
+      ctx.font = '700 52px "DM Sans", sans-serif';
+      ctx.fillStyle = '#E8E8ED';
+      ctx.fillText('Your business deserves', W / 2, 560);
+      ctx.fillText('a website that', W / 2, 625);
+      ctx.fillStyle = '#F57A1F';
+      ctx.fillText('works for you.', W / 2, 690);
+
+      // === Partner name — bold, prominent ===
+      let nameFontSize = 90;
       ctx.font = `700 ${nameFontSize}px "DM Sans", sans-serif`;
-      while (ctx.measureText(partnerName).width > W - 140 && nameFontSize > 44) {
+      while (ctx.measureText(partnerName).width > W - 140 && nameFontSize > 40) {
         nameFontSize -= 4;
         ctx.font = `700 ${nameFontSize}px "DM Sans", sans-serif`;
       }
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillText(partnerName, W / 2, 680);
+      ctx.fillText(partnerName, W / 2, 860);
 
-      // === "is a Pejji Partner" in teal ===
-      ctx.font = '500 40px "DM Sans", sans-serif';
-      ctx.fillStyle = '#0A8F8F';
-      ctx.fillText('is a Pejji Partner', W / 2, 760);
-
-      // === Orange pill with partner tag ===
-      ctx.font = '700 42px "DM Sans", sans-serif';
-      const tagWidth = Math.max(ctx.measureText(partnerTag).width + 80, 300);
+      // === Partner tag pill badge ===
+      ctx.font = '700 34px "DM Sans", sans-serif';
+      const tagWidth = Math.max(ctx.measureText(partnerTag).width + 70, 200);
       const tagX = (W - tagWidth) / 2;
 
-      ctx.fillStyle = '#F57A1F';
-      roundRect(ctx, tagX, 830, tagWidth, 72, 36);
+      ctx.fillStyle = 'rgba(10, 143, 143, 0.15)';
+      roundRect(ctx, tagX, 900, tagWidth, 56, 28);
       ctx.fill();
+      ctx.strokeStyle = 'rgba(10, 143, 143, 0.4)';
+      ctx.lineWidth = 1.5;
+      roundRect(ctx, tagX, 900, tagWidth, 56, 28);
+      ctx.stroke();
 
-      ctx.fillStyle = '#FFFFFF';
-      ctx.fillText(partnerTag, W / 2, 880);
+      ctx.fillStyle = '#0A8F8F';
+      ctx.fillText(partnerTag, W / 2, 938);
 
       // === Divider ===
-      ctx.fillStyle = 'rgba(255,255,255,0.08)';
-      roundRect(ctx, 390, 980, 300, 2, 1);
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      roundRect(ctx, 390, 1020, 300, 2, 1);
       ctx.fill();
 
-      // === "Your business needs a website?" ===
-      ctx.font = '500 40px "DM Sans", sans-serif';
+      // === CTA: "Fast. Secure. Beautiful." ===
+      ctx.font = '600 44px "DM Sans", sans-serif';
       ctx.fillStyle = '#FFFFFF';
-      ctx.fillText('Your business needs', W / 2, 1100);
-      ctx.fillText('a website?', W / 2, 1155);
+      ctx.fillText('Fast. Secure. Beautiful.', W / 2, 1120);
 
-      // === "Starting from N60K" ===
-      ctx.font = '700 48px "DM Sans", sans-serif';
-      ctx.fillStyle = '#E8E8ED';
-      ctx.fillText('Starting from \u20A660,000', W / 2, 1280);
+      // === "Starting from N60,000" ===
+      ctx.font = '400 36px "DM Sans", sans-serif';
+      ctx.fillStyle = '#888888';
+      ctx.fillText('Starting from \u20A660,000', W / 2, 1190);
 
       // === WhatsApp pill ===
       ctx.fillStyle = '#22C55E';
-      roundRect(ctx, 250, 1400, 580, 90, 45);
+      roundRect(ctx, 250, 1300, 580, 90, 45);
       ctx.fill();
 
-      // WhatsApp icon circle
-      ctx.beginPath();
-      ctx.arc(330, 1445, 26, 0, Math.PI * 2);
+      ctx.font = '700 34px "DM Sans", sans-serif';
       ctx.fillStyle = '#FFFFFF';
-      ctx.fill();
-      ctx.font = '700 26px "DM Sans", sans-serif';
-      ctx.fillStyle = '#22C55E';
-      ctx.fillText('W', 330, 1454);
+      ctx.fillText('Chat on WhatsApp', W / 2, 1358);
 
-      // Phone number in pill
-      ctx.font = '600 34px "DM Sans", sans-serif';
-      ctx.fillStyle = '#FFFFFF';
-      ctx.fillText(phone, 580, 1458);
+      // === Phone number ===
+      ctx.font = '400 30px "DM Sans", sans-serif';
+      ctx.fillStyle = '#888888';
+      ctx.fillText(phone, W / 2, 1440);
+
+      // === Instruction: Use code "[TAG]" when you message ===
+      ctx.font = '400 26px "DM Sans", sans-serif';
+      ctx.fillStyle = '#555555';
+      ctx.fillText('Use code "' + partnerTag + '" when you message', W / 2, 1500);
 
       // === Bottom accent line ===
       ctx.fillStyle = lineGrad;
       roundRect(ctx, 340, 1590, 400, 4, 2);
       ctx.fill();
 
-      // === pejji.com small at very bottom ===
+      // === pejji.com ===
       ctx.font = '400 28px "DM Sans", sans-serif';
       ctx.fillStyle = '#888888';
       ctx.fillText('pejji.com', W / 2, 1660);
