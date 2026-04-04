@@ -115,27 +115,7 @@ cartToggle.addEventListener('click', (e) => { e.preventDefault(); openCart(); })
 closeCart.addEventListener('click', closeCartFunc);
 cartOverlay.addEventListener('click', closeCartFunc);
 
-// Mobile: tap product card to toggle quick-add visibility
-document.querySelectorAll('.product-card').forEach(card => {
-    const quickAdd = card.querySelector('.quick-add');
-    if (!quickAdd) return;
-
-    card.addEventListener('click', function(e) {
-        // Don't toggle if clicking a button inside quick-add
-        if (e.target.closest('.add-btn')) return;
-
-        // On mobile, toggle quick-add visibility
-        if (window.innerWidth <= 900) {
-            // Close all other quick-adds first
-            document.querySelectorAll('.quick-add.mobile-open').forEach(qa => {
-                if (qa !== quickAdd) qa.classList.remove('mobile-open');
-            });
-            quickAdd.classList.toggle('mobile-open');
-        }
-    });
-});
-
-// Add to Cart — works on both click and touch
+// Add to Cart — works on both click and touch (quick-add always visible on mobile via CSS)
 document.querySelectorAll('.add-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
         e.preventDefault();

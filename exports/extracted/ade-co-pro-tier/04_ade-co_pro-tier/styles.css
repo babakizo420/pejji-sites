@@ -59,7 +59,8 @@ h1, h2, h3, .logo { font-family: 'Bodoni Moda', serif; font-weight: 700;}
 .p-badge { position: absolute; top: 15px; left: 15px; background: white; color: black; font-size: 0.65rem; padding: 4px 10px;text-transform: uppercase; letter-spacing: 2px; z-index:2; font-weight: 500;}
 
 .quick-add { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px; transform: translateY(100%); transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1); z-index:3;}
-.product-card:hover .quick-add, .quick-add.mobile-open { transform: translateY(0); }
+.product-card:hover .quick-add { transform: translateY(0); }
+.product-card { position: relative; }
 .size-selector { background: rgba(255,255,255,0.98); padding: 12px; border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.15); backdrop-filter: blur(10px); }
 .size-label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-light); margin-bottom: 8px; text-align: center; font-weight: 700; }
 .sizes { display: flex; gap: 5px; justify-content: center;}
@@ -144,10 +145,12 @@ h1, h2, h3, .logo { font-family: 'Bodoni Moda', serif; font-weight: 700;}
     .logo { width: auto; font-size: 1.8rem; }
     .nav-right { width: auto; gap: 20px;}
     .product-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .p-image-wrap { aspect-ratio: 4/5; }
-    .quick-add { padding: 10px; }
-    .add-btn { padding: 14px; font-size: 0.7rem; }
-    .add-btn span { display: none; }
+    .p-image-wrap { aspect-ratio: 4/5; overflow: visible; }
+    /* Always show quick-add on mobile — no hover/toggle needed */
+    .quick-add { position: relative; transform: none; padding: 10px 0; bottom: auto; left: auto; width: 100%; }
+    .size-selector { box-shadow: none; border: 1px solid var(--border); }
+    .size-btn { padding: 14px 0; font-size: 0.8rem; -webkit-tap-highlight-color: rgba(0,0,0,0.1); touch-action: manipulation; }
+    .size-label { font-size: 0.65rem; }
     .split-editorial { flex-direction: column; height: auto;}
     .s-half.visual { height: 60vh; }
     .cart-sidebar { width: 100%; right: -100%; border-left: none;}
