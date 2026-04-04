@@ -22,11 +22,6 @@ window.addEventListener('scroll', () => {
 });
 
 // Cinematic Reveal Animations
-const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-};
-
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if(entry.isIntersecting) {
@@ -34,7 +29,7 @@ const observer = new IntersectionObserver((entries) => {
             observer.unobserve(entry.target);
         }
     });
-}, observerOptions);
+}, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
@@ -42,7 +37,10 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 // Dynamic Calendar
 // ============================
 const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-let calYear, calMonth; // 0-indexed month
+const WHATSAPP_NUMBER = '15873201360';
+let calYear, calMonth;
+let selectedDate = '';
+let selectedTime = '';
 
 function initCalendar() {
     const now = new Date();
@@ -61,10 +59,10 @@ function renderCalendar() {
     const today = new Date();
     today.setHours(0,0,0,0);
 
-    const firstDay = new Date(calYear, calMonth, 1).getDay(); // 0=Sun
+    const firstDay = new Date(calYear, calMonth, 1).getDay();
     const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
 
-    // Pick a few "available" days: every 3rd day starting from today+2 (up to 5 slots)
+    // Available days: every 3rd day starting from today+2 (up to 5 slots)
     const availableDays = new Set();
     for (let i = 2; i <= daysInMonth; i += 3) {
         const d = new Date(calYear, calMonth, i);
@@ -74,15 +72,12 @@ function renderCalendar() {
     }
 
     let html = '';
-    // Day name headers
     ['S','M','T','W','T','F','S'].forEach(n => {
         html += `<div class="day-name">${n}</div>`;
     });
-    // Empty cells before first day
     for (let i = 0; i < firstDay; i++) {
         html += '<div></div>';
     }
-    // Day cells
     for (let d = 1; d <= daysInMonth; d++) {
         const date = new Date(calYear, calMonth, d);
         date.setHours(0,0,0,0);
@@ -113,8 +108,15 @@ function bindDayClicks() {
             day.style.boxShadow = '0 0 0 2px var(--bg), 0 0 0 4px var(--accent)';
             day.style.background = '#fff';
             day.style.color = 'var(--bg)';
-            selectedDateSpan.textContent = `${MONTH_NAMES[calMonth].slice(0,3)} ${day.textContent}`;
+
+            selectedDate = `${MONTH_NAMES[calMonth].slice(0,3)} ${day.textContent}`;
+            selectedDateSpan.textContent = selectedDate;
             timeSlots.style.display = 'block';
+
+            // Reset time selection when date changes
+            selectedTime = '';
+            tBtns.forEach(b => b.classList.remove('selected'));
+            updateConfirmBtn();
 
             setTimeout(() => {
                 timeSlots.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -145,36 +147,67 @@ document.getElementById('cal-next').addEventListener('click', () => {
 
 initCalendar();
 
-// Set initial selected-date to today's date dynamically
+// Set initial selected-date
 const _now = new Date();
 const _sel = document.getElementById('selected-date');
 if (_sel) _sel.textContent = MONTH_NAMES[_now.getMonth()].slice(0,3) + ' ' + _now.getDate();
 
+// ============================
 // Time slot selection & confirm
+// ============================
 const tBtns = document.querySelectorAll('.t-btn');
 const confirmBtn = document.querySelector('.complete-btn');
+
+function updateConfirmBtn() {
+    if (selectedDate && selectedTime) {
+        confirmBtn.textContent = `Book for ${selectedTime}`;
+        confirmBtn.style.opacity = '1';
+    } else {
+        confirmBtn.textContent = 'Confirm Reservation';
+        confirmBtn.style.opacity = '1';
+    }
+}
 
 tBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         tBtns.forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
-        confirmBtn.textContent = `Confirm for ${btn.textContent}`;
+        selectedTime = btn.textContent;
+        updateConfirmBtn();
     });
 });
 
 confirmBtn.addEventListener('click', () => {
-    if(confirmBtn.textContent !== 'Confirm Reservation' && !confirmBtn.textContent.includes('Secured')) {
-        const originalText = confirmBtn.textContent;
-        confirmBtn.textContent = 'Processing...';
-        confirmBtn.style.opacity = '0.7';
-
+    if (!selectedDate || !selectedTime) {
+        // No date/time selected — show feedback
+        confirmBtn.textContent = 'Please select a date and time';
+        confirmBtn.style.background = '#ff4444';
+        confirmBtn.style.color = '#fff';
         setTimeout(() => {
-            confirmBtn.style.opacity = '1';
-            confirmBtn.style.background = '#E0A96D';
-            confirmBtn.style.color = '#0B0A0A';
-            confirmBtn.textContent = 'Reservation Secured ✓';
-        }, 1200);
+            confirmBtn.style.background = '';
+            confirmBtn.style.color = '';
+            updateConfirmBtn();
+        }, 2000);
+        return;
     }
+
+    // Redirect to WhatsApp with booking details
+    const message = `Hi GlowUp! I'd like to book an appointment on ${selectedDate} at ${selectedTime}. Please confirm availability.`;
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+});
+
+// ============================
+// Treatment cards scroll to booking
+// ============================
+document.querySelectorAll('.s-card').forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+        const booking = document.getElementById('booking');
+        if (booking) {
+            booking.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
 });
 
 // ============================
@@ -203,7 +236,6 @@ if(menuBtn) {
         });
     });
 
-    // Add custom cursor hover to menu elements
     if (window.innerWidth > 900) {
         document.querySelectorAll('.menu-link, .close-btn, .menu-btn, .m-item').forEach(el => {
             el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
@@ -218,7 +250,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const targetId = this.getAttribute('href');
         if(targetId === '#') { e.preventDefault(); return; }
 
-        // Handle #top specially - scroll to very top
         if(targetId === '#top') {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -230,7 +261,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             }
         }
 
-        // Ensure menu closes if open
         if(fsMenu && fsMenu.classList.contains('active')) {
             fsMenu.classList.remove('active');
             document.body.style.overflowY = '';
@@ -252,7 +282,7 @@ if (contactForm) {
             btn.style.opacity = '1';
             btn.style.background = '#E0A96D';
             btn.style.color = '#0B0A0A';
-            btn.textContent = 'Message Sent ✓';
+            btn.textContent = 'Message Sent \u2713';
         }, 800);
     });
 }
