@@ -37,7 +37,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 // Dynamic Calendar
 // ============================
 const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const WHATSAPP_NUMBER = '15873201360';
+const WHATSAPP_NUMBER = '2349044526924';
 let calYear, calMonth;
 let selectedDate = '';
 let selectedTime = '';

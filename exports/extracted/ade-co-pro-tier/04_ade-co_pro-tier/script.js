@@ -22,7 +22,7 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // WhatsApp config
-const WHATSAPP_NUMBER = '15873201360';
+const WHATSAPP_NUMBER = '2349044526924';
 
 // Cart state (in-memory only, resets on refresh)
 let cart = [];
