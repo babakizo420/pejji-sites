@@ -57,6 +57,30 @@ else
 fi
 
 echo ""
+echo "6. NDPA Compliance"
+
+# Check for cookie consent
+if grep -rq "cookie\|consent\|cookie-consent\|cookieConsent\|cookie_banner" "$BUILD_DIR" 2>/dev/null; then
+  pass "Cookie consent mechanism found"
+else
+  fail "No cookie consent mechanism detected — NDPA S.25 requires consent for non-essential data processing"
+fi
+
+# Check for privacy policy page
+if [ -f "$BUILD_DIR/privacy/index.html" ] || [ -f "$BUILD_DIR/privacy.html" ]; then
+  pass "Privacy policy page exists"
+else
+  fail "No privacy policy page — NDPA S.26-27 requires a privacy notice"
+fi
+
+# Check for privacy contact
+if grep -rq "privacy@\|data.protection@\|privacy.policy\|data subject" "$BUILD_DIR" 2>/dev/null; then
+  pass "Privacy contact/reference found"
+else
+  warn "No privacy contact email found in build output"
+fi
+
+echo ""
 echo "Results: $ERRORS errors, $WARNINGS warnings"
 if [ $ERRORS -gt 0 ]; then
   echo "BLOCKED. Fix all FAIL items."
