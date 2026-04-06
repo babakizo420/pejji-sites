@@ -44,7 +44,7 @@ import { WHATSAPP_URL } from '../config';
               </div>
               <div>
                 <label for="email" class="block text-sm font-medium text-light mb-2">Email <span class="text-subtle font-normal">(optional)</span></label>
-                <input type="email" id="email" name="email" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. folake@example.com" />
+                <input type="email" id="email" name="email" maxlength="120" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. folake@example.com" />
               </div>
             </div>
 
@@ -183,16 +183,44 @@ import { WHATSAPP_URL } from '../config';
       form.querySelectorAll('.field-error').forEach(el => el.remove());
       form.querySelectorAll('.border-red-500').forEach(el => el.classList.remove('border-red-500'));
 
+      let hasError = false;
+
+      // Validate business name
+      const bizName = form.querySelector('#business-name') as HTMLInputElement;
+      if (bizName && bizName.value.trim().length < 2) {
+        bizName.classList.add('border-red-500');
+        bizName.insertAdjacentHTML('afterend', '<p class="field-error text-red-400 text-xs mt-1">Enter your business name</p>');
+        if (!hasError) { bizName.focus(); hasError = true; }
+      }
+
+      // Validate your name
+      const yourName = form.querySelector('#your-name') as HTMLInputElement;
+      if (yourName && yourName.value.trim().length < 2) {
+        yourName.classList.add('border-red-500');
+        yourName.insertAdjacentHTML('afterend', '<p class="field-error text-red-400 text-xs mt-1">Enter your name</p>');
+        if (!hasError) { yourName.focus(); hasError = true; }
+      }
+
       // Validate phone
       const phone = form.querySelector('#phone') as HTMLInputElement;
       const phoneVal = phone?.value.trim();
       const phonePattern = /^(\+?234|0)[0-9]{9,10}$/;
-      if (phoneVal && !phonePattern.test(phoneVal)) {
+      if (!phoneVal || !phonePattern.test(phoneVal)) {
         phone.classList.add('border-red-500');
         phone.insertAdjacentHTML('afterend', '<p class="field-error text-red-400 text-xs mt-1">Enter a valid Nigerian phone number (e.g. 08012345678)</p>');
-        phone.focus();
-        return;
+        if (!hasError) { phone.focus(); hasError = true; }
       }
+
+      // Validate email format if provided
+      const email = form.querySelector('#email') as HTMLInputElement;
+      const emailVal = email?.value.trim();
+      if (emailVal && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+        email.classList.add('border-red-500');
+        email.insertAdjacentHTML('afterend', '<p class="field-error text-red-400 text-xs mt-1">Enter a valid email address</p>');
+        if (!hasError) { email.focus(); hasError = true; }
+      }
+
+      if (hasError) return;
 
       const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
       const originalText = btn?.textContent || 'Get Started';
