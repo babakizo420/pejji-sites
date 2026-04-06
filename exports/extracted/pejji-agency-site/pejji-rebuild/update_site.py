@@ -59,7 +59,7 @@ referral_html = """
             <li><span class="check teal" style="color:var(--teal); font-weight:bold;">✓</span> Get ₦30k for Growth tier referrals</li>
             <li><span class="check teal" style="color:var(--teal); font-weight:bold;">✓</span> Get ₦50k for Pro tier referrals</li>
           </ul>
-          <a href="https://wa.me/15873201360?text=Hi%20Pejji!%20I%20want%20to%20join%20the%20referral%20program." class="btn btn-primary" target="_blank" rel="noopener">Join Partner Program →</a>
+          <a href="https://wa.me/2349044526924?text=Hi%20Pejji!%20I%20want%20to%20join%20the%20referral%20program." class="btn btn-primary" target="_blank" rel="noopener">Join Partner Program →</a>
         </div>
         <div class="referral-visual">
           <div class="ref-card">

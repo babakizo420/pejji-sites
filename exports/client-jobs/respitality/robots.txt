@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://respitality.pejji.com/sitemap.xml
