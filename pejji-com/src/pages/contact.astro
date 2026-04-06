@@ -268,6 +268,22 @@ import { WHATSAPP_URL } from '../config';
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ chat_id: '5413679846', text: msg })
             }).catch(() => {});
+
+            // Log lead to Notion via Cloudflare Worker
+            fetch('https://pejji-lead-logger.babakizo542.workers.dev/log-lead', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                business_name: leadData.business_name || '',
+                your_name: leadData.your_name || '',
+                phone: leadData.phone || '',
+                email: leadData.email || '',
+                industry: leadData.industry || '',
+                tier: leadData.tier || '',
+                about: leadData.about || '',
+                has_logo: leadData.has_logo || '',
+              })
+            }).catch(() => {});
           } catch {}
 
           if (btn) {
