@@ -196,7 +196,7 @@ import { WHATSAPP_URL, WHATSAPP_NUMBER } from '../config';
           </div>
           <div>
             <label for="lead-whatsapp" class="block text-sm font-medium text-light mb-2">WhatsApp Number <span class="text-subtle font-normal">(optional)</span></label>
-            <input type="tel" id="lead-whatsapp" name="whatsapp" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. 08012345678" />
+            <input type="tel" id="lead-whatsapp" name="whatsapp" pattern="^(\+?234|0)[0-9]{9,10}$" maxlength="15" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. 08012345678" />
           </div>
           <button type="submit" class="w-full px-8 py-4 bg-teal text-dark font-semibold rounded-lg hover:bg-teal/90 transition-colors text-center">
             Send My Results

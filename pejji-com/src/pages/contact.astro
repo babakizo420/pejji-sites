@@ -29,18 +29,18 @@ import { WHATSAPP_URL } from '../config';
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label for="business-name" class="block text-sm font-medium text-light mb-2">Business Name <span class="text-orange">*</span></label>
-                <input type="text" id="business-name" name="business_name" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. Iya Basira Kitchen" />
+                <input type="text" id="business-name" name="business_name" required minlength="2" maxlength="100" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. Iya Basira Kitchen" />
               </div>
               <div>
                 <label for="your-name" class="block text-sm font-medium text-light mb-2">Your Name <span class="text-orange">*</span></label>
-                <input type="text" id="your-name" name="your_name" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. Folake Adeyemi" />
+                <input type="text" id="your-name" name="your_name" required minlength="2" maxlength="80" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. Folake Adeyemi" />
               </div>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
                 <label for="phone" class="block text-sm font-medium text-light mb-2">Phone / WhatsApp <span class="text-orange">*</span></label>
-                <input type="tel" id="phone" name="phone" required class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. 08012345678" />
+                <input type="tel" id="phone" name="phone" required pattern="^(\+?234|0)[0-9]{9,10}$" maxlength="15" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors" placeholder="e.g. 08012345678" />
               </div>
               <div>
                 <label for="email" class="block text-sm font-medium text-light mb-2">Email <span class="text-subtle font-normal">(optional)</span></label>
@@ -80,7 +80,7 @@ import { WHATSAPP_URL } from '../config';
 
             <div>
               <label for="about" class="block text-sm font-medium text-light mb-2">Tell us about your business <span class="text-subtle font-normal">(optional)</span></label>
-              <textarea id="about" name="about" rows="4" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors resize-none" placeholder="What does your business do? What do you want from your website?"></textarea>
+              <textarea id="about" name="about" rows="4" maxlength="1000" class="w-full bg-dark border border-white/10 rounded-lg px-4 py-3 text-light text-sm placeholder-subtle focus:outline-none focus:border-teal/50 focus:ring-1 focus:ring-teal/50 transition-colors resize-none" placeholder="What does your business do? What do you want from your website?"></textarea>
             </div>
 
             <div>
@@ -178,6 +178,22 @@ import { WHATSAPP_URL } from '../config';
     const form = document.getElementById('inquiry-form') as HTMLFormElement;
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Clear previous errors
+      form.querySelectorAll('.field-error').forEach(el => el.remove());
+      form.querySelectorAll('.border-red-500').forEach(el => el.classList.remove('border-red-500'));
+
+      // Validate phone
+      const phone = form.querySelector('#phone') as HTMLInputElement;
+      const phoneVal = phone?.value.trim();
+      const phonePattern = /^(\+?234|0)[0-9]{9,10}$/;
+      if (phoneVal && !phonePattern.test(phoneVal)) {
+        phone.classList.add('border-red-500');
+        phone.insertAdjacentHTML('afterend', '<p class="field-error text-red-400 text-xs mt-1">Enter a valid Nigerian phone number (e.g. 08012345678)</p>');
+        phone.focus();
+        return;
+      }
+
       const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
       const originalText = btn?.textContent || 'Get Started';
 
