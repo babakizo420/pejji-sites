@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amala House | Authentic Nigerian Cuisine in Lagos</title>
+    <meta name="description" content="Amala House - Authentic Nigerian cuisine in the heart of Victoria Island, Lagos. Traditional flavours, modern ambience. Reserve your table today.">
+    <meta property="og:title" content="Amala House | Authentic Nigerian Cuisine in Lagos">
+    <meta property="og:description" content="Traditional flavours, modern ambience. Experience the finest Nigerian cuisine in Victoria Island, Lagos.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; img-src * data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'none';">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='24' fill='%231C1410'/><text x='50' y='72' font-size='60' font-family='serif' font-weight='700' fill='%23E8913A' text-anchor='middle'>A</text></svg>">
+</head>
+<body>
+    <div class="cursor-glow"></div>
+
+    <!-- Demo Badge -->
+    <div style="position:fixed; bottom:16px; left:16px; z-index:9999; background:rgba(232,145,58,0.15); border:1px solid rgba(232,145,58,0.3); backdrop-filter:blur(8px); padding:6px 14px; border-radius:20px; font-size:0.7rem; color:#E8913A; font-family:'Inter',sans-serif; letter-spacing:2px; text-transform:uppercase; font-weight:500;">Demo Site</div>
+
+    <!-- Navigation -->
+    <nav class="nav reveal" id="top">
+        <div class="logo">Amala House</div>
+        <div class="nav-links">
+            <a href="#menu">Menu</a>
+            <a href="#about">Our Story</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#location">Visit</a>
+        </div>
+        <div class="nav-right">
+            <a href="#menu" class="btn-primary nav-btn">Reserve a Table</a>
+            <button class="menu-btn" id="menu-btn" aria-label="Open menu">
+                <span class="line"></span><span class="line"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Fullscreen Menu -->
+    <div class="fullscreen-menu" id="fs-menu">
+        <div class="menu-content">
+            <div class="menu-header">
+                <button class="close-btn" id="close-btn" aria-label="Close menu">&times;</button>
+            </div>
+            <ul class="menu-links">
+                <li><a href="#top" class="menu-link">Home</a></li>
+                <li><a href="#menu" class="menu-link">Menu</a></li>
+                <li><a href="#about" class="menu-link">Our Story</a></li>
+                <li><a href="#gallery" class="menu-link">Gallery</a></li>
+                <li><a href="#location" class="menu-link">Visit Us</a></li>
+            </ul>
+            <div class="menu-info">
+                <p style="color:var(--accent);">12 Adeola Odeku Street, Victoria Island, Lagos</p>
+                <p>hello@amalahouse.ng | +234 800 262 5200</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-label reveal delay-1">Est. 2018 &mdash; Victoria Island, Lagos</div>
+            <h1 class="reveal delay-2">Authentic Nigerian<br><i>Cuisine</i> in the<br>Heart of Lagos</h1>
+            <p class="hero-sub reveal delay-3">Where tradition meets excellence. Every dish tells a story of heritage, crafted with the finest local ingredients.</p>
+            <div class="hero-ctas reveal delay-3">
+                <a href="https://wa.me/15873201360?text=Hi%20Amala%20House!%20I'd%20like%20to%20reserve%20a%20table." target="_blank" rel="noopener" class="btn-primary">Reserve a Table</a>
+                <a href="#menu" class="btn-secondary">View Menu</a>
+            </div>
+            <div class="scroll-ind reveal delay-4">Explore &darr;</div>
+        </div>
+    </section>
+
+    <!-- Marquee -->
+    <div class="marquee-section">
+        <div class="marquee-wrap">
+            <div class="marquee">
+                <span>Amala</span><span>Efo Riro</span><span>Ofada Rice</span><span>Suya</span><span>Pounded Yam</span><span>Jollof Rice</span><span>Pepper Soup</span><span>Amala</span><span>Efo Riro</span><span>Ofada Rice</span><span>Suya</span><span>Pounded Yam</span><span>Jollof Rice</span><span>Pepper Soup</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Section -->
+    <section class="section" id="menu">
+        <div class="container">
+            <h2 class="section-title reveal">Our Menu</h2>
+            <p class="section-subtitle reveal delay-1">A carefully curated selection of authentic Nigerian dishes, prepared with time-honoured recipes and the freshest local ingredients.</p>
+
+            <!-- Menu Categories -->
+            <div class="menu-categories">
+                <!-- Starters -->
+                <div class="menu-category reveal">
+                    <h3 class="category-title">Starters</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Suya Skewers</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;4,500</span>
+                            </div>
+                            <p class="item-desc">Spiced beef strips grilled over open flame, served with sliced onions, tomatoes, and yaji pepper</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Peppered Snail</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;6,500</span>
+                            </div>
+                            <p class="item-desc">Giant African snails slow-cooked in a rich, spicy pepper sauce with onions and scotch bonnet</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Gizdodo</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;3,800</span>
+                            </div>
+                            <p class="item-desc">Gizzard and fried plantain tossed in a vibrant bell pepper and onion sauce</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Pepper Soup</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;5,000</span>
+                            </div>
+                            <p class="item-desc">Spicy goat meat broth with traditional herbs, uziza leaves, and a kick of scotch bonnet</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mains -->
+                <div class="menu-category reveal delay-1">
+                    <h3 class="category-title">Mains</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Amala &amp; Ewedu</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;5,500</span>
+                            </div>
+                            <p class="item-desc">Our signature yam flour amala with silky ewedu soup, gbegiri, and assorted meat stew</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Jollof Rice Supreme</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;7,000</span>
+                            </div>
+                            <p class="item-desc">Smoky party-style jollof rice with grilled chicken, plantain, and coleslaw</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Ofada Rice &amp; Sauce</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;6,500</span>
+                            </div>
+                            <p class="item-desc">Local brown rice served with spicy ofada sauce, assorted peppers, and iru (locust beans)</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Pounded Yam &amp; Egusi</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;6,000</span>
+                            </div>
+                            <p class="item-desc">Hand-pounded yam with rich melon seed soup, spinach, stockfish, and assorted meat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Desserts -->
+                <div class="menu-category reveal delay-2">
+                    <h3 class="category-title">Desserts</h3>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Puff Puff Bites</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;2,500</span>
+                            </div>
+                            <p class="item-desc">Golden fried dough balls dusted with cinnamon sugar, served with chocolate dipping sauce</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Coconut Chin Chin</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;2,000</span>
+                            </div>
+                            <p class="item-desc">Crunchy coconut-infused chin chin bites with a drizzle of honey and toasted sesame</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Plantain Brulee</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;3,500</span>
+                            </div>
+                            <p class="item-desc">Caramelised ripe plantain with vanilla custard, torched sugar crust, and palm wine reduction</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="item-top">
+                                <h4>Zobo Sorbet</h4>
+                                <span class="dots"></span>
+                                <span class="item-price">&#8358;2,800</span>
+                            </div>
+                            <p class="item-desc">Refreshing hibiscus sorbet with ginger, cloves, and a hint of pineapple</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image reveal">
+                    <div class="about-img-placeholder" role="img" aria-label="Interior of Amala House restaurant showing warm ambient lighting and traditional decor"></div>
+                </div>
+                <div class="about-text reveal delay-1">
+                    <span class="about-label">Our Story</span>
+                    <h2>Born from a <i>Love</i> of Nigerian Food</h2>
+                    <p>Amala House started in 2018 with a simple belief: Nigerian cuisine deserves a stage as grand as its flavours. What began as a small kitchen in Surulere has grown into one of Victoria Island's most celebrated dining destinations.</p>
+                    <p>Our chefs draw from recipes passed down through generations, using locally sourced ingredients and traditional cooking methods. Every bowl of amala is hand-turned. Every pot of egusi is slow-simmered. Every plate that leaves our kitchen carries the soul of Nigerian cooking.</p>
+                    <p>We are not just a restaurant. We are a gathering place where families celebrate, friends reconnect, and every guest leaves feeling at home.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <span class="stat-number">8+</span>
+                            <span class="stat-label">Years Serving Lagos</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50K+</span>
+                            <span class="stat-label">Happy Diners</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.8</span>
+                            <span class="stat-label">Google Rating</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section section" id="gallery">
+        <div class="container">
+            <div class="gallery-header">
+                <h2 class="section-title reveal" style="text-align:left; margin-bottom:0;">The Experience</h2>
+                <p class="reveal delay-1">Step inside Amala House and discover a space where traditional Nigerian warmth meets contemporary elegance. Every detail was designed to make you feel at home.</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="g-item g-large reveal delay-1" role="img" aria-label="Restaurant interior with warm lighting">
+                    <div class="g-placeholder g-pl-1"></div>
+                    <span class="g-caption">The Dining Hall</span>
+                </div>
+                <div class="g-item reveal delay-2" role="img" aria-label="Chef preparing amala">
+                    <div class="g-placeholder g-pl-2"></div>
+                    <span class="g-caption">Our Kitchen</span>
+                </div>
+                <div class="g-item reveal delay-3" role="img" aria-label="Plate of jollof rice">
+                    <div class="g-placeholder g-pl-3"></div>
+                    <span class="g-caption">Jollof Supreme</span>
+                </div>
+                <div class="g-item reveal delay-1" role="img" aria-label="Private dining area">
+                    <div class="g-placeholder g-pl-4"></div>
+                    <span class="g-caption">Private Dining</span>
+                </div>
+                <div class="g-item g-tall reveal delay-2" role="img" aria-label="Traditional decor">
+                    <div class="g-placeholder g-pl-5"></div>
+                    <span class="g-caption">Adire Details</span>
+                </div>
+                <div class="g-item reveal delay-3" role="img" aria-label="Signature cocktail">
+                    <div class="g-placeholder g-pl-6"></div>
+                    <span class="g-caption">Chapman Special</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Hours Section -->
+    <section class="location-section section" id="location">
+        <div class="container">
+            <div class="location-grid">
+                <div class="location-info reveal">
+                    <h2 class="section-title" style="text-align:left;">Find Us</h2>
+
+                    <div class="info-block">
+                        <span class="info-label">Address</span>
+                        <p>12 Adeola Odeku Street<br>Victoria Island, Lagos<br>Nigeria</p>
+                    </div>
+
+                    <div class="info-block">
+                        <span class="info-label">Opening Hours</span>
+                        <div class="hours-grid">
+                            <div class="hours-row">
+                                <span>Monday - Thursday</span>
+                                <span>12:00 PM - 10:00 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span>Friday - Saturday</span>
+                                <span>12:00 PM - 11:30 PM</span>
+                            </div>
+                            <div class="hours-row">
+                                <span>Sunday</span>
+                                <span>1:00 PM - 9:00 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-block">
+                        <span class="info-label">Reservations</span>
+                        <p>+234 800 262 5200</p>
+                        <p style="margin-top:8px;">hello@amalahouse.ng</p>
+                        <a href="https://wa.me/15873201360?text=Hi%20Amala%20House!%20I'd%20like%20to%20reserve%20a%20table." target="_blank" rel="noopener" class="btn-primary wa-btn" style="margin-top:20px; background:#25D366; border-color:#25D366; color:#fff;">Book via WhatsApp</a>
+                    </div>
+                </div>
+
+                <div class="map-wrap reveal delay-1">
+                    <div class="map-placeholder">
+                        <div class="map-pin">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        </div>
+                        <span class="map-label">12 Adeola Odeku St, Victoria Island</span>
+                        <div class="map-grid-lines"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="premium-footer section">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="f-brand reveal">
+                    <h2 class="logo" style="margin-bottom:20px; font-size:2.2rem;">Amala House</h2>
+                    <p style="color:var(--text-muted);">Authentic Nigerian cuisine in the heart of Victoria Island. Where tradition meets excellence.</p>
+                </div>
+                <div class="f-links reveal delay-1">
+                    <h4>Navigate</h4>
+                    <ul>
+                        <li><a href="#top">Home</a></li>
+                        <li><a href="#menu">Our Menu</a></li>
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#location">Visit Us</a></li>
+                    </ul>
+                </div>
+                <div class="f-links reveal delay-2">
+                    <h4>Hours</h4>
+                    <ul>
+                        <li>Mon - Thu: 12PM - 10PM</li>
+                        <li>Fri - Sat: 12PM - 11:30PM</li>
+                        <li>Sun: 1PM - 9PM</li>
+                        <li style="color:var(--accent); margin-top:8px;">Private dining available</li>
+                    </ul>
+                </div>
+                <div class="f-links reveal delay-3">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a></li>
+                        <li><a href="https://facebook.com" target="_blank" rel="noopener">Facebook</a></li>
+                        <li><a href="https://twitter.com" target="_blank" rel="noopener">Twitter</a></li>
+                        <li><a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Amala House. All Rights Reserved.</p>
+                <div style="text-align:center; margin-top:12px;">
+                    <a href="https://pejji.com" target="_blank" rel="noopener noreferrer" style="display:inline-flex; align-items:center; gap:8px; padding:6px 16px; border-radius:9999px; border:1px solid rgba(10,143,143,0.3); color:#0A8F8F; text-decoration:none; font-size:14px; font-weight:500; transition:border-color 0.3s;" onmouseover="this.style.borderColor='rgba(10,143,143,0.6)'" onmouseout="this.style.borderColor='rgba(10,143,143,0.3)'"><span>&lt;/&gt;</span><span>Built by Pejji</span></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/15873201360?text=Hi%20Amala%20House!%20I'd%20like%20to%20reserve%20a%20table." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Book on WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <script>
+    /* Scroll Reveal */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    /* Custom Cursor */
+    const cursor = document.querySelector('.cursor-glow');
+    if (window.matchMedia('(pointer: fine)').matches) {
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('a, button, .menu-item').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+        });
+    }
+
+    /* Mobile Menu */
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-btn');
+    const fsMenu = document.getElementById('fs-menu');
+    menuBtn.addEventListener('click', () => { fsMenu.classList.add('active'); document.body.style.overflow = 'hidden'; });
+    closeBtn.addEventListener('click', () => { fsMenu.classList.remove('active'); document.body.style.overflow = ''; });
+    document.querySelectorAll('.menu-link').forEach(link => {
+        link.addEventListener('click', () => { fsMenu.classList.remove('active'); document.body.style.overflow = ''; });
+    });
+
+    /* Sticky Nav Background */
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 80) { nav.classList.add('scrolled'); }
+        else { nav.classList.remove('scrolled'); }
+    });
+
+    /* Smooth scroll for anchor links */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            const target = document.querySelector(a.getAttribute('href'));
+            if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        });
+    });
+    </script>
+</body>
+</html>
