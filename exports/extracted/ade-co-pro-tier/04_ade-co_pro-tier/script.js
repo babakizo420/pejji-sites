@@ -22,28 +22,10 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // WhatsApp config
-const WHATSAPP_NUMBER = '15873201360';
+const WHATSAPP_NUMBER = '2349044526924';
 
-// Interactive Shopping Cart State Logic
+// Cart state (in-memory only, resets on refresh)
 let cart = [];
-
-// localStorage persistence - load cart on init
-try {
-    const saved = localStorage.getItem('ade-co-cart');
-    if (saved) {
-        cart = JSON.parse(saved);
-    }
-} catch (e) {
-    cart = [];
-}
-
-function saveCart() {
-    try {
-        localStorage.setItem('ade-co-cart', JSON.stringify(cart));
-    } catch (e) {
-        // localStorage unavailable, silently fail
-    }
-}
 
 const cartToggle = document.getElementById('cart-toggle');
 const closeCart = document.getElementById('close-cart');
@@ -59,18 +41,10 @@ function formatMoney(amount) {
     return '\u20A6' + parseInt(amount).toLocaleString();
 }
 
-function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.appendChild(document.createTextNode(str));
-    return div.innerHTML;
-}
-
 function updateCartUI() {
-    // Update counts
     cartCountEls.forEach(el => el.textContent = cart.length);
     cartCountTitle.textContent = '(' + cart.length + ')';
 
-    // Render items
     if(cart.length === 0) {
         cartItemsContainer.innerHTML = '';
         const emptyMsg = document.createElement('p');
@@ -109,7 +83,8 @@ function updateCartUI() {
             removeBtn.className = 'remove-item';
             removeBtn.textContent = 'Remove';
             removeBtn.addEventListener('click', function() {
-                removeFromCart(index);
+                cart.splice(index, 1);
+                updateCartUI();
             });
 
             info.appendChild(title);
@@ -122,12 +97,6 @@ function updateCartUI() {
 
         cartSubtotalEl.textContent = formatMoney(total);
     }
-}
-
-function removeFromCart(index) {
-    cart.splice(index, 1);
-    saveCart();
-    updateCartUI();
 }
 
 function openCart() {
@@ -146,7 +115,7 @@ cartToggle.addEventListener('click', (e) => { e.preventDefault(); openCart(); })
 closeCart.addEventListener('click', closeCartFunc);
 cartOverlay.addEventListener('click', closeCartFunc);
 
-// Add to Cart Logic (Advanced Size Selector & Toast)
+// Add to Cart — works on both click and touch (quick-add always visible on mobile via CSS)
 document.querySelectorAll('.add-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
         e.preventDefault();
@@ -158,43 +127,30 @@ document.querySelectorAll('.add-btn').forEach(btn => {
         const name = this.getAttribute('data-name');
         const price = this.getAttribute('data-price');
         const size = this.getAttribute('data-size');
-
         const itemName = size ? name + ' - Size ' + size : name;
 
-        // Add to array and persist
-        cart.push({ name: itemName, price: price, gradient: gradient });
-        saveCart();
+        // Highlight selected size
+        const sizeContainer = this.closest('.p-sizes');
+        if (sizeContainer) {
+            sizeContainer.querySelectorAll('.size-btn').forEach(b => b.classList.remove('selected'));
+        }
+        this.classList.add('selected');
 
-        // Show Micro-interaction Toast
+        // Add to cart
+        cart.push({ name: itemName, price: price, gradient: gradient });
+
+        // Toast notification
         const toast = document.createElement('div');
         toast.className = 'toast-msg';
-        const checkmark = document.createTextNode('\u2714 ADDED ');
-        const strong = document.createElement('strong');
-        strong.textContent = itemName;
-        toast.appendChild(checkmark);
-        toast.appendChild(strong);
+        toast.textContent = '\u2714 Added ' + itemName;
         document.getElementById('toast-container').appendChild(toast);
 
-        // Visual feedback on button
-        const originalText = this.innerHTML;
-        this.innerHTML = '\u2714';
-        this.style.background = '#111';
-        this.style.color = 'white';
-        this.style.borderColor = '#111';
-
+        // Brief delay then open cart
         setTimeout(() => {
-            this.innerHTML = originalText;
-            this.style.background = '';
-            this.style.color = '';
-            this.style.borderColor = '';
-
-            // Remove toast
-            setTimeout(() => { if (toast.parentNode) toast.remove(); }, 2500);
-
-            // Pop open the cart
             updateCartUI();
             openCart();
-        }, 500);
+            setTimeout(() => { if (toast.parentNode) toast.remove(); }, 2000);
+        }, 400);
     });
 });
 
@@ -215,5 +171,5 @@ checkoutBtn.addEventListener('click', function() {
     window.open('https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encoded, '_blank');
 });
 
-// Initialize cart UI on load (for localStorage persistence)
+// Initialize cart UI
 updateCartUI();

@@ -5,6 +5,8 @@ import { WHATSAPP_URL } from '../config';
 
 <Base title="Get Started | Pejji" description="Fill out the form below or message us directly on WhatsApp. We typically respond within 2 hours.">
 
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
   <!-- HEADER -->
   <section class="py-16 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -97,6 +99,8 @@ import { WHATSAPP_URL } from '../config';
               </div>
             </div>
 
+            <div class="cf-turnstile" data-sitekey="0x4AAAAAAC0oimix5MWShwK0" data-theme="dark"></div>
+
             <button type="submit" class="w-full px-8 py-4 bg-orange text-white font-semibold rounded-lg hover:bg-orange/90 transition-colors text-center">
               Get Started
             </button>
@@ -174,7 +178,7 @@ import { WHATSAPP_URL } from '../config';
       }
     }
 
-    // Form submission via Web3Forms
+    // Form submission via Web3Forms with Turnstile validation
     const form = document.getElementById('inquiry-form') as HTMLFormElement;
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -225,6 +229,20 @@ import { WHATSAPP_URL } from '../config';
       const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
       const originalText = btn?.textContent || 'Get Started';
 
+      // Check Turnstile completion
+      const turnstileResponse = form.querySelector('[name="cf-turnstile-response"]') as HTMLInputElement;
+      if (!turnstileResponse || !turnstileResponse.value) {
+        if (btn) {
+          btn.textContent = 'Please complete the verification';
+          btn.style.background = '#ef4444';
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.background = '';
+          }, 2500);
+        }
+        return;
+      }
+
       if (btn) {
         btn.textContent = 'Sending...';
         btn.setAttribute('disabled', 'true');
@@ -232,6 +250,8 @@ import { WHATSAPP_URL } from '../config';
 
       try {
         const formData = new FormData(form);
+        // Remove Turnstile token - Web3Forms doesn't need it
+        formData.delete('cf-turnstile-response');
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           body: formData,
@@ -239,6 +259,17 @@ import { WHATSAPP_URL } from '../config';
         const result = await response.json();
 
         if (result.success) {
+          // Send Telegram notification with lead details
+          try {
+            const leadData = Object.fromEntries(formData.entries());
+            const msg = `NEW PEJJI LEAD\n\nBusiness: ${leadData.business_name || '-'}\nName: ${leadData.your_name || '-'}\nPhone: ${leadData.phone || '-'}\nEmail: ${leadData.email || '-'}\nIndustry: ${leadData.industry || '-'}\nTier: ${leadData.tier || '-'}\nHas Logo: ${leadData.has_logo || '-'}\nAbout: ${leadData.about || '-'}\n\nSource: pejji.com/contact`;
+            fetch('https://api.telegram.org/bot8616559738:AAGkj_079rqvx-qiN6nkQG-8IvkcBEeLYEk/sendMessage', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ chat_id: '5413679846', text: msg })
+            }).catch(() => {});
+          } catch {}
+
           if (btn) {
             btn.textContent = 'Sent! We\'ll be in touch.';
             btn.classList.remove('bg-orange');
