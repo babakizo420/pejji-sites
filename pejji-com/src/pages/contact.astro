@@ -206,6 +206,8 @@ import { WHATSAPP_URL } from '../config';
 
       try {
         const formData = new FormData(form);
+        // Remove Turnstile token - Web3Forms doesn't need it
+        formData.delete('cf-turnstile-response');
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           body: formData,
