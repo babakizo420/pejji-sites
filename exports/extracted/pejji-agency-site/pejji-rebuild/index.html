@@ -487,5 +487,18 @@
   </button>
 
   <script src="script.js"></script>
+<!-- Cookie Consent Banner (NDPA Compliant) -->
+    <div id="cookie-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:100; background:rgba(10,10,10,0.97); border-top:1px solid rgba(255,255,255,0.1); padding:16px 20px;">
+        <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px;">
+            <p style="color:#888; font-size:14px; margin:0; flex:1; min-width:200px;">We use cookies to improve your experience and analyze site traffic. By continuing to browse, you consent to our use of cookies in accordance with the Nigeria Data Protection Act (NDPA) 2023.</p>
+            <div style="display:flex; align-items:center; gap:12px; flex-shrink:0;">
+                <button id="cookie-accept" style="background:#e8e8e8; color:#0a0a0a; font-size:14px; font-weight:600; padding:8px 20px; border-radius:9999px; border:none; cursor:pointer;">Accept</button>
+            </div>
+        </div>
+    </div>
+    <script>
+    (function(){if(!localStorage.getItem('cookie-consent')){document.getElementById('cookie-banner').style.display='block';}document.getElementById('cookie-accept')?.addEventListener('click',function(){localStorage.setItem('cookie-consent','accepted');document.getElementById('cookie-banner').style.display='none';});})();
+    </script>
+
 </body>
 </html>
