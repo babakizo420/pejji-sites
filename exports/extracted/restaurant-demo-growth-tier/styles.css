@@ -194,7 +194,7 @@ body:hover .cursor-glow { opacity: 1; }
 .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: center; }
 .about-img-placeholder {
     width: 100%; height: 500px; border-radius: 8px; position: relative; overflow: hidden;
-    background: url('images/chef.jpg') center/cover no-repeat;
+    background: url('images/our-story.jpg') center/cover no-repeat;
 }
 .about-img-placeholder::after {
     content: ''; display: none;
@@ -246,10 +246,10 @@ body:hover .cursor-glow { opacity: 1; }
 /* Gallery images */
 .g-pl-1 { background: url('images/hero-restaurant.jpg') center/cover no-repeat; }
 .g-pl-2 { background: url('images/jollof-rice.jpg') center/cover no-repeat; }
-.g-pl-3 { background: url('images/amala-ewedu.jpg') center/cover no-repeat; }
-.g-pl-4 { background: url('images/suya.jpg') center/cover no-repeat; }
-.g-pl-5 { background: url('images/chef.jpg') center/cover no-repeat; }
-.g-pl-6 { background: url('images/dining-room.jpg') center/cover no-repeat; }
+.g-pl-3 { background: url('images/kitchen.jpg') center/cover no-repeat; }
+.g-pl-4 { background: url('images/chapman.jpg') center/cover no-repeat; }
+.g-pl-5 { background: url('images/adire.jpg') center/cover no-repeat; }
+.g-pl-6 { background: url('images/evening-service.jpg') center/cover no-repeat; }
 
 /* Location Section */
 .location-section { background: var(--bg-deep); }
