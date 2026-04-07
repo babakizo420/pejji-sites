@@ -373,6 +373,103 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
         }
       }
     </style>
+
+    <!-- AEO: LocalBusiness + Service structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "WebDesign", "ProfessionalService"],
+      "name": "Pejji",
+      "url": "https://pejji.com",
+      "logo": "https://pejji.com/favicon.svg",
+      "image": "https://pejji.com/og-image.png",
+      "description": "Pejji builds fast, secure, beautiful websites for Nigerian businesses. NDPA-compliant, security-first web design starting from ₦60,000. Serving Lagos, Abuja, and Port Harcourt.",
+      "telephone": "+2349044526924",
+      "email": "hello@pejji.com",
+      "priceRange": "₦60,000 - ₦800,000+",
+      "currenciesAccepted": "NGN",
+      "paymentAccepted": "Bank Transfer, Cash",
+      "areaServed": [
+        { "@type": "City", "name": "Lagos", "containedInPlace": { "@type": "Country", "name": "Nigeria" } },
+        { "@type": "City", "name": "Abuja", "containedInPlace": { "@type": "Country", "name": "Nigeria" } },
+        { "@type": "City", "name": "Port Harcourt", "containedInPlace": { "@type": "Country", "name": "Nigeria" } },
+        { "@type": "Country", "name": "Nigeria" }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "NG",
+        "addressLocality": "Lagos"
+      },
+      "sameAs": [
+        "https://instagram.com/pejji.ng",
+        "https://wa.me/2349044526924"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Pejji Website Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Card - Digital Business Card Website",
+            "description": "Single-page digital business card website. Get your business online in 48 hours with contact info, services, and WhatsApp booking.",
+            "price": "60000",
+            "priceCurrency": "NGN",
+            "url": "https://pejji.com/services"
+          },
+          {
+            "@type": "Offer",
+            "name": "Starter - Professional Landing Page",
+            "description": "Professional multi-section landing page that converts visitors into customers. Includes contact forms, SEO, and analytics.",
+            "price": "150000",
+            "priceCurrency": "NGN",
+            "url": "https://pejji.com/services"
+          },
+          {
+            "@type": "Offer",
+            "name": "Growth - Business Website with Booking",
+            "description": "Full business website with booking system, services pages, customer management, and WhatsApp integration.",
+            "price": "300000",
+            "priceCurrency": "NGN",
+            "url": "https://pejji.com/services"
+          },
+          {
+            "@type": "Offer",
+            "name": "Pro - Full E-commerce Store",
+            "description": "Complete e-commerce store with product catalog, shopping cart, payment integration, and order management. Built for Nigerian businesses.",
+            "price": "800000",
+            "priceCurrency": "NGN",
+            "url": "https://pejji.com/services"
+          }
+        ]
+      },
+      "knowsAbout": [
+        "Web Design",
+        "Web Development",
+        "E-commerce Development",
+        "NDPA Compliance",
+        "Website Security",
+        "Nigerian Business Websites",
+        "WhatsApp Business Integration",
+        "SSL Certificates",
+        "Security Headers",
+        "Responsive Design"
+      ],
+      "slogan": "Your Business Deserves a Website That Works"
+    })} />
+
+    <!-- AEO: BreadcrumbList structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pejji.com/" },
+        ...(Astro.url.pathname !== "/" ? [{
+          "@type": "ListItem",
+          "position": 2,
+          "name": Astro.url.pathname.replace(/^\//, "").replace(/\/$/, "").replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase()) || "Home",
+          "item": `https://pejji.com${Astro.url.pathname}`
+        }] : [])
+      ]
+    })} />
   </head>
   <body class="bg-dark text-light font-sans antialiased" data-wa-number={WHATSAPP_NUMBER}>
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-dark/80 backdrop-blur-md border-b border-white/5">
