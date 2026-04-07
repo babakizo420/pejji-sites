@@ -133,14 +133,49 @@ jobs:
       - name: Demo site header check
         run: |
           echo "Checking demo site _headers files..."
+          FAIL=0
           for DEMO in exports/extracted/*/; do
-            SUBDIR=$(find "$DEMO" -maxdepth 1 -type d | tail -1)
-            if [ -f "$SUBDIR/_headers" ]; then
-              echo "[PASS] $SUBDIR has _headers"
+            HEADERS_FILE=$(find "$DEMO" -name "_headers" -type f 2>/dev/null | head -1)
+            if [ -n "$HEADERS_FILE" ]; then
+              echo "[PASS] $DEMO has _headers"
             else
-              echo "[WARN] $SUBDIR missing _headers"
+              echo "[FAIL] $DEMO missing _headers"
+              FAIL=1
             fi
           done
+          if [ $FAIL -eq 1 ]; then echo "::error::Demo sites missing security headers!"; exit 1; fi
+      - name: NDPA compliance check
+        run: |
+          echo "Checking NDPA compliance across all sites..."
+          FAIL=0
+          # Check pejji-com for cookie consent
+          if grep -rq "cookie-consent\|cookie-banner" pejji-com/src/ 2>/dev/null; then
+            echo "[PASS] pejji-com has cookie consent"
+          else
+            echo "[FAIL] pejji-com missing cookie consent"
+            FAIL=1
+          fi
+          # Check all demo sites for cookie consent
+          for DEMO in exports/extracted/*/; do
+            INDEX=$(find "$DEMO" -name "index.html" -type f 2>/dev/null | head -1)
+            if [ -n "$INDEX" ]; then
+              NAME=$(basename "$DEMO")
+              if grep -q "cookie-consent\|cookie-banner" "$INDEX" 2>/dev/null; then
+                echo "[PASS] $NAME has cookie consent"
+              else
+                echo "[FAIL] $NAME missing cookie consent (NDPA non-compliant)"
+                FAIL=1
+              fi
+              if grep -q "Content-Security-Policy" "$INDEX" 2>/dev/null; then
+                echo "[PASS] $NAME has CSP meta tag"
+              else
+                echo "[FAIL] $NAME missing CSP meta tag"
+                FAIL=1
+              fi
+            fi
+          done
+          if [ $FAIL -eq 1 ]; then echo "::error::NDPA compliance check failed! All sites must have cookie consent and CSP."; exit 1; fi
+          echo "All sites NDPA compliant."
 
   performance:
     name: Performance Check
