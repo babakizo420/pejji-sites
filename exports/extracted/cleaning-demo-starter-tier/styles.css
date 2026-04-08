@@ -207,7 +207,7 @@ ul { list-style: none; }
 .hero {
   padding: 140px 0 100px;
   text-align: center;
-  background: linear-gradient(135deg, var(--green-light) 0%, #fff 60%);
+  background: linear-gradient(135deg, rgba(240,253,244,0.85) 0%, rgba(255,255,255,0.9) 60%), url('images/hero-cleaning.jpg') center/cover no-repeat;
 }
 
 .hero-badge {

@@ -230,9 +230,8 @@ section {
     content: '';
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(ellipse at 20% 50%, rgba(212, 168, 83, 0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(212, 168, 83, 0.05) 0%, transparent 50%);
+    background: url('images/hero-aerial.jpg') center/cover no-repeat;
+    filter: brightness(0.3);
     pointer-events: none;
 }
 
