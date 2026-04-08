@@ -190,11 +190,9 @@ img {
 .hero-bg {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 50%, rgba(232, 184, 109, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(232, 184, 109, 0.05) 0%, transparent 50%),
-    linear-gradient(180deg, #0A0A0A 0%, #111111 50%, #0A0A0A 100%);
+  background: url('images/hero-photographer.jpg') center/cover no-repeat;
   z-index: 0;
+  filter: brightness(0.4);
 }
 
 .hero-bg::after {
@@ -333,14 +331,14 @@ img {
 }
 
 /* varied heights for masonry effect */
-.masonry-item:nth-child(1) .placeholder { height: 380px; background: linear-gradient(135deg, #2a1f0e 0%, #1a1a1a 50%, #2a1f0e 100%); }
-.masonry-item:nth-child(2) .placeholder { height: 280px; background: linear-gradient(135deg, #1a1a2e 0%, #1a1a1a 50%, #0e1a2a 100%); }
-.masonry-item:nth-child(3) .placeholder { height: 340px; background: linear-gradient(135deg, #1a2a1a 0%, #1a1a1a 50%, #0e2a1a 100%); }
-.masonry-item:nth-child(4) .placeholder { height: 300px; background: linear-gradient(135deg, #2a0e1a 0%, #1a1a1a 50%, #2a0e2a 100%); }
-.masonry-item:nth-child(5) .placeholder { height: 360px; background: linear-gradient(135deg, #2a2a0e 0%, #1a1a1a 50%, #1a2a0e 100%); }
-.masonry-item:nth-child(6) .placeholder { height: 260px; background: linear-gradient(135deg, #0e2a2a 0%, #1a1a1a 50%, #0e1a2a 100%); }
-.masonry-item:nth-child(7) .placeholder { height: 320px; background: linear-gradient(135deg, #2a1a0e 0%, #1a1a1a 50%, #2a0e0e 100%); }
-.masonry-item:nth-child(8) .placeholder { height: 290px; background: linear-gradient(135deg, #1a0e2a 0%, #1a1a1a 50%, #0e0e2a 100%); }
+.masonry-item:nth-child(1) .placeholder { height: 380px; background: url('images/gallery-wedding.jpg') center/cover no-repeat; }
+.masonry-item:nth-child(2) .placeholder { height: 280px; background: url('images/gallery-portrait.jpg') center/cover no-repeat; }
+.masonry-item:nth-child(3) .placeholder { height: 340px; background: url('images/gallery-corporate.jpg') center/cover no-repeat; }
+.masonry-item:nth-child(4) .placeholder { height: 300px; background: url('images/hero-photographer.jpg') center/cover no-repeat; }
+.masonry-item:nth-child(5) .placeholder { height: 360px; background: url('images/gallery-wedding.jpg') center 30%/cover no-repeat; }
+.masonry-item:nth-child(6) .placeholder { height: 260px; background: url('images/gallery-corporate.jpg') center 40%/cover no-repeat; }
+.masonry-item:nth-child(7) .placeholder { height: 320px; background: url('images/gallery-portrait.jpg') center 20%/cover no-repeat; }
+.masonry-item:nth-child(8) .placeholder { height: 290px; background: url('images/hero-photographer.jpg') center 60%/cover no-repeat; }
 
 .masonry-item .overlay {
   position: absolute;
