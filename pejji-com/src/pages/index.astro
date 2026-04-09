@@ -162,78 +162,88 @@ import { WHATSAPP_URL } from '../config';
     </div>
   </section>
 
-  <!-- PORTFOLIO PREVIEW -->
+  <!-- PORTFOLIO CAROUSEL -->
   <section id="portfolio" class="py-16 sm:py-24">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 sm:mb-16 reveal">
         <h2 class="text-3xl sm:text-4xl font-bold">Our Work</h2>
         <p class="mt-4 text-subtle text-lg">Real sites for real businesses.</p>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 stagger-children">
-        <a href="https://kachi.pejji.com" target="_blank" rel="noopener" class="card-tactile bg-surface border border-white/5 rounded-2xl overflow-hidden group hover:border-teal/30 block">
-          <div class="aspect-video bg-gradient-to-br from-yellow-500/20 to-surface flex items-center justify-center overflow-hidden">
-            <img src="/portfolio/kachi-hero.jpg" alt="Kachi The Barber website screenshot" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-xs bg-teal/10 text-teal px-2.5 py-1 rounded-full">Barber Shop</span>
-              <span class="text-xs bg-white/5 text-subtle px-2.5 py-1 rounded-full">Card</span>
+    </div>
+    <div class="portfolio-carousel-wrap">
+      <div class="portfolio-carousel">
+        {[
+          { name: "Kachi The Barber", tag: "Barber Shop", tier: "Card", url: "https://kachi.pejji.com", img: "/portfolio/kachi-hero.jpg", gradient: "from-yellow-500/20" },
+          { name: "SwiftDrop Logistics", tag: "Logistics/Delivery", tier: "Starter", url: "https://swiftdrop-demo.pejji.com", img: "/portfolio/swiftdrop-hero.jpg", gradient: "from-green-500/20" },
+          { name: "SparkleClean", tag: "Cleaning Service", tier: "Starter", url: "https://cleaning-demo.pejji.com", img: "/portfolio/cleaning-hero.jpg", gradient: "from-blue-500/20" },
+          { name: "Lens & Light", tag: "Photography", tier: "Starter", url: "https://photography-demo.pejji.com", img: "/portfolio/photography-hero.jpg", gradient: "from-indigo-500/20" },
+          { name: "GlowUp Beauty", tag: "Beauty/Salon", tier: "Growth", url: "https://glowup-demo.pejji.com", img: "/portfolio/glowup-hero.jpg", gradient: "from-pink-500/20" },
+          { name: "Amala House", tag: "Restaurant", tier: "Growth", url: "https://restaurant-demo.pejji.com", img: "/portfolio/restaurant-hero.jpg", gradient: "from-red-500/20" },
+          { name: "Prime Properties", tag: "Real Estate", tier: "Growth", url: "https://realestate-demo.pejji.com", img: "/portfolio/realestate-hero.jpg", gradient: "from-emerald-500/20" },
+          { name: "Ade & Co. Fashion", tag: "Fashion/E-commerce", tier: "Pro", url: "https://ade-demo.pejji.com", img: "/portfolio/ade-hero.jpg", gradient: "from-orange/20" },
+        ].map((demo) => (
+          <a href={demo.url} target="_blank" rel="noopener" class="portfolio-card bg-surface border border-white/5 rounded-2xl overflow-hidden group hover:border-teal/30 block flex-shrink-0">
+            <div class={`aspect-video bg-gradient-to-br ${demo.gradient} to-surface flex items-center justify-center overflow-hidden`}>
+              <img src={demo.img} alt={`${demo.name} website screenshot`} class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" loading="lazy" />
             </div>
-            <h3 class="font-semibold text-lg">Kachi The Barber</h3>
-            <p class="text-subtle text-sm mt-2">Single-page barber shop site with services, pricing, live opening hours, WhatsApp booking, and Google Maps.</p>
-            <span class="inline-flex items-center gap-1 text-teal text-sm font-medium mt-3 group-hover:gap-2 transition-all">View Live Site <span>→</span></span>
-          </div>
-        </a>
-        <a href="https://swiftdrop-demo.pejji.com" target="_blank" rel="noopener" class="card-tactile bg-surface border border-white/5 rounded-2xl overflow-hidden group hover:border-teal/30 block">
-          <div class="aspect-video bg-gradient-to-br from-green-500/20 to-surface flex items-center justify-center overflow-hidden">
-            <img src="/portfolio/swiftdrop-hero.jpg" alt="SwiftDrop Logistics website screenshot" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-xs bg-teal/10 text-teal px-2.5 py-1 rounded-full">Logistics/Delivery</span>
-              <span class="text-xs bg-white/5 text-subtle px-2.5 py-1 rounded-full">Starter</span>
+            <div class="p-5">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs bg-teal/10 text-teal px-2.5 py-1 rounded-full">{demo.tag}</span>
+                <span class="text-xs bg-white/5 text-subtle px-2.5 py-1 rounded-full">{demo.tier}</span>
+              </div>
+              <h3 class="font-semibold text-base">{demo.name}</h3>
+              <span class="inline-flex items-center gap-1 text-teal text-sm font-medium mt-2 group-hover:gap-2 transition-all">View Site <span>→</span></span>
             </div>
-            <h3 class="font-semibold text-lg">SwiftDrop Logistics</h3>
-            <p class="text-subtle text-sm mt-2">Professional landing page with booking form, real-time tracking, and WhatsApp integration.</p>
-            <span class="inline-flex items-center gap-1 text-teal text-sm font-medium mt-3 group-hover:gap-2 transition-all">View Live Site <span>→</span></span>
-          </div>
-        </a>
-        <a href="https://glowup-demo.pejji.com" target="_blank" rel="noopener" class="card-tactile bg-surface border border-white/5 rounded-2xl overflow-hidden group hover:border-teal/30 block">
-          <div class="aspect-video bg-gradient-to-br from-pink-500/20 to-surface flex items-center justify-center overflow-hidden">
-            <img src="/portfolio/glowup-hero.jpg" alt="GlowUp Beauty website screenshot" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-xs bg-teal/10 text-teal px-2.5 py-1 rounded-full">Beauty/Salon</span>
-              <span class="text-xs bg-white/5 text-subtle px-2.5 py-1 rounded-full">Growth</span>
+          </a>
+        ))}
+        <!-- View All end card -->
+        <a href="/portfolio" class="portfolio-card portfolio-card-viewall bg-surface border border-white/5 rounded-2xl overflow-hidden flex-shrink-0 flex items-center justify-center hover:border-teal/30 transition-colors">
+          <div class="text-center p-8">
+            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-teal/10 flex items-center justify-center">
+              <svg class="w-8 h-8 text-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
             </div>
-            <h3 class="font-semibold text-lg">GlowUp Beauty</h3>
-            <p class="text-subtle text-sm mt-2">Multi-page beauty salon site with booking calendar, masonry gallery, and WhatsApp booking.</p>
-            <span class="inline-flex items-center gap-1 text-teal text-sm font-medium mt-3 group-hover:gap-2 transition-all">View Live Site <span>→</span></span>
+            <span class="text-teal font-semibold text-lg">View All Work</span>
+            <p class="text-subtle text-sm mt-2">See our full portfolio</p>
           </div>
-        </a>
-        <a href="https://ade-demo.pejji.com" target="_blank" rel="noopener" class="card-tactile bg-surface border border-white/5 rounded-2xl overflow-hidden group hover:border-teal/30 block">
-          <div class="aspect-video bg-gradient-to-br from-orange/20 to-surface flex items-center justify-center overflow-hidden">
-            <img src="/portfolio/ade-hero.jpg" alt="Ade & Co. Fashion website screenshot" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
-          </div>
-          <div class="p-6">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-xs bg-teal/10 text-teal px-2.5 py-1 rounded-full">Fashion/E-commerce</span>
-              <span class="text-xs bg-white/5 text-subtle px-2.5 py-1 rounded-full">Pro</span>
-            </div>
-            <h3 class="font-semibold text-lg">Ade & Co. Fashion</h3>
-            <p class="text-subtle text-sm mt-2">Full ecommerce store with product catalog, cart system, and WhatsApp ordering.</p>
-            <span class="inline-flex items-center gap-1 text-teal text-sm font-medium mt-3 group-hover:gap-2 transition-all">View Live Site <span>→</span></span>
-          </div>
-        </a>
-      </div>
-      <div class="text-center mt-10 reveal">
-        <a href="/portfolio" class="inline-flex items-center text-teal font-medium hover:gap-3 transition-all gap-2">
-          View All Work <span>→</span>
         </a>
       </div>
     </div>
   </section>
+
+  <style>
+    .portfolio-carousel-wrap {
+      overflow: hidden;
+      width: 100%;
+    }
+    .portfolio-carousel {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0 max(1rem, calc((100vw - 80rem) / 2 + 1rem));
+      padding-bottom: 1rem;
+    }
+    .portfolio-carousel::-webkit-scrollbar {
+      display: none;
+    }
+    .portfolio-card {
+      width: 280px;
+      min-width: 280px;
+      max-width: 300px;
+      scroll-snap-align: start;
+    }
+    .portfolio-card-viewall {
+      min-height: 280px;
+    }
+    @media (min-width: 640px) {
+      .portfolio-card {
+        width: 300px;
+        min-width: 300px;
+      }
+    }
+  </style>
 
   <!-- HOW IT WORKS (Timeline) -->
   <section class="py-16 sm:py-24 bg-surface/50">
