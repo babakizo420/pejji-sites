@@ -18,6 +18,35 @@ import { WHATSAPP_URL } from '../config';
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 stagger-children">
 
+        <!-- Pro Max (full-width, premium) -->
+        <div class="md:col-span-2 card-tactile bg-surface rounded-2xl p-8 relative hover:shadow-lg hover:shadow-purple-500/10" style="border: 2px solid transparent; background-image: linear-gradient(var(--color-surface), var(--color-surface)), linear-gradient(135deg, #0A8F8F, #A855F7, #F57A1F); background-origin: border-box; background-clip: padding-box, border-box;">
+          <div class="absolute -top-3 right-6 bg-gradient-to-r from-purple-500 to-teal text-white text-xs font-semibold px-3 py-1 rounded-full">AI-POWERED</div>
+          <div class="text-purple-400 text-sm font-semibold uppercase tracking-wider">Pro Max</div>
+          <div class="mt-4 flex items-baseline gap-2">
+            <span class="text-4xl font-bold bg-gradient-to-r from-teal to-purple-400 bg-clip-text text-transparent">₦1.5M+</span>
+          </div>
+          <p class="text-subtle text-sm mt-2">+ ₦150,000/mo hosting & agent</p>
+          <p class="text-subtle mt-4">21-30 day delivery &middot; Unlimited revisions</p>
+          <ul class="mt-6 space-y-3">
+            {[
+              "Everything in Pro",
+              "Custom AI agent for your business",
+              "24/7 WhatsApp customer service bot",
+              "Automated booking & order management",
+              "AI-powered lead qualification",
+              "Monthly performance reports",
+            ].map((item) => (
+              <li class="flex items-start gap-3 text-sm">
+                <svg class="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span class="text-light">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="/contact?tier=promax" class="mt-8 inline-block text-center px-8 py-3.5 bg-gradient-to-r from-purple-500 to-teal text-white font-semibold rounded-lg hover:opacity-90 transition-opacity">
+            Get Started with Pro Max
+          </a>
+        </div>
+
         <!-- Card Tier -->
         <div class="card-tactile bg-surface border border-white/5 rounded-2xl p-8 hover:border-teal/20">
           <div class="text-teal text-sm font-semibold uppercase tracking-wider">Card</div>
@@ -170,7 +199,7 @@ import { WHATSAPP_URL } from '../config';
         <h2 class="text-3xl sm:text-4xl font-bold">Compare Plans</h2>
       </div>
       <div class="overflow-x-auto reveal">
-        <table class="w-full min-w-[600px]">
+        <table class="w-full min-w-[750px]">
           <thead>
             <tr class="border-b border-white/10">
               <th class="text-left py-4 pr-4 text-subtle text-sm font-medium">Feature</th>
@@ -178,28 +207,32 @@ import { WHATSAPP_URL } from '../config';
               <th class="py-4 px-4 text-center text-sm font-semibold">Starter</th>
               <th class="py-4 px-4 text-center text-sm font-semibold text-teal">Growth</th>
               <th class="py-4 px-4 text-center text-sm font-semibold">Pro</th>
+              <th class="py-4 px-4 text-center text-sm font-semibold text-purple-400">Pro Max</th>
             </tr>
           </thead>
           <tbody class="text-sm">
             {[
-              { feature: "Pages", card: "1", starter: "1 (multi-section)", growth: "Up to 5", pro: "Unlimited" },
-              { feature: "Mobile Responsive", card: true, starter: true, growth: true, pro: true },
-              { feature: "SEO Setup", card: "Basic", starter: "Basic", growth: "Advanced", pro: "Advanced" },
-              { feature: "Contact Form", card: false, starter: true, growth: true, pro: true },
-              { feature: "WhatsApp Integration", card: "Button", starter: "Button", growth: "Business", pro: "Business" },
-              { feature: "Analytics", card: false, starter: true, growth: true, pro: "Advanced" },
-              { feature: "Blog", card: false, starter: false, growth: true, pro: true },
-              { feature: "Booking System", card: false, starter: false, growth: true, pro: true },
-              { feature: "E-commerce", card: false, starter: false, growth: false, pro: true },
-              { feature: "Payment Integration", card: false, starter: false, growth: false, pro: true },
-              { feature: "Customer Accounts", card: false, starter: false, growth: false, pro: true },
-              { feature: "Revision Rounds", card: "1", starter: "2", growth: "3", pro: "3" },
-              { feature: "Delivery Time", card: "48hrs", starter: "5-7 days", growth: "7-14 days", pro: "14-21 days" },
-              { feature: "Security Audit", card: true, starter: true, growth: true, pro: true },
+              { feature: "Pages", card: "1", starter: "1 (multi-section)", growth: "Up to 5", pro: "Unlimited", promax: "Unlimited" },
+              { feature: "Mobile Responsive", card: true, starter: true, growth: true, pro: true, promax: true },
+              { feature: "SEO Setup", card: "Basic", starter: "Basic", growth: "Advanced", pro: "Advanced", promax: "Advanced" },
+              { feature: "Contact Form", card: false, starter: true, growth: true, pro: true, promax: true },
+              { feature: "WhatsApp Integration", card: "Button", starter: "Button", growth: "Business", pro: "Business", promax: "AI Bot" },
+              { feature: "Analytics", card: false, starter: true, growth: true, pro: "Advanced", promax: "Advanced + AI" },
+              { feature: "Blog", card: false, starter: false, growth: true, pro: true, promax: true },
+              { feature: "Booking System", card: false, starter: false, growth: true, pro: true, promax: "AI-Managed" },
+              { feature: "E-commerce", card: false, starter: false, growth: false, pro: true, promax: true },
+              { feature: "Payment Integration", card: false, starter: false, growth: false, pro: true, promax: true },
+              { feature: "Customer Accounts", card: false, starter: false, growth: false, pro: true, promax: true },
+              { feature: "Custom AI Agent", card: false, starter: false, growth: false, pro: false, promax: true },
+              { feature: "AI Lead Qualification", card: false, starter: false, growth: false, pro: false, promax: true },
+              { feature: "Performance Reports", card: false, starter: false, growth: false, pro: false, promax: "Monthly" },
+              { feature: "Revision Rounds", card: "1", starter: "2", growth: "3", pro: "3", promax: "Unlimited" },
+              { feature: "Delivery Time", card: "48hrs", starter: "5-7 days", growth: "7-14 days", pro: "14-21 days", promax: "21-30 days" },
+              { feature: "Security Audit", card: true, starter: true, growth: true, pro: true, promax: true },
             ].map((row) => (
               <tr class="border-b border-white/5">
                 <td class="py-3.5 pr-4 text-light">{row.feature}</td>
-                {[row.card, row.starter, row.growth, row.pro].map((val) => (
+                {[row.card, row.starter, row.growth, row.pro, row.promax].map((val) => (
                   <td class="py-3.5 px-4 text-center">
                     {val === true ? (
                       <svg class="w-5 h-5 text-teal mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
