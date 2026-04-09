@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+
+const posts = [
+  {
+    title: "How Much Does a Website Cost in Nigeria in 2026?",
+    slug: "how-much-does-website-cost-nigeria",
+    excerpt: "A transparent breakdown of website pricing in Nigeria - from DIY builders to full agencies - and where Pejji fits in.",
+    date: "2026-04-06",
+    category: "Pricing",
+    readingTime: "6 min read"
+  },
+  {
+    title: "NDPA Compliance for Nigerian Businesses: What You Need in 2026",
+    slug: "ndpa-compliance-nigerian-businesses",
+    excerpt: "The Nigeria Data Protection Act (NDPA) 2023 is being enforced. Here is what your business needs to stay compliant and avoid fines.",
+    date: "2026-04-04",
+    category: "Compliance",
+    readingTime: "7 min read"
+  },
+  {
+    title: "Why Your Nigerian Business Needs a Website in 2026",
+    slug: "why-nigerian-business-needs-website",
+    excerpt: "39.4 million MSMEs in Nigeria operate without a website. Here is why that is costing them customers and credibility.",
+    date: "2026-04-02",
+    category: "Business",
+    readingTime: "5 min read"
+  }
+];
+---
+
+<Base title="Blog | Pejji" description="Insights on web design, NDPA compliance, and growing your Nigerian business online. Expert guides from the Pejji team.">
+  <section class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-20">
+    <!-- Header -->
+    <div class="text-center mb-16">
+      <span class="inline-block px-4 py-1.5 bg-teal/10 text-teal text-sm font-semibold rounded-full mb-4">Blog</span>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">Insights for Nigerian Businesses</h1>
+      <p class="text-subtle text-lg max-w-2xl mx-auto">Practical guides on web design, compliance, and getting your business online the right way.</p>
+    </div>
+
+    <!-- Post grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {posts.map((post) => (
+        <a href={`/blog/${post.slug}`} class="group block bg-surface border border-white/10 rounded-2xl overflow-hidden hover:border-teal/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-teal/5">
+          <!-- Category + reading time -->
+          <div class="p-6 pb-0 flex items-center justify-between">
+            <span class="px-3 py-1 bg-teal/10 text-teal text-xs font-semibold rounded-full">{post.category}</span>
+            <span class="text-subtle text-xs">{post.readingTime}</span>
+          </div>
+          <!-- Content -->
+          <div class="p-6">
+            <h2 class="text-lg font-bold leading-snug mb-3 group-hover:text-teal transition-colors">{post.title}</h2>
+            <p class="text-subtle text-sm leading-relaxed mb-4">{post.excerpt}</p>
+            <div class="flex items-center justify-between">
+              <time class="text-subtle text-xs">{new Date(post.date).toLocaleDateString('en-NG', { year: 'numeric', month: 'short', day: 'numeric' })}</time>
+              <span class="text-teal text-sm font-medium group-hover:translate-x-1 transition-transform duration-300 inline-flex items-center gap-1">
+                Read
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </span>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</Base>
