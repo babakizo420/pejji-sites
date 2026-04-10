@@ -162,18 +162,13 @@ import { WHATSAPP_URL } from '../config';
             Learn More <span class="ml-1">→</span>
           </a>
         </div>
-        <!-- Pro Max - Purple Gradient (Premium) -->
-        <style>
-          @keyframes glow-badge { 0%,100% { box-shadow: 0 0 8px rgba(124,58,237,0.5), 0 0 20px rgba(124,58,237,0.2); } 50% { box-shadow: 0 0 16px rgba(124,58,237,0.7), 0 0 36px rgba(124,58,237,0.35); } }
-          @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-        </style>
-        <div class="card-tactile card-glow rounded-2xl p-6 sm:p-8 group relative pricing-card" style="scroll-snap-align: start; overflow: visible; border: 2px solid rgba(124,58,237,0.4); background: linear-gradient(135deg, #1A1A24 0%, #1E1530 50%, #1A1A24 100%);">
-          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#0A8F8F,#7C3AED,#F57A1F);border-radius:12px 12px 0 0;"></div>
-          <div class="absolute -top-3 right-4" style="z-index:10;">
-            <span style="display:inline-block;padding:4px 14px;border-radius:9999px;font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FFFFFF;background:linear-gradient(135deg,#7C3AED,#F57A1F);animation:glow-badge 2s ease-in-out infinite;">AI-POWERED</span>
-          </div>
-          <div>
+        <!-- Pro Max - Purple Gradient -->
+        <div class="card-tactile card-glow bg-surface rounded-2xl p-6 sm:p-8 group relative overflow-hidden pricing-card" style="scroll-snap-align: start; border: 1px solid rgba(124,58,237,0.3);">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0A8F8F,#7C3AED,#F57A1F);"></div>
+          <div class="flex items-center gap-3">
             <span style="color:#7C3AED;" class="text-sm font-semibold uppercase tracking-wider">Pro Max</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full" style="background:linear-gradient(135deg,#7C3AED,#F57A1F);color:#FFFFFF;box-shadow:0 0 12px rgba(124,58,237,0.5),0 0 24px rgba(124,58,237,0.2);animation:glow 2s ease-in-out infinite alternate;">AI-Powered</span>
+            <style>.pricing-card [style*='animation:glow'] { animation: glow 2s ease-in-out infinite alternate; } @keyframes glow { from { box-shadow: 0 0 8px rgba(124,58,237,0.4), 0 0 16px rgba(124,58,237,0.15); } to { box-shadow: 0 0 16px rgba(124,58,237,0.6), 0 0 32px rgba(124,58,237,0.25); } }</style>
           </div>
           <div class="mt-4">
             <span class="text-3xl font-bold">₦1.5M+</span>
