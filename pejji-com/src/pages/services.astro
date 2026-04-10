@@ -20,7 +20,7 @@ import { WHATSAPP_URL } from '../config';
 
         <!-- Pro Max (full-width, premium) -->
         <div class="md:col-span-2 card-tactile bg-surface rounded-2xl p-8 relative hover:shadow-lg hover:shadow-purple-500/10" style="border: 2px solid transparent; background-image: linear-gradient(var(--color-surface), var(--color-surface)), linear-gradient(135deg, #0A8F8F, #A855F7, #F57A1F); background-origin: border-box; background-clip: padding-box, border-box;">
-          <div class="absolute -top-3 right-6 bg-gradient-to-r from-purple-500 to-teal text-white text-xs font-semibold px-3 py-1 rounded-full">AI-POWERED</div>
+          <div class="absolute -top-3 right-6 text-xs font-semibold px-3 py-1 rounded-full animate-pulse" style="background:linear-gradient(135deg,#7C3AED,#F57A1F);color:#FFFFFF;box-shadow:0 0 12px rgba(124,58,237,0.5),0 0 24px rgba(124,58,237,0.2);">AI-POWERED</div>
           <div class="text-purple-400 text-sm font-semibold uppercase tracking-wider">Pro Max</div>
           <div class="mt-4 flex items-baseline gap-2">
             <span class="text-4xl font-bold bg-gradient-to-r from-teal to-purple-400 bg-clip-text text-transparent">₦1.5M+</span>
@@ -48,8 +48,8 @@ import { WHATSAPP_URL } from '../config';
         </div>
 
         <!-- Card Tier -->
-        <div class="card-tactile bg-surface border border-white/5 rounded-2xl p-8 hover:border-teal/20">
-          <div class="text-teal text-sm font-semibold uppercase tracking-wider">Card</div>
+        <div class="card-tactile bg-surface border border-white/5 rounded-2xl p-8 hover:border-teal/20" style="border-top: 3px solid #0A8F8F;">
+          <div class="text-sm font-semibold uppercase tracking-wider" style="color:#0A8F8F;">Card</div>
           <div class="mt-4 flex items-baseline gap-2">
             <span class="text-4xl font-bold">₦60,000</span>
           </div>
@@ -69,14 +69,14 @@ import { WHATSAPP_URL } from '../config';
               </li>
             ))}
           </ul>
-          <a href="/contact?tier=card" class="mt-8 block text-center px-6 py-3.5 border-2 border-teal text-teal font-semibold rounded-lg hover:bg-teal/10 transition-colors">
+          <a href="/contact?tier=card" class="mt-8 block text-center px-6 py-3.5 font-semibold rounded-lg transition-colors" style="border:2px solid #0A8F8F;color:#0A8F8F;" onmouseover="this.style.backgroundColor='rgba(10,143,143,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
             Get Started with Card
           </a>
         </div>
 
         <!-- Starter -->
-        <div class="card-tactile bg-surface border border-white/5 rounded-2xl p-8 hover:border-teal/20">
-          <div class="text-teal text-sm font-semibold uppercase tracking-wider">Starter</div>
+        <div class="card-tactile bg-surface border border-white/5 rounded-2xl p-8 hover:border-blue-500/20" style="border-top: 3px solid #3B82F6;">
+          <div class="text-sm font-semibold uppercase tracking-wider" style="color:#3B82F6;">Starter</div>
           <div class="mt-4 flex items-baseline gap-2">
             <span class="text-4xl font-bold">₦150K</span>
           </div>
@@ -91,20 +91,20 @@ import { WHATSAPP_URL } from '../config';
               "Basic SEO optimization",
             ].map((item) => (
               <li class="flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-teal flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:#3B82F6;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                 <span class="text-light">{item}</span>
               </li>
             ))}
           </ul>
-          <a href="/contact?tier=starter" class="mt-8 block text-center px-6 py-3.5 border-2 border-teal text-teal font-semibold rounded-lg hover:bg-teal/10 transition-colors">
+          <a href="/contact?tier=starter" class="mt-8 block text-center px-6 py-3.5 font-semibold rounded-lg transition-colors" style="border:2px solid #3B82F6;color:#3B82F6;" onmouseover="this.style.backgroundColor='rgba(59,130,246,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
             Get Started with Starter
           </a>
         </div>
 
         <!-- Growth -->
-        <div class="card-tactile bg-surface border-2 border-teal/50 rounded-2xl p-8 relative hover:shadow-lg hover:shadow-teal/10">
-          <div class="absolute -top-3 right-6 bg-orange text-white text-xs font-semibold px-3 py-1 rounded-full">Most Popular</div>
-          <div class="text-teal text-sm font-semibold uppercase tracking-wider">Growth</div>
+        <div class="card-tactile bg-surface rounded-2xl p-8 relative hover:shadow-lg" style="border: 2px solid rgba(245,122,31,0.5); border-top: 3px solid #F57A1F; --tw-shadow-color: rgba(245,122,31,0.1);">
+          <div class="absolute -top-3 right-6 text-white text-xs font-semibold px-3 py-1 rounded-full" style="background:#F57A1F;">Most Popular</div>
+          <div class="text-sm font-semibold uppercase tracking-wider" style="color:#F57A1F;">Growth</div>
           <div class="mt-4 flex items-baseline gap-2">
             <span class="text-4xl font-bold">₦300K</span>
           </div>
@@ -119,19 +119,19 @@ import { WHATSAPP_URL } from '../config';
               "WhatsApp Business integration",
             ].map((item) => (
               <li class="flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-teal flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:#F57A1F;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                 <span class="text-light">{item}</span>
               </li>
             ))}
           </ul>
-          <a href="/contact?tier=growth" class="mt-8 block text-center px-6 py-3.5 bg-teal text-dark font-semibold rounded-lg hover:bg-teal/90 transition-colors">
+          <a href="/contact?tier=growth" class="mt-8 block text-center px-6 py-3.5 font-semibold rounded-lg transition-colors" style="background:#F57A1F;color:#1a1a2e;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
             Get Started with Growth
           </a>
         </div>
 
         <!-- Pro -->
-        <div class="card-tactile bg-surface border border-white/5 rounded-2xl p-8 hover:border-teal/20">
-          <div class="text-teal text-sm font-semibold uppercase tracking-wider">Pro</div>
+        <div class="card-tactile bg-surface border border-white/5 rounded-2xl p-8 hover:border-emerald-500/20" style="border-top: 3px solid #10B981;">
+          <div class="text-sm font-semibold uppercase tracking-wider" style="color:#10B981;">Pro</div>
           <div class="mt-4 flex items-baseline gap-2">
             <span class="text-4xl font-bold">₦800K+</span>
           </div>
@@ -147,12 +147,12 @@ import { WHATSAPP_URL } from '../config';
               "Advanced analytics dashboard",
             ].map((item) => (
               <li class="flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-teal flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <svg class="w-5 h-5 flex-shrink-0 mt-0.5" style="color:#10B981;" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                 <span class="text-light">{item}</span>
               </li>
             ))}
           </ul>
-          <a href="/contact?tier=pro" class="mt-8 block text-center px-6 py-3.5 border-2 border-teal text-teal font-semibold rounded-lg hover:bg-teal/10 transition-colors">
+          <a href="/contact?tier=pro" class="mt-8 block text-center px-6 py-3.5 font-semibold rounded-lg transition-colors" style="border:2px solid #10B981;color:#10B981;" onmouseover="this.style.backgroundColor='rgba(16,185,129,0.1)'" onmouseout="this.style.backgroundColor='transparent'">
             Get Started with Pro
           </a>
         </div>
