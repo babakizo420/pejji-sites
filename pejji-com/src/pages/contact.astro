@@ -259,15 +259,9 @@ import { WHATSAPP_URL } from '../config';
         const result = await response.json();
 
         if (result.success) {
-          // Send Telegram notification with lead details
+          // Log lead (Telegram notification handled server-side via vein Worker)
           try {
             const leadData = Object.fromEntries(formData.entries());
-            const msg = `NEW PEJJI LEAD\n\nBusiness: ${leadData.business_name || '-'}\nName: ${leadData.your_name || '-'}\nPhone: ${leadData.phone || '-'}\nEmail: ${leadData.email || '-'}\nIndustry: ${leadData.industry || '-'}\nTier: ${leadData.tier || '-'}\nHas Logo: ${leadData.has_logo || '-'}\nAbout: ${leadData.about || '-'}\n\nSource: pejji.com/contact`;
-            fetch('https://api.telegram.org/bot8616559738:AAGkj_079rqvx-qiN6nkQG-8IvkcBEeLYEk/sendMessage', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ chat_id: '5413679846', text: msg })
-            }).catch(() => {});
 
             // Log lead to Notion via Cloudflare Worker
             fetch('https://vein.pejji.com/log-lead', {
