@@ -82,7 +82,7 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
       html.light .shadow-black\/20 { --tw-shadow-color: rgba(0,0,0,0.08); }
     </style>
 
-    <style>
+    <style is:global>
       /* Scroll reveal animations - MORE DRAMATIC */
       .reveal {
         opacity: 0;
@@ -174,6 +174,7 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
         position: absolute;
         border-radius: 50%;
         pointer-events: none;
+        z-index: 15; /* Above canvas (z-10) but below content (z-20) */
       }
 
       /* Accepting clients badge pulse */
@@ -745,7 +746,7 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
               size: Math.random() * 2 + 1,
               speedX: (Math.random() - 0.5) * 0.3,
               speedY: (Math.random() - 0.5) * 0.3,
-              opacity: Math.random() * 0.4 + 0.15,
+              opacity: Math.random() * 0.4 + 0.2,
               color: Math.random() > 0.7 ? '245, 122, 31' : '10, 143, 143',
             });
           }
@@ -789,8 +790,9 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
           animId = requestAnimationFrame(animateHeroParticles);
         }
 
-        // Wait for layout to complete before measuring canvas dimensions
+        // Start (or restart) the particle animation loop
         function startParticles() {
+          cancelAnimationFrame(animId);
           resizeHeroCanvas();
           initHeroParticles();
           if (heroParticles.length > 0) {
@@ -798,15 +800,40 @@ const { title, description = "We build fast, secure, beautiful websites for Nige
           }
         }
 
-        // Use rAF to ensure layout has happened before measuring
-        requestAnimationFrame(startParticles);
-
-        window.addEventListener('resize', () => {
-          cancelAnimationFrame(animId);
+        // Module scripts are deferred but layout may not be fully
+        // settled on the first frame. Use window.load as the primary
+        // trigger (guarantees CSS + layout ready) with a rAF + retry
+        // fallback so particles appear even if load already fired.
+        function tryStart() {
           resizeHeroCanvas();
-          initHeroParticles();
-          if (heroParticles.length > 0) animateHeroParticles();
-        });
+          if (heroCanvas.width === 0 || heroCanvas.height === 0) {
+            // Layout not ready yet - retry on next frame (up to ~10 retries)
+            let retries = 0;
+            function retry() {
+              resizeHeroCanvas();
+              if ((heroCanvas.width === 0 || heroCanvas.height === 0) && retries < 10) {
+                retries++;
+                requestAnimationFrame(retry);
+                return;
+              }
+              startParticles();
+            }
+            requestAnimationFrame(retry);
+          } else {
+            startParticles();
+          }
+        }
+
+        if (document.readyState === 'complete') {
+          // Page already loaded (e.g. back/forward cache)
+          requestAnimationFrame(tryStart);
+        } else {
+          window.addEventListener('load', () => requestAnimationFrame(tryStart));
+          // Also try eagerly in case load takes too long (image-heavy pages)
+          requestAnimationFrame(tryStart);
+        }
+
+        window.addEventListener('resize', () => startParticles());
       }
     </script>
   </body>
