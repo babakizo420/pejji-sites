@@ -249,9 +249,8 @@ import { WHATSAPP_URL } from '../config';
       }
 
       try {
+        const cfTurnstileToken = turnstileResponse.value;
         const formData = new FormData(form);
-        // Remove Turnstile token - Web3Forms doesn't need it
-        formData.delete('cf-turnstile-response');
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           body: formData,
@@ -259,11 +258,14 @@ import { WHATSAPP_URL } from '../config';
         const result = await response.json();
 
         if (result.success) {
-          // Log lead (Telegram notification handled server-side via vein Worker)
           try {
             const leadData = Object.fromEntries(formData.entries());
 
-            // Log lead to Notion via Cloudflare Worker
+            // Log lead to Notion via hardened Cloudflare Worker (vein.pejji.com).
+            // The Worker performs server-side Turnstile verification, origin
+            // allowlist check, per-IP rate limiting, and the Notion write.
+            // Telegram notifications are handled server-side so no tokens live
+            // in client code.
             fetch('https://vein.pejji.com/log-lead', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -276,6 +278,7 @@ import { WHATSAPP_URL } from '../config';
                 tier: leadData.tier || '',
                 about: leadData.about || '',
                 has_logo: leadData.has_logo || '',
+                cfTurnstileToken,
               })
             }).catch(() => {});
           } catch {}
