@@ -75,6 +75,7 @@ import { WHATSAPP_URL } from '../config';
                   <option value="starter">Starter (₦150K)</option>
                   <option value="growth">Growth (₦300K)</option>
                   <option value="pro">Pro (₦800K+)</option>
+                  <option value="promax">Pro Max (₦1.5M+)</option>
                   <option value="unsure">Not sure yet</option>
                 </select>
               </div>
@@ -249,8 +250,15 @@ import { WHATSAPP_URL } from '../config';
       }
 
       try {
+        // Capture the Turnstile token BEFORE stripping it from the form data.
+        // We still pass the token to the vein Worker for server-side siteverify,
+        // but Web3Forms (which does its own Turnstile validation on its side
+        // when the field is present) can reject the submission if the token is
+        // meant for our own Worker's secret, not theirs. Strip it from the
+        // Web3Forms payload and only send it to the Worker.
         const cfTurnstileToken = turnstileResponse.value;
         const formData = new FormData(form);
+        formData.delete('cf-turnstile-response');
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           body: formData,
